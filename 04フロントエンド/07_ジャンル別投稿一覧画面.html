@@ -1,31 +1,113 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ja">
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>やまったー | ジャンル別投稿一覧</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-  <link href="css/nakai.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-  <link href="css/yamane.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-  <link href="css/yamanishi.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-  <meta charset="utf-8"/>
-  <title>上側ナビゲーション</title>
-  <link rel="stylesheet" href="yamane.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link href="css/nakai.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link href="css/yamane.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <link href="css/yamanishi.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 </head>
-
 <body>
-  <header class="NavigationMenu">
-    <p>ナビゲーション</p>
- </header>
- <div class="Content">
-    <p>webサイトコンテンツ</p>
- </div>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-3"><br>
+            <p>ここにロゴを貼ってね🎵</p>
+            <hr>
+          </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-  <script src="./script/script.js"></script>   
+        <div class="col-md-1"><br>
+          <img class="image_middle" src="img/pink.png"></div>
+        
+        <div class="col-md-7"><br>
+            <p>ユーザー名</p>
+            <p>ID:0000</p>
+            
+        </div>
+        
+        <div class="col-md-1"><br>
+            <br><button type="button"class="btn container-fluid color_white_yamani"
+                        style="background-color:#FBA8B8;">編集</button>
+        </div>    
+    
+    </div>
 
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9"><br>
+            <h6>自己紹介文</h6><br>
+
+            <p>好きなジャンル</p>
+            <span class="border border-#FBA8B8 badge text-bg-white color_yamani">アニソン</span>
+            <span class="border border-#FBA8B8 badge text-bg-white color_yamani">JPOP</span>
+            <span class="border border-#FBA8B8 badge text-bg-white color_yamani">ギター</span>
+        
+
+        
+            <hr>  
+        </div>
+    </div>
+    <div class="row"> 
+      <div class="col-md-3"></div>
+            <div class="wrapper">
+                <ul class="tab">
+                  
+                <div class="col-md-4">
+                    <div class="middll_yamani">
+                  <li><a href="#lunch">投稿</a></li>
+                  </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-4">
+                  <div class="middll_yamani">
+                  <li><a href="#drink">いいね</a></li>
+                  </div>
+                  
+                  
+                </ul>
+                </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        
+                <hr class="padding_minus_yamani">
+                  <div id="lunch" class="area">
+                    
+                   <div style="border: #ff69b4 solid 1px; font-size: 100%; padding: 15px;">〜本文はこちら〜</div>
+                    
+                 <!--/area--></div>
+
+
+                  <div id="drink" class="area">
+                    <h2>ドリンク</h2>
+                    <ul>
+                      <li>ウーロン茶</li>
+                      <li>オレンジジュース</li>
+                      <li>ジンジャーエール</li>
+                    </ul>
+                  <!--/area--></div>
+                  
+                  
+              <!--wrapper--></div>
+            </div>
+    
+      </div>             
+         
+        
+
+    </div>
+    
+    
+    </div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="sprict/yamanishi.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
