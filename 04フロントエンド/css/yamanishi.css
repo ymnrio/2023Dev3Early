@@ -55,6 +55,9 @@ figure.side_image {
   width: 700px;
   display: block;
   margin-top: -100px;
+  text-align:center;
+  position: relative;
+  z-index: -10;
   }
 .rogo_magin_120{
   text-align: center;
@@ -68,6 +71,11 @@ figure.side_image {
 .magin20_yamanisi{
   margin-top: 20px;
 }
+
+.magin10_yamanisi{
+  margin-top: 10px;
+}
+
 .rinku_yamanisi{
   text-align: center;
   margin-top: 20px;

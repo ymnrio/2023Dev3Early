@@ -16,47 +16,6 @@
 
 </head>
 <body>
-<!--
-<div id="head">
-    <img src="img/やまったーlog.png">
-</div>
-  <h1 style="text-align:center">-----------ログイン----------</h1>
-  <form action="logincheck.php" method="post">
-    <div id="maindiv" class="container">
-      <div class="row mt-5">
-       <div class="offset-md-3 col-md-6 ">
-          <div class="row">
-            <div class="col-md-12">
-              <div  class="form-floating">
-                <input  type="email"  class="form-control"  id="usermail" placeholder="" name="mail">
-                <label  for="email">メールアドレス</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 mt-2">
-              <div  class="form-floating">
-                <input  type="password"  class="form-control"  id="pass" placeholder="" name="pass">
-                <label  for="password">パスワード</label>
-            </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 mt-3">
-              <div class="d-grid gap-2">
-                <input type="submit" class="btn btn-outline-dark" value="ログインする">
-              </div>
-            </div>
-          </div><br><br>
-        </form>
-          <div class="row">
-            <div class="col-md-12 mt-3" id="rink">
-                <a href="03_新規登録画面.html">→新規登録はこちら</p>
-            </div>
-          </div>
-      </div>
-    </div>
-  -->
 
 <div class="container-fluid">
   <div class="row">
@@ -69,24 +28,30 @@
       </div>
     </div>
 
+    <form method="POST"action="05_プロフィール画面.html">
+
 <div class="magin30_yamanisi">
-    <input type="email"  class="form-control " id="txt1" name="email" required
+    <input type="email" class="form-control" name="email" required
              placeholder="メールアドレス"style="border-color:#FBA8B8;border-width:3px;">
              </div>   
+             
 <div class="magin30_yamanisi">
 
-          <input type="password" class="form-control" name="new_password" required
+          <input type="password" class="form-control" name="password" required
               placeholder="パスワード"style="border-color:#FBA8B8;border-width:3px;"><br>
            </div>
 
 <div class="magin20_yamanisi">
-            <button type="button"class="btn container-fluid color_white_yamani"
+            <button type="submit"class="btn container-fluid color_white_yamani"
             style="background-color:#FBA8B8;">ログイン</button>
     </div>
 
+    </form>
+    
     <div class="rinku_yamanisi">
     <a href="03_新規登録画面.html">→新規登録はこちら</a>
       </div>
+
   </div>
   
     <div class="col-md-3"></div>
