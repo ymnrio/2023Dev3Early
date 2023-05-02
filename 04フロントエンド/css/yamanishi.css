@@ -43,7 +43,7 @@ figure.side_image {
   color: white;
 }
 
-.padding_minus_yamani{
+.margin_minus_yamani{
   margin-top: 1px;
 }
 
@@ -80,9 +80,12 @@ figure.side_image {
   text-align: center;
   margin-top: 20px;
 }
-a{
+
+.a_ys{
   color: #FBA8B8;
   text-decoration: none;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .border_yamanisi{
@@ -102,7 +105,6 @@ border-width:3px;
   background: #000; /* 線の色 */
   margin:0 2em; /* 文字と線の余白 */
 }
-
 
 
 
@@ -156,7 +158,7 @@ border-width:3px;
 
 
 
-ul{
+.ul_ys ul{
   list-style:none;
 }
 
@@ -176,3 +178,19 @@ ul{
   border-bottom: 1px solid #ddd;
 }
 
+
+/*ここからtweetの枠線の設定*/
+
+.waku_ys p{
+  display :inline-block;
+  border: solid 2px #FBA8B8;
+  width: 900px;
+  max-width:900px;
+  padding: 10px 20px 15px 20px;
+  margin: 20px 20px 0px 20px;
+  
+}
+
+.waku_ys .haikei_yp{
+  background-color: #FBA8B8;
+}
