@@ -85,7 +85,8 @@ float:left;
 transition:all .5s ease-in-out;   
 float:left;  
 }
-.icon img{top:22px;position:relative;}
+.icon i
+{top:22px;position:relative;}
 a{
 display:block;
 position:absolute;
