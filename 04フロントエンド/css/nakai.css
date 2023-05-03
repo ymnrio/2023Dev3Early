@@ -1,11 +1,26 @@
+ #container {
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-columns: 150px 230px 150px;
+ }
+ 
  #rp_nh {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
     background: #FBA8B8;
   }
 
   #center_nh {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
     background: #ffffff;
   }
 
   #lp_nh {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
     background: #FBA8B8;
+  }
+  .line{
+    color: #FBA8B8;
   }
