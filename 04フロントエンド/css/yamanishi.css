@@ -44,7 +44,8 @@ figure.side_image {
 }
 
 .margin_minus_yamani{
-  margin-top: 1px;
+  margin-top: -1px;
+  margin-bottom: -16px;
 }
 
 .back_pink_yamani{
@@ -62,6 +63,12 @@ figure.side_image {
 .rogo_magin_120{
   text-align: center;
   margin-top: -130px;
+}
+.magin-10_ys{
+  margin-top: -20px;
+}
+.magin40_yamanisi{
+  margin-top: 40px;
 }
 
 .magin30_yamanisi{
@@ -105,6 +112,32 @@ border-width:3px;
   background: #000; /* 線の色 */
   margin:0 2em; /* 文字と線の余白 */
 }
+
+.start_0_ys{
+  padding: 0px;
+  margin: 0px;
+}
+
+.padding30_ys{
+  padding-left: 30px;
+}
+
+.padding20_ys{
+  padding-left: 20px;
+}
+
+.yoko_ys {
+  border-right:1px solid #c8c8c8;
+  padding: 0px;
+  }
+
+  .box {
+    /*padding-left:900px;
+    margin-top: -200px;*/
+    position: fixed;
+    bottom: 50px;
+    right: 100px;
+  }
 
 
 
@@ -180,7 +213,7 @@ border-width:3px;
 
 
 /*ここからtweetの枠線の設定*/
-
+/*
 .waku_ys p{
   display :inline-block;
   border: solid 2px #FBA8B8;
@@ -190,7 +223,21 @@ border-width:3px;
   margin: 20px 20px 0px 20px;
   
 }
+*/
+
+.waku_ys p{
+  display :inline-block;
+  border: solid 2px #FBA8B8;
+  width: 1000px;
+  max-width:1000px;
+  padding: 10px 20px 15px 20px;
+  margin-top: 20px;
+  background: #fff;
+}
 
 .waku_ys .haikei_yp{
   background-color: #FBA8B8;
 }
+
+
+
