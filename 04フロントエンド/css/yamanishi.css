@@ -35,6 +35,10 @@ figure.side_image {
   text-align:center;
 }
 
+.back_pink_yamani{
+  background-color: #FBA8B8;
+}
+
 .color_yamani{
   color: #FBA8B8;
 }
@@ -48,10 +52,6 @@ figure.side_image {
   margin-bottom: -16px;
 }
 
-.back_pink_yamani{
-  background-color: #FBA8B8;
-}
-
 .rogo_yamanisi {
   width: 700px;
   display: block;
@@ -60,6 +60,7 @@ figure.side_image {
   position: relative;
   z-index: -10;
   }
+
 .rogo_magin_120{
   text-align: center;
   margin-top: -130px;
@@ -81,6 +82,11 @@ figure.side_image {
 
 .magin10_yamanisi{
   margin-top: 10px;
+}
+
+.magin-sayu-ys{
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .rinku_yamanisi{
@@ -138,6 +144,21 @@ border-width:3px;
     bottom: 50px;
     right: 100px;
   }
+
+.kyanseru_ys{
+  width:130px;
+	height:40px;
+  position: fixed;
+    top: 50px;
+    left: 300px;
+}
+
+.touroku_ys{
+  width:150px;
+	height:40px;
+  margin-top: -40px;
+  margin-left: 80%;
+}
 
 
 
