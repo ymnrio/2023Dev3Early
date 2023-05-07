@@ -39,6 +39,11 @@ figure.side_image {
   background-color: #FBA8B8;
 }
 
+.back_pink_ys{
+  background-color: #FBA8B8;
+  height: 750px;
+}
+
 .color_yamani{
   color: #FBA8B8;
 }
@@ -101,6 +106,13 @@ figure.side_image {
   margin-top: 20px;
 }
 
+.a1_ys{
+  color: #FBA8B8;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
 .border_yamanisi{
 border-color:#FBA8B8;
 border-width:3px;
@@ -158,8 +170,15 @@ border-width:3px;
 	height:40px;
   margin-top: -40px;
   margin-left: 80%;
+  
 }
 
+.toukou_bokku_ys{
+  height: 250px;
+  text-align:left;
+  border:none;
+  overflow-wrap: break-word;
+}
 
 
 
