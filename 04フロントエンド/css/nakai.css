@@ -31,7 +31,8 @@
   }
 
   #hr_nh {
-    height: 5px;
+    height: 2px;
     width: 100%;
     border: none;
+    background-color: #FBA8B8;
   }
