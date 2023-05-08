@@ -25,3 +25,13 @@
   .line{
     color: #FBA8B8;
   }
+
+  .right {
+    text-align: right; 
+  }
+
+  #hr_nh {
+    height: 5px;
+    width: 100%;
+    border: none;
+  }
