@@ -40,3 +40,7 @@
     color: #FBA8B8;
     font-size: 20px;
   }
+
+  input[type=checkbox]:checked {
+    background-color: #FBA8B8 !important;
+  }
