@@ -49,7 +49,7 @@
 
 }
 
-input#check1[type="checkbox"]+label {
+input#btn-check-1-outlined[type="checkbox"]+label {
 
     position: relative;
 
@@ -91,7 +91,7 @@ input#btn-check-1-outlined[type="checkbox"]+label::before {
 
 }
 
-input#check1[type="checkbox"]:checked+label::before {
+input#btn-check-1-outlineds[type="checkbox"]:checked+label::before {
 
     /*チェックしたときの箱の色を変える*/
 
