@@ -41,6 +41,60 @@
     font-size: 20px;
   }
 
-  input[type=checkbox]:checked {
-    background-color: #FBA8B8 !important;
-  }
+  input[type="checkbox"] {
+
+    display: none;
+
+    /*デフォルトのチェックボックスを非表示にする*/
+
+}
+
+input#btn-check-1-outlined[type="checkbox"]+label {
+
+    position: relative;
+
+    padding-left: 15px;
+
+    /*チェックボックス分の隙間を作る*/
+
+}
+
+input#btn-check-1-outlined[type="checkbox"]+label::before {
+
+    content: "";
+
+    display: block;
+
+    width: 12px;
+
+    height: 12px;
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 0;
+
+    transform: translateY(-50%);
+
+    /*中央ぞろえにする*/
+
+    border: 1px solid blue;
+
+    /*お好きなや太さで。*/
+
+    border-radius: 3px;
+
+    cursor: pointer;
+
+    /*ポインターを表示する*/
+
+}
+
+input#btn-check-1-outlineds[type="checkbox"]:checked+label::before {
+
+    /*チェックしたときの箱の色を変える*/
+
+    background: #FBA8B8;
+
+}
