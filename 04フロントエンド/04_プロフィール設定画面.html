@@ -12,54 +12,103 @@
 <!--    <link href="css/yamane.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">   -->
     <link href="css/yamanishi.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <style> 
-      
+.example2{
+    display: flex;
+    justify-content: center;
+}
+.example2 label{
+    display: block;
+    width: 120px;
+    background: #fff;
+    color: #FBA8B8;
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    border: 2px solid #FBA8B8;
+}
+.example2 input:checked+label{
+    background: #FBA8B8;
+    color: #FFF;
+}
+.example2 input{
+    display: none;
+}
     </style>
 </head>
 
 <body>
   
-
+<div class="container-fluid">
 <div class="row">
   <div class="col-md-3"></div>
-  <div class="col-md-6"><img class="image_middle" src="img/pink.png">
-    <p>ユーザー名</p><br>
-      <h6>自己紹介</h6><br>
-      <textarea class="form-control alert-light" style="height: 30px;text-align:left;border:none;overflow-wrap: break-word;" id="txt1" maxlength = "200" placeholder="自己紹介"></textarea><hr>
+  
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-1">
+   <img class="image_middle" src="img/pink.png"style="margin-top:25px; ">
+   </div>
+   <div class="col-md-3">
+    <p style="margin-left:30px;margin-top: 45px;">そタコ</p>
+  </div> 
+  <div class="col-md-4"></div>
+  </div>
+
+      <textarea class="form-control alert-light magin40_yamanisi" style="height: 30px;text-align:left;border:none;overflow-wrap: break-word;margin-top: 70px;" id="txt1" maxlength = "200" placeholder="自己紹介"></textarea><hr>
       <div align="right" class="rink_nh">
         <p>200文字</p>
       </div>
       <hr class="line" id="hr_nh">
       <div class="text-line ">
         <p>好きなジャンル</p>
-      </div><br>
-      　<input type="checkbox" class="btn-check" id="btn-check-1-outlined" checked autocomplete="on">
-      <label class="btn btn-outline-secondary" for="btn-check-1-outlined">　JPOP　</label> 
+      </div>
+    <!--  
+      <input type="checkbox" class="btn-check" id="btn-check-1-outlined" checked autocomplete="off">
+      <label class="btn btn-secondary btn btn-outline-light border border-#FBA8B8" for="btn-check-1-outlined">JPOP</label>
       <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-2-outlined">　洋楽　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-2-outlined">洋楽</label>
       <input type="checkbox" class="btn-check" id="btn-check-3-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-3-outlined">　アニソン　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-3-outlined">アニソン</label>
       <input type="checkbox" class="btn-check" id="btn-check-4-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-4-outlined">　クラシック　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-4-outlined">クラシック</label>
       <input type="checkbox" class="btn-check" id="btn-check-5-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-5-outlined">　ロック　</label>　<br><br>
+      <label class="btn btn-outline-secondary" for="btn-check-5-outlined">ロック</label>
       <input type="checkbox" class="btn-check" id="btn-check-6-outlined" checked autocomplete="off">
-      　<label class="btn btn-outline-secondary" for="btn-check-6-outlined">　VOCALOID　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-6-outlined">VOCALOID</label>
       <input type="checkbox" class="btn-check" id="btn-check-7-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-7-outlined">　ギター　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-7-outlined">ギター</label>
       <input type="checkbox" class="btn-check" id="btn-check-8-outlined" checked autocomplete="off">
-      <label class="btn btn-outline-secondary" for="btn-check-8-outlined">　楽器　</label> 
+      <label class="btn btn-outline-secondary" for="btn-check-8-outlined">楽器</label>
+    -->
+    <div class="example2">
+      <input type="checkbox" id="1" name="example2"><label for="1">JPOP</label>
+      <input type="checkbox" id="2" name="example2"><label for="2">洋楽</label>
+      <input type="checkbox" id="3" name="example2"><label for="3">アニソン</label>
+      <input type="checkbox" id="4" name="example2"><label for="4">クラシック</label></div>
+      <div class="example2">
+      <input type="checkbox" id="5" name="example2"><label for="5">ロック</label>
+      <input type="checkbox" id="6" name="example2"><label for="6">VOCALOID</label>
+      <input type="checkbox" id="7" name="example2"><label for="7">ギター</label>
+      <input type="checkbox" id="8" name="example2"><label for="8">楽器</label>
+  </div>
+
 
       <div class="btn-group" data-toggle="buttons">
        
       </div>
-    <div class="col-md-12"><br><br>
-      <div>
         <button onclick="location.href='07_ジャンル別投稿一覧画面.html'" class="btn container-fluid color_white_yamani" style="background-color:#FBA8B8;">登録</button>
-      </div>
-    </div><br>
+         
     <div align="right" class="rink_nh">
       <a class = "skip_nh" href="07_ジャンル別投稿一覧画面.html">→スキップ</a>
     </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
     
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <script src="sprict/yamanishi.js"></script>
@@ -71,4 +120,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
   </html>
-  <!---->

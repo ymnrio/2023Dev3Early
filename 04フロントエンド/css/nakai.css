@@ -3,7 +3,6 @@
   grid-template-rows: 100px 100px;
   grid-template-columns: 150px 230px 150px;
  }
- /**/
  
  #rp_nh {
     grid-column: 1 / 2;
