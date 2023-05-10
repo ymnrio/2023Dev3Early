@@ -9,10 +9,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <link href="css/nakai.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
-<!--    <link href="css/yamane.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">   -->
+    <link href="css/yamane.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"> 
     <link href="css/yamanishi.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 
 </head>
+<style>
+  .example2{
+    
+}
+.example2 label{
+    display: block;
+    width: 200px;
+    background: #fff;
+    color: #FBA8B8;
+    padding: 10px;
+    /*margin: 10px;*/
+    box-sizing: border-box;
+    text-align: left;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size:20px;
+}
+.example2 input:checked+label{
+    background: #FBA8B8;
+    color: #FFF;
+}
+.example2 input{
+    display: none;
+}
+</style>
 <body>
  <div class="container-fluid">
 
@@ -21,15 +48,72 @@
   <div class="col-md-3 col-lg-3 start_0_ys"><br>
 
     <!--<div class="yoko_ys">-->
-      <p>ここにロゴを貼ってね🎵</p>
+      <div class="log_yr">
+        <img src="img/やまったーlog.png" style="margin-left: -70px;">
+      </div>
       <hr >
-    ここからジャンルの記述してね🎶<br>
-      <!--</div>-->
 
-      <hr>
+   <!--   <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width:530px;"> -->
+    <div class="start_0_ys d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width:400px;">
+
+       <ul class="nav nav-pills flex-column mb-auto">
+      <!--  <li class="nav-item">
+        <a href="" class="nav-link active" aria-current="page">
+        <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#home"></use></svg>
+        ♪ Home
+        </a>
+        </li>-->
+        <div class="jyan_a_ys">
+        <li class="nav-item">
+          <a href="" class="color2_yamani nav-link" aria-current="page"style="margin-top: -25px;">
+          <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#home"></use></svg>
+          ♪ すべて
+          </a>
+          </li>
+          </div>
+        <li>
+        <a href="" class="color2_yamani nav-link link-body-emphasis">
+        <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#speedometer2"></use></svg>
+        ♪ JPOP
+        </a>
+        </li>
+        <li>
+        <a href="" class="color2_yamani nav-link link-body-emphasis">
+        <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#table"></use></svg>
+        ♪ 洋楽
+        </a>
+        </li>
+        <li>
+        <a href="" class="color2_yamani nav-link link-body-emphasis">
+        <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#grid"></use></svg>
+        ♪ アニソン
+        </a>
+        </li>
+        <li>
+        <a href="" class="color2_yamani nav-link link-body-emphasis">
+        <svg class="bi pe-none me-2" width="0" height="0"><use xlink:href="#people-circle"></use></svg>
+        ♪ クラシック
+        </a>
+        </li>
+        </ul>
   
- 
-    </div>
+        </div>
+<!--ラジオボタンにしてます。テスト！！！！！！-->
+        <div class="example2">
+          <input type="radio" id="11" name="example3"><label for="11">♪ ロック</label>
+          <input type="radio" id="12" name="example3"><label for="12">♪ VOCALOID</label>
+          <input type="radio" id="13" name="example3"><label for="13">♪ ギター</gita-></label>
+          <input type="radio" id="14" name="example3"><label for="14">♪ 楽器</label>
+      </div>
+
+        <hr class="start_0_ys">
+
+        プロフィール
+      <!--</div>-->
+      <hr>
+ </div>
+
+
     <div class="col-md-9 col-lg-9">
 
       <div class="row yoko_ys">
@@ -151,7 +235,7 @@
                   onclick="location.href='10_新規投稿作成画面.html'">＋</button></div>
               
                   <!--wrapper-->
-           
+                  
           </div>
         </div>
       </div>

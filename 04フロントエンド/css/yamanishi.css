@@ -48,6 +48,17 @@ figure.side_image {
   color: #FBA8B8;
 }
 
+.color2_yamani{
+  color: #FBA8B8;
+  font-size:20px; 
+  margin-left:-20px;
+  margin-top: -10px;
+}
+
+.jyan_a_ys a:active{
+  background-color: #000;
+}
+
 .color_white_yamani{
   color: white;
 }
@@ -155,6 +166,12 @@ border-width:3px;
     position: fixed;
     bottom: 50px;
     right: 100px;
+  }
+
+  .jyan_tu_ys{
+    position: fixed;
+    top: 0;
+    left:0;
   }
 
 .kyanseru_ys{
