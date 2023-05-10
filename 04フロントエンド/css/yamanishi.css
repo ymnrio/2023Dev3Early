@@ -296,5 +296,54 @@ border-width:3px;
   background-color: #FBA8B8;
 }
 
+.example2{
+    
+}
+.example2 label{
+    display: block;
+    width: 200px;
+    background: #fff;
+    color: #FBA8B8;
+    padding: 10px;
+    /*margin: 10px;*/
+    box-sizing: border-box;
+    text-align: left;
+    text-decoration: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    font-size:20px;
+}
+.example2 input:checked+label{
+    background: #FBA8B8;
+    color: #FFF;
+}
+.example2 input{
+    display: none;
+}
 
-
+.example3{
+  display: flex;
+  justify-content: center;
+}
+.example3 label{
+  display: block;
+  width: 120px;
+  background: #fff;
+  color: #FBA8B8;
+  padding: 10px;
+  margin: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  border: 2px solid #FBA8B8;
+}
+.example3 input:checked+label{
+  background: #FBA8B8;
+  color: #FFF;
+}
+.example3 input{
+  display: none;
+}
