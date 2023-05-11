@@ -197,6 +197,16 @@ border-width:3px;
   overflow-wrap: break-word;
 }
 
+.file_ys{
+  display: none;
+}
+.file_ys label{
+  padding: 10px 40px;
+    color: #ffffff;
+    background-color: #384878;
+    cursor: pointer;
+}
+
 
 
 /*tabの形状------------------------------*/
