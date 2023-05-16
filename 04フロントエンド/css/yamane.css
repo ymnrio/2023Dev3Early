@@ -3,8 +3,8 @@
 }
 
 .log_yr img {
-    width: 470px;
-    height: 110px;
+    width: 400px;
+    height: 130px;
     object-fit: cover
 }
 
@@ -15,7 +15,7 @@
 }
 
 .search-form-006 input {
-    width: 250px;
+    width: 840px;
     height: 45px;
     padding: 5px 15px;
     border: none;
