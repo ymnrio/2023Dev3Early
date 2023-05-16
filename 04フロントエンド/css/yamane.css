@@ -15,7 +15,7 @@
 }
 
 .search-form-006 input {
-    width: 840px;
+    width: 640px; /*ここをいじると検索の大きさが変わる初期840px*/
     height: 45px;
     padding: 5px 15px;
     border: none;
