@@ -351,7 +351,7 @@ border-width:3px;
 }
 .example2 label{
     display: block;
-    width: 200px;
+    width: 270px;/*初期値200px*/
     background: #fff;
     color: #FBA8B8;
     padding: 10px;
