@@ -31,3 +31,7 @@ $(window).on('load', function () {
   var hashName = location.hash; //リンク元の指定されたURLのハッシュタグを取得
   GethashID (hashName);//設定したタブの読み込み
 });
+
+document.getElementById("animStart").onclick = function() {
+  document.getElementById("anim_wrap").classList.toggle('is-show');
+};
