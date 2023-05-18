@@ -75,6 +75,7 @@ figure.side_image {
   text-align:center;
   position: relative;
   z-index: -10;
+  margin-left: -45px;
   }
 
 .rogo_magin_120{
@@ -98,6 +99,10 @@ figure.side_image {
 
 .magin10_yamanisi{
   margin-top: 10px;
+}
+
+.margin_left_ys{
+  margin-left:-5%;
 }
 
 .magin-sayu-ys{
@@ -320,7 +325,7 @@ border-width:3px;
 .waku_ys p{
   display :inline-block;
   border: solid 2px #FBA8B8;
-  width: 890px;
+  width: 800px;
   max-width:1000px;
   padding: 10px 20px 15px 20px;
   margin-top: 20px;
@@ -351,7 +356,7 @@ border-width:3px;
 }
 .example2 label{
     display: block;
-    width: 200px;
+    width: 270px;/*初期値200px*/
     background: #fff;
     color: #FBA8B8;
     padding: 10px;
