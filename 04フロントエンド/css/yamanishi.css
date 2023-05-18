@@ -100,6 +100,10 @@ figure.side_image {
   margin-top: 10px;
 }
 
+.margin_left_ys{
+  margin-left:-5%;
+}
+
 .magin-sayu-ys{
   margin-left: 30px;
   margin-right: 30px;
@@ -320,7 +324,7 @@ border-width:3px;
 .waku_ys p{
   display :inline-block;
   border: solid 2px #FBA8B8;
-  width: 890px;
+  width: 800px;
   max-width:1000px;
   padding: 10px 20px 15px 20px;
   margin-top: 20px;
