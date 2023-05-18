@@ -75,6 +75,7 @@ figure.side_image {
   text-align:center;
   position: relative;
   z-index: -10;
+  margin-left: -45px;
   }
 
 .rogo_magin_120{
