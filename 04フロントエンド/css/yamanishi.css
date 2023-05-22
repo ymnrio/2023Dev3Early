@@ -239,6 +239,8 @@ border-width:3px;
 }
 
 
+
+
 /*tabの形状------------------------------*/
 .tab{
   display: flex;
@@ -330,6 +332,10 @@ border-width:3px;
   padding: 10px 20px 15px 20px;
   margin-top: 20px;
   background: #fff;
+}
+
+.ji_ys{
+  font-size: 100px;
 }
 
 .waku_ys .haikei_yp{
