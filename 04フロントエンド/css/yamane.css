@@ -65,7 +65,7 @@
     width: 38px;
   }
   input[type="checkbox"] + label svg {
-    fill: #b2b2b2;
+    fill: #000000;
     transition: all .3s;
   }
   input[type="checkbox"]:checked + label svg {
