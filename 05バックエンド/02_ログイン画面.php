@@ -1,3 +1,22 @@
+<?php
+
+$pdo = new PDO('mysql:host=localhost;dbname=yamattaer;charset=utf8',
+'root','root');
+
+$sql="SELECT*FROM user WHERE user_mail=?";
+$ps=$pdo->prepare($sql);
+$ps->bindValue(1,$_POST['usermail'],PDO::PARAM_STR);
+$ps->execute();
+$userData=$ps->fetchAll();
+
+foreach($userData as $row){
+    if(password_verify($_POST['userpass'],$row['user_password'])==true){
+        echo"ログイン成功!ようこそ".$row['user_name']."さん!";
+    }else{echo"パスワードが一致しません";}
+}
+if(count($userData)==0){echo "アカウントが存在しません";}
+?>
+
 <!DOCTYPE html>
 <html>
 

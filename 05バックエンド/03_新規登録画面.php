@@ -1,3 +1,14 @@
+<?php
+$pdo=new PDO('mysql:host=localhost;dbname=yamattaer;charset=utf8',
+'root','root');
+$sql="INSERT INTO user_mst(email_address,password,user_name)VALUES(?,?,?)";
+$ps=$pdo->prepare($sql);
+$ps->bindValue(1,$_POST['email_address'],PDO::PARAM_STR);
+$ps->bindValue(2,password_hash($_POST['password'],PASSWORD_DEFAULT),PDO::PARAM_STR);
+$ps->bindValue(3,$_POST['user_name'],PDO::PARAM_STR);
+$ps->execute();
+?>
+
 <!DOCTYPE html>
 <html>
 
