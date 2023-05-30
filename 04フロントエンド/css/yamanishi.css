@@ -25,45 +25,45 @@ figure.side_image {
 }
 */
 .image_middle {
-	width:80px;
-	height:80px;
-	object-fit:cover;
-	border-radius:50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.middll_yamani{
-  text-align:center;
+.middll_yamani {
+  text-align: center;
 }
 
-.back_pink_yamani{
+.back_pink_yamani {
   background-color: #FBA8B8;
 }
 
-.back_pink_ys{
+.back_pink_ys {
   background-color: #FBA8B8;
   height: 750px;
 }
 
-.color_yamani{
+.color_yamani {
   color: #FBA8B8;
 }
 
-.color2_yamani{
+.color2_yamani {
   color: #FBA8B8;
-  font-size:20px; 
-  margin-left:-20px;
+  font-size: 20px;
+  margin-left: -20px;
   margin-top: -10px;
 }
 
-.jyan_a_ys a:active{
+.jyan_a_ys a:active {
   background-color: #000;
 }
 
-.color_white_yamani{
+.color_white_yamani {
   color: white;
 }
 
-.margin_minus_yamani{
+.margin_minus_yamani {
   margin-top: -1px;
   margin-bottom: -16px;
 }
@@ -72,185 +72,192 @@ figure.side_image {
   width: 700px;
   display: block;
   margin-top: -100px;
-  text-align:center;
+  text-align: center;
   position: relative;
   z-index: -10;
   margin-left: -45px;
-  }
+}
 
-.rogo_magin_120{
+.rogo_magin_120 {
   text-align: center;
   margin-top: -130px;
 }
-.magin-10_ys{
+
+.magin-10_ys {
   margin-top: -20px;
 }
-.magin40_yamanisi{
+
+.magin40_yamanisi {
   margin-top: 40px;
 }
 
-.magin30_yamanisi{
+.magin30_yamanisi {
   margin-top: 30px;
 }
 
-.magin20_yamanisi{
+.magin20_yamanisi {
   margin-top: 20px;
 }
 
-.magin10_yamanisi{
+.magin10_yamanisi {
   margin-top: 10px;
 }
 
-.margin_left_ys{
-  margin-left:-5%;
+.margin_left_ys {
+  margin-left: -5%;
 }
 
-.magin-sayu-ys{
+.magin-sayu-ys {
   margin-left: 30px;
   margin-right: 30px;
 }
 
-.rinku_yamanisi{
+.rinku_yamanisi {
   text-align: center;
   margin-top: 20px;
 }
 
-.a_ys{
+.a_ys {
   color: #FBA8B8;
   text-decoration: none;
   text-align: center;
   margin-top: 20px;
 }
 
-.a1_ys{
+.a1_ys {
   color: #FBA8B8;
   text-align: center;
   margin-top: 20px;
   margin-left: 30px;
 }
 
-.border_yamanisi{
-border-color:#FBA8B8;
-border-width:3px;
+.border_yamanisi {
+  border-color: #FBA8B8;
+  border-width: 3px;
 }
 
 .text-line {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .text-line:before,
 .text-line:after {
   content: "";
   flex-grow: 1;
-  height: 1px; /* 線の太さ */
-  background: #000; /* 線の色 */
-  margin:0 2em; /* 文字と線の余白 */
+  height: 1px;
+  /* 線の太さ */
+  background: #000;
+  /* 線の色 */
+  margin: 0 2em;
+  /* 文字と線の余白 */
 }
 
-.start_0_ys{
+.start_0_ys {
   padding: 0px;
   margin: 0px;
 }
 
-.padding30_ys{
+.padding30_ys {
   padding-left: 30px;
 }
 
-.padding20_ys{
+.padding20_ys {
   padding-left: 20px;
 }
 
 .yoko_ys {
-  border-left:1px solid #c8c8c8;
+  border-left: 1px solid #c8c8c8;
   padding: 0px;
-  }
-
-  .box {
-    /*padding-left:900px;
-    margin-top: -200px;*/
-    position: fixed;
-    bottom: 50px;
-    right: 100px;
-  }
-
-  .jyan_tu_ys{
-    position: fixed;
-    top: 0;
-    left:0;
-  }
-
-.kyanseru_ys{
-  width:130px;
-	height:40px;
-  position: fixed;
-    top: 50px;
-    left: 300px;
 }
 
-.touroku_ys{
-  width:150px;
-	height:40px;
+.box {
+  /*padding-left:900px;
+    margin-top: -200px;*/
+  position: fixed;
+  bottom: 50px;
+  right: 100px;
+}
+
+.jyan_tu_ys {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.kyanseru_ys {
+  width: 130px;
+  height: 40px;
+  position: fixed;
+  top: 50px;
+  left: 300px;
+}
+
+.touroku_ys {
+  width: 150px;
+  height: 40px;
   margin-top: -40px;
   margin-left: 80%;
-  
+
 }
 
-.toukou_bokku_ys{
+.toukou_bokku_ys {
   height: 250px;
-  text-align:left;
-  border:none;
+  text-align: left;
+  border: none;
   overflow-wrap: break-word;
 }
 
-.file_ys{
+.file_ys {
   display: none;
 }
-.file_ys label{
+
+.file_ys label {
   padding: 10px 40px;
-    color: #ffffff;
-    background-color: #384878;
-    cursor: pointer;
+  color: #ffffff;
+  background-color: #384878;
+  cursor: pointer;
 }
 
-.p_pusu_ys{
-padding-top: 2px;
-padding-left: 2px;
+.p_pusu_ys {
+  padding-top: 2px;
+  padding-left: 2px;
 }
 
-.aikn_ys{
+.aikn_ys {
   width: 30px;
-  height:30px;
+  height: 30px;
   background: #FBA8B8;
   border-radius: 50%;
   margin-left: 60px;
   margin-top: -55px;
 }
 
-.aikn_lable_ys{
+.aikn_lable_ys {
   padding: 10px 40px;
-    color: #FBA8B8;
-    background-color: #fff;
-    cursor: pointer;
+  color: #FBA8B8;
+  background-color: #fff;
+  cursor: pointer;
 }
 
-.sayu_ys{
+.sayu_ys {
   margin-left: 30px;
   margin-right: 30px;
- /* margin-right: -30px;
+  /* margin-right: -30px;
   width: 640px;*/
 }
 
-.sayu20p_ys{
+.sayu20p_ys {
   margin-left: 20%;
   margin-right: 20%;
 }
 
-.syousai_do_ys{
+.syousai_do_ys {
   background-color: #fff;
   color: #FBA8B8;
 }
 
-.usiro_ys{
+.usiro_ys {
   position: relative;
   z-index: -10;
 }
@@ -258,43 +265,50 @@ padding-left: 2px;
 
 
 /*tabの形状------------------------------*/
-.tab{
+.tab {
   display: flex;
   flex-wrap: wrap;
 }
-.tab li a{
+
+.tab li a {
   display: block;
-  
-/*  margin:0 2px;
+
+  /*  margin:0 2px;
   padding:10px 20px;
   */
 }
+
 /*liにactiveクラスがついた時の形状*/
-.tab li.active a{
-  background:#fff;
+.tab li.active a {
+  background: #fff;
 }
 
 
 /*エリアの表示非表示と形状*/
 .area {
-  display: none;/*はじめは非表示*/
-  opacity: 0;/*透過0*/
+  display: none;
+  /*はじめは非表示*/
+  opacity: 0;
+  /*透過0*/
   background: #fff;
-  
+
 }
 
 /*areaにis-activeというクラスがついた時の形状*/
 .area.is-active {
-    display: block;/*表示*/
-    animation-name: displayAnime;/*ふわっと表示させるためのアニメーション*/
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+  display: block;
+  /*表示*/
+  animation-name: displayAnime;
+  /*ふわっと表示させるためのアニメーション*/
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
 }
 
-@keyframes displayAnime{
+@keyframes displayAnime {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -306,23 +320,23 @@ padding-left: 2px;
 
 
 
-.ul_ys ul{
-  list-style:none;
+.ul_ys ul {
+  list-style: none;
 }
 
-.wrapper{
-  width:100%;
+.wrapper {
+  width: 100%;
   max-width: 960px;
-    background:#fefefe;
+  background: #fefefe;
 }
 
-.area h2{
-  font-size:1.3rem;
-  margin:0 0 20px 10px;
+.area h2 {
+  font-size: 1.3rem;
+  margin: 0 0 20px 10px;
 }
 
-.area li{
-  padding: 10px; 
+.area li {
+  padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -350,68 +364,72 @@ padding-left: 2px;
   background: #fff;
 }*/
 
-.waku_ys .p_ys{
-  display :inline-block;
+.waku_ys .p_ys {
+  display: inline-block;
   border: solid 2px #FBA8B8;
   width: 900px;
-  max-width:1000px;
+  max-width: 1000px;
   padding: 10px 20px 15px 20px;
   margin-top: 20px;
   background: #fff;
 }
 
-.ji_ys{
+.ji_ys {
   font-size: 100px;
 }
 
-.waku_ys .haikei_yp{
+.waku_ys .haikei_yp {
   background-color: #FBA8B8;
 }
 
-.hensin_waku_ys p{
-  display :inline-block;
+.hensin_waku_ys p {
+  display: inline-block;
   border: solid 2px #FBA8B8;
   width: 900px;
-  max-width:1000px;
+  max-width: 1000px;
   padding: 10px 20px 15px 20px;
   margin-bottom: 0px;
   background: #fff;
   margin-top: -4px;
 }
 
-.hensin_waku_ys .haikei_yp{
+.hensin_waku_ys .haikei_yp {
   background-color: #FBA8B8;
 }
 
 
-.example2 label{
-    display: block;
-    width: 270px;/*初期値200px*/
-    background: #fff;
-    color: #FBA8B8;
-    padding: 10px;
-    /*margin: 10px;*/
-    box-sizing: border-box;
-    text-align: left;
-    text-decoration: none;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-left: 20px;
-    font-size:20px;
-}
-.example2 input:checked+label{
-    background: #FBA8B8;
-    color: #FFF;
-}
-.example2 input{
-    display: none;
+.example2 label {
+  display: block;
+  width: 270px;
+  /*初期値200px*/
+  background: #fff;
+  color: #FBA8B8;
+  padding: 10px;
+  /*margin: 10px;*/
+  box-sizing: border-box;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 20px;
 }
 
-.example3{
+.example2 input:checked+label {
+  background: #FBA8B8;
+  color: #FFF;
+}
+
+.example2 input {
+  display: none;
+}
+
+.example3 {
   display: flex;
   justify-content: center;
 }
-.example3 label{
+
+.example3 label {
   display: block;
   width: 120px;
   background: #fff;
@@ -425,10 +443,50 @@ padding-left: 2px;
   cursor: pointer;
   border: 2px solid #FBA8B8;
 }
-.example3 input:checked+label{
+
+.example3 input:checked+label {
   background: #FBA8B8;
   color: #FFF;
 }
-.example3 input{
+
+.example3 input {
   display: none;
+}
+
+#page_top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #ef3f98;
+  opacity: 0.6;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+#page_top a {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+
+#page_top a::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f106';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -5px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
 }
