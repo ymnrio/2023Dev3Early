@@ -490,3 +490,20 @@ figure.side_image {
   margin: auto;
   text-align: center;
 }
+
+
+
+.preview-area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.preview-area img {
+  width: 24%;
+  margin: 0 0 10px;
+  object-fit: contain;
+}
+
+.preview-area img:not(:nth-child(4n)) {
+  margin-right: 1.333%;
+}
