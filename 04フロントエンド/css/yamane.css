@@ -13,9 +13,11 @@
     overflow: hidden;
 }
 
-.logo_nh {
-  width: 100vw;
-  margin-top: -120px;
+#topbg {
+  background-image: url(../img/pink.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	background-size: auto 100%;
 }
 
 .search-form-006 input {
