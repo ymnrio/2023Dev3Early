@@ -13,13 +13,6 @@
     overflow: hidden;
 }
 
-#topbg {
-  background-image: url(../img/pink.png);
-	background-position: left top;
-	background-repeat: no-repeat;
-	background-size: auto 100%;
-}
-
 .search-form-006 input {
     width: 850px; /*ここをいじると検索の大きさが変わる初期840px*/
     height: 45px;
