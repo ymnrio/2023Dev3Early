@@ -43,33 +43,33 @@
                         style=" width: 130px;height: 40px;background: #FBA8B8;"
                         onclick="location.href='05_プロフィール画面.html'">キャンセル</button>
 
-                    <form method="POST" action="07_ジャンル別投稿一覧画面">
+                    <form method="POST" action="new_post.php">
 
                         <div class="touroku_ys">
                             <button type="submit" class="btn container-fluid color_white_yamani"
                                 style=" width: 130px;height: 40px;background: #FBA8B8;"
-                                onclick="location.href='07_ジャンル別投稿一覧画面.html'">投稿する</button>
+                                >投稿する</button>
                         </div>
 
                         <img class="image_middle magin20_yamanisi" src="img/pink.png">
                         <h5 style="position: relative;top:-50px;left:100px;">そた♩</h5>
 
-                        <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="num">
-                            <option value="1">JPOP</option>
-                            <option value="2">洋楽</option>
-                            <option value="3">アニソン</option>
-                            <option value="4">クラシック</option>
-                            <option value="5">ロック</option>
-                            <option value="6">VOCALOID</option>
-                            <option value="7">ギター</option>
-                            <option value="8">楽器</option>
-                            <option value="9">その他</option>
+                        <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
+                            <option value="JPOP">JPOP</option>
+                            <option value="洋楽">洋楽</option>
+                            <option value="アニソン">アニソン</option>
+                            <option value="クラシック">クラシック</option>
+                            <option value="ロック">ロック</option>
+                            <option value="VOCALOID">VOCALOID</option>
+                            <option value="ギター">ギター</option>
+                            <option value="楽器">楽器</option>
+                            <option value="その他">その他</option>
                         </select>
 
                         <hr start_0_ys magin40_yamanisi>
 
 
-                        <textarea class="form-control alert-light toukou_bokku_ys" id="txt1" maxlength="300" required
+                        <textarea class="form-control alert-light toukou_bokku_ys" name="text" id="txt1" maxlength="300" required
                             placeholder="｜投稿内容"></textarea><br>
                 
                         <label>
