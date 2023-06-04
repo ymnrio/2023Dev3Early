@@ -60,8 +60,19 @@
                         <!--   <a class="a1_ys">メディアを選択</a><br>-->
 
 
-                        <label style="margin-left: -4%;">
-                            <input type="file" name="file">メディアを選択
+                        <label>
+                            <input type="file" onchange="preview(this)" multiple>メディアを選択
+                            <div class="preview-area"></div>
+
+                            <script>
+                                function preview(elem, output = '') {
+                                    Array.from(elem.files).map((file) => {
+                                        const blobUrl = window.URL.createObjectURL(file)
+                                        output += `<img src=${blobUrl}>`
+                                    })
+                                    elem.nextElementSibling.innerHTML = output
+                                }
+                            </script>
                         </label>
 
                     </form>
