@@ -1,13 +1,3 @@
-<?php
-$pdo=new PDO('mysql:host=localhost;dbname=yamattaer;charset=utf8',
-'root','root');
-$sql="INSERT INTO user_mst(email_address,password,user_name)VALUES(?,?,?)";
-$ps=$pdo->prepare($sql);
-$ps->bindValue(1,$_POST['email_address'],PDO::PARAM_STR);
-$ps->bindValue(2,password_hash($_POST['password'],PASSWORD_DEFAULT),PDO::PARAM_STR);
-$ps->bindValue(3,$_POST['user_name'],PDO::PARAM_STR);
-$ps->execute();
-?>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +29,7 @@ $ps->execute();
       </div>
     </div>
 
-<form method="POST"action="04_プロフィール設定画面.html">
+<form method="POST"action="sign_up.php">
 
 <div class="magin30_yamanisi">
     <input type="email"  class="form-control" name="email" required
@@ -65,7 +55,7 @@ $ps->execute();
 </form>
 
     <div class="rinku_yamanisi">
-    <a href="02_ログイン画面.html"style="color: #FBA8B8;">→ログインへ戻る</a>
+    <a href="02_ログイン画面.php"style="color: #FBA8B8;">→ログインへ戻る</a>
       </div>
   </div>
 
