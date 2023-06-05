@@ -73,7 +73,7 @@
                             placeholder="｜投稿内容"></textarea><br>
                 
                         <label>
-                            <input type="file" onchange="preview(this)" multiple>メディアを選択
+                            <input type="file" onchange="preview(this)" multiple accept="image/*">メディアを選択
                             <div class="preview-area"></div>
 
                             <script>
