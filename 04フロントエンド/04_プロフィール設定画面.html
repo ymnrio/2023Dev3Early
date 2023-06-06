@@ -36,7 +36,7 @@
             <img class="image_middle" src="img/pink.png" style="margin-top:25px; ">
 
             <label class="btn container-fluid color_white_yamani aikn_ys start_0_ys border border-dark">
-              <input type="file">
+              <input type="file" accept="image/*">
               <p class="p_pusu_ys">＋</p>
             </label>
 
