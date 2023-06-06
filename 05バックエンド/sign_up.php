@@ -1,6 +1,6 @@
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
-'root','');
+'root','root');
 $sql="INSERT INTO user(email_address,password,user_name)VALUES(?,?,?)";
 $ps=$pdo->prepare($sql);
 $ps->bindValue(1,$_POST['email'],PDO::PARAM_STR);
