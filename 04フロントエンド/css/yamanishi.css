@@ -31,6 +31,19 @@ figure.side_image {
   border-radius: 50%;
 }
 
+.kensaku_ys{
+  position: fixed;
+  top: 29px;
+  right: 30px;
+}
+
+.kensaku_box_ys{
+  position: fixed;
+  top: 29px;
+  right: 78px;
+  
+}
+
 .middll_yamani {
   text-align: center;
 }
