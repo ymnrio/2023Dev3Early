@@ -45,38 +45,70 @@
   .btn_nh {
     display: flex;
   }
-  
 
-/***カーテンのように開くアニメーション***/
-body::before, body::after{
-  content: "";
+/***** 全画面を覆う背景 *****/
+.mask {
   position: fixed; /*固定表示*/
+  z-index: 999; /*最前面へ*/
   top: 0;
-  width: 50vw;
-  height: 100vh;
-  background: #940C04; /*劇のカーテン色*/
-  animation: curtainOpen 1s forwards;
-  animation-delay: 1s; /*遅延時間(遅延時間)*/
-  z-index: 999; /*最前面に*/
-}
-body::before{
   left: 0;
+  width: 100vw; /*画面幅*/
+  height: 100vh; /*画面の高さ*/
+  background: #ff99bb; /*好きな色*/
+  animation: fadeOut 0.4s forwards; /*フェードアウト*/
+  animation-delay: 1.6s; /*円のアニメーション＋遅延時間*/
 }
-body::after{
+/*フェードアウトアニメーション*/
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+/***** 広がる円 *****/
+.circle {
+  position: absolute; /*固定表示*/
+  top: 0;
+  bottom: 0;
+  left: 0;
   right: 0;
+  margin: auto; /*中央配置*/
+  width: 0;
+  height: 0;
+  background: #fff; /*ページ全体の背景色*/
+  animation: circle-open 1s linear forwards;
+  animation-delay: 0.6s; /*任意の遅延時間*/
 }
 
-@keyframes curtainOpen{
-  0%{
-    width: 50vw; /*閉じている状態*/
+/*円が拡大するアニメーション*/
+@keyframes circle-open {
+  0% {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
   }
-  100%{ 
-    width: 0; /*開く*/
-    visibility: hidden; /*非表示に*/
+  10%,
+  80% {
+    /*少し拡大して止まる*/
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
   }
-}
-
-/***サンプル装飾用***/
-body{
-  padding: 1rem;
+  99% {
+    /*ぎりぎりまで正円*/
+    width: 99vw;
+    height: 99vw;
+    border-radius: 50%;
+  }
+  100% {
+    /*全画面*/
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
 }
