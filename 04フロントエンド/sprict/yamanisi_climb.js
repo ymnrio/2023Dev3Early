@@ -13,7 +13,7 @@ jQuery(function() {
         if (appear) {
           appear = false;
           pagetop.stop().animate({
-            'right': '-70px' //右から-50pxの位置に
+            'right': '-300px' //右から-50pxの位置に
           }, 300); //0.3秒かけて隠れる
         }
       }
