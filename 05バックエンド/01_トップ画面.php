@@ -15,7 +15,7 @@
 <link href="css/yamanisi.css" rel="stylesheet" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
 </head>
 
-<body background="img/pink.png">
+<body id="topanime" background="img/pink.png">
   <div class="logo">
     <img src="img/やまったーlog.png">
   </div>

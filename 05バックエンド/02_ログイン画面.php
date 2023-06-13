@@ -16,7 +16,9 @@
 
 </head>
 <body>
-
+<div class="mask">
+    <div class="circle"></div>
+</div>
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3 col-lg-3"></div>
