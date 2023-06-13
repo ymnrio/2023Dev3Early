@@ -29,7 +29,8 @@
       <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>
 
       <div class="col-md-6">
-      <form method="POST"action="sign_up.php">
+
+      <form method="POST"action="sign_up.php"enctype="multipart/form-data">
 
         <div class="row">
           <div class="col-md-5"></div>
