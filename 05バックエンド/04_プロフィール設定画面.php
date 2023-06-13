@@ -29,6 +29,7 @@
       <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>
 
       <div class="col-md-6">
+      <form method="POST"action="sign_up.php">
 
         <div class="row">
           <div class="col-md-5"></div>
@@ -49,7 +50,7 @@
 
         <textarea class="sayu_ys form-control alert-light magin40_yamanisi"
           style="height: 30px;width: 90%;text-align:left;border:none;overflow-wrap: break-word;margin-top: 70px;"
-          id="txt1" maxlength="200" placeholder="自己紹介"></textarea>
+          id="txt1" maxlength="200" placeholder="自己紹介" name="jikosyoukai"></textarea>
         <hr class="sayu_ys">
         <div style="text-align: right;margin-right: 30px;">
           <p>200文字</p>
@@ -87,6 +88,7 @@
         <div style="text-align: right;margin-top: 25px;">
           <a class="skip_nh" href="07_ジャンル別投稿一覧画面.html" style="margin-right: 30px;">→スキップ</a>
         </div>
+      </form>
       </div>
       <div class="col-md-3 back_pink_yamani"></div>
     </div>
