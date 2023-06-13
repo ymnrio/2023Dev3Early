@@ -13,5 +13,4 @@ foreach($ps as $row){
         header('Location:02_ログイン画面.php');
     }
 }
-header('02_ログイン画面.php');
 ?>
