@@ -23,14 +23,16 @@
 </head>
 
 <body>
-
+<?php
+session_start();
+echo $_SESSION['user_id'];?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>
 
       <div class="col-md-6">
 
-      <form method="POST"action="sign_up.php"enctype="multipart/form-data">
+      <form method="POST"action="new_profile.php"enctype="multipart/form-data">
 
         <div class="row">
           <div class="col-md-5"></div>
@@ -38,7 +40,7 @@
             <img class="image_middle" src="img/pink.png" style="margin-top:25px; ">
 
             <label class="btn container-fluid color_white_yamani aikn_ys start_0_ys border border-dark">
-              <input type="file" accept="image/*">
+              <input type="file" accept="image/*"name="file">
               <p class="p_pusu_ys">＋</p>
             </label>
 
@@ -62,20 +64,20 @@
         </div>
 
         <div class="example3">
-          <input type="checkbox" id="1" name="example2"><label for="1">すべて</label>
-          <input type="checkbox" id="2" name="example2"><label for="2">JPOP</label>
-          <input type="checkbox" id="3" name="example2"><label for="3">洋楽</label>
-          <input type="checkbox" id="4" name="example2"><label for="4">アニソン</label>
+          <input type="checkbox" id="1" name="example2" value="1"><label for="1">すべて</label>
+          <input type="checkbox" id="2" name="example2" value="2"><label for="2">JPOP</label>
+          <input type="checkbox" id="3" name="example2" value="3"><label for="3">洋楽</label>
+          <input type="checkbox" id="4" name="example2" value="4"><label for="4">アニソン</label>
         </div>
         <div class="example3">
-          <input type="checkbox" id="5" name="example2"><label for="5">クラシック</label>
-          <input type="checkbox" id="6" name="example2"><label for="6">ロック</label>
-          <input type="checkbox" id="7" name="example2"><label for="7">VOCALOID</label>
-          <input type="checkbox" id="8" name="example2"><label for="8">ギター</label>
+          <input type="checkbox" id="5" name="example2" value="5"><label for="5">クラシック</label>
+          <input type="checkbox" id="6" name="example2" value="6"><label for="6">ロック</label>
+          <input type="checkbox" id="7" name="example2" value="7"><label for="7">VOCALOID</label>
+          <input type="checkbox" id="8" name="example2" value="8"><label for="8">ギター</label>
         </div>
         <div class="example3">
-          <input type="checkbox" id="9" name="example2"><label for="9">楽器</label>
-          <input type="checkbox" id="10" name="example2"><label for="10">その他</label>
+          <input type="checkbox" id="9" name="example2" value="9"><label for="9">楽器</label>
+          <input type="checkbox" id="10" name="example2" value="10"><label for="10">その他</label>
          
         </div>
 
