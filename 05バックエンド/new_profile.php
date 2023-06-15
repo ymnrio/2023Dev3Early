@@ -40,13 +40,13 @@ if(isset($_POST['like_genre'])){
             $genre_name = $roww['genre_name'];
         }
 
-        $sql="INSERT INTO favorite_genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
+        $sql="INSERT INTO favorite genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);
         $ps->bindValue(2,$_POST['like_genre'],PDO::PARAM_STR);
         $ps->bindValue(3,$genre_name,PDO::PARAM_STR);
         $ps->execute();
 
-    }
+    }//データベース名を変えたい...
 }
 ?>
