@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -23,9 +26,6 @@
 </head>
 
 <body>
-<?php
-session_start();
-echo $_SESSION['user_id'];?>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>
@@ -46,7 +46,21 @@ echo $_SESSION['user_id'];?>
 
           </div>
           <div class="col-md-6 usiro_ys">
-            <p style="margin-left:30px;margin-top: 45px;">そタコ</p>
+            <p style="margin-left:30px;margin-top: 45px;">
+
+          <?php   //名前表示
+          $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
+          'root','root');
+          $sql="select user_name from user where user_id = ?";
+          $ps=$pdo->prepare($sql);
+          $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);
+          $ps->execute();
+          foreach($ps as $row){
+            echo $row['user_name'];
+          }
+          ?>
+
+          </p>
           </div>
 
         </div>
@@ -64,20 +78,20 @@ echo $_SESSION['user_id'];?>
         </div>
 
         <div class="example3">
-          <input type="checkbox" id="1" name="example2" value="1"><label for="1">すべて</label>
-          <input type="checkbox" id="2" name="example2" value="2"><label for="2">JPOP</label>
-          <input type="checkbox" id="3" name="example2" value="3"><label for="3">洋楽</label>
-          <input type="checkbox" id="4" name="example2" value="4"><label for="4">アニソン</label>
+          <input type="checkbox" id="1" name="like_genre[]" value="1"><label for="1">すべて</label>
+          <input type="checkbox" id="2" name="like_genre[]" value="2"><label for="2">JPOP</label>
+          <input type="checkbox" id="3" name="like_genre[]" value="3"><label for="3">洋楽</label>
+          <input type="checkbox" id="4" name="like_genre[]" value="4"><label for="4">アニソン</label>
         </div>
         <div class="example3">
-          <input type="checkbox" id="5" name="example2" value="5"><label for="5">クラシック</label>
-          <input type="checkbox" id="6" name="example2" value="6"><label for="6">ロック</label>
-          <input type="checkbox" id="7" name="example2" value="7"><label for="7">VOCALOID</label>
-          <input type="checkbox" id="8" name="example2" value="8"><label for="8">ギター</label>
+          <input type="checkbox" id="5" name="like_genre[]" value="5"><label for="5">クラシック</label>
+          <input type="checkbox" id="6" name="like_genre[]" value="6"><label for="6">ロック</label>
+          <input type="checkbox" id="7" name="like_genre[]" value="7"><label for="7">VOCALOID</label>
+          <input type="checkbox" id="8" name="like_genre[]" value="8"><label for="8">ギター</label>
         </div>
         <div class="example3">
-          <input type="checkbox" id="9" name="example2" value="9"><label for="9">楽器</label>
-          <input type="checkbox" id="10" name="example2" value="10"><label for="10">その他</label>
+          <input type="checkbox" id="9" name="like_genre[]" value="9"><label for="9">楽器</label>
+          <input type="checkbox" id="10" name="like_genre[]" value="10"><label for="10">その他</label>
          
         </div>
 

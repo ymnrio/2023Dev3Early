@@ -112,7 +112,7 @@ CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
   `user_name` varchar(10) NOT NULL,
   `email_address` varchar(50) NOT NULL,
-  `password` varchar(8) NOT NULL,
+  `password` varchar(200) NOT NULL,
   `media` longblob DEFAULT NULL,
   `self_introduction` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
