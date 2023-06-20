@@ -54,7 +54,6 @@
                     <input type="text" placeholder="キーワードを入力">
                   </label>
                   <button type="submit" aria-label="検索"></button>
-                  </button>
                 </form>
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.html'" value="投稿">
