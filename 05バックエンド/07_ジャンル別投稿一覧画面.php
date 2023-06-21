@@ -142,7 +142,7 @@
                 <div class="box">
                   <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                     style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
-                    onclick="location.href='10_新規投稿作成画面.html'">＋</button>
+                    onclick="location.href='10_新規投稿作成画面.php'">＋</button>
                 </div>
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
 

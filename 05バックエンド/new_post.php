@@ -15,7 +15,7 @@ if(isset($_FILES['file']['name'])){
 }
 
 
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','');
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments,media1,media2)
         value(?,?,?,?,?,?,?,?)";
 $ps = $pdo->prepare($sql); 
