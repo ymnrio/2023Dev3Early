@@ -35,3 +35,4 @@ $(window).on('load', function () {
 document.getElementById("animStart").onclick = function() {
   document.getElementById("anim_wrap").classList.toggle('is-show');
 };
+
