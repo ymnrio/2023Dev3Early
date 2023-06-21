@@ -45,7 +45,7 @@
   .btn_nh {
     display: flex;
   }
-
+  
 /***** 全画面を覆う背景 *****/
 .mask {
   position: fixed; /*固定表示*/
@@ -55,8 +55,8 @@
   width: 100vw; /*画面幅*/
   height: 100vh; /*画面の高さ*/
   background: #ff99bb; /*好きな色*/
-  animation: fadeOut 0.4s forwards; /*フェードアウト*/
-  animation-delay: 1.6s; /*円のアニメーション＋遅延時間*/
+  animation: fadeOut 0.5s forwards; /*フェードアウト*/
+  animation-delay: 1.4s; /*円のアニメーション＋遅延時間*/
 }
 /*フェードアウトアニメーション*/
 @keyframes fadeOut {
@@ -68,7 +68,6 @@
     visibility: hidden;
   }
 }
-
 
 /***** 広がる円 *****/
 .circle {
@@ -93,7 +92,7 @@
     border-radius: 50%;
   }
   10%,
-  80% {
+  15% {
     /*少し拡大して止まる*/
     width: 100px;
     height: 100px;

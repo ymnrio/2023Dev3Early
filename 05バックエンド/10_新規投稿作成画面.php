@@ -50,6 +50,7 @@
                         <h5 style="position: relative;top:-50px;left:100px;">そた♩</h5>
 
                         <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
+                            <option value="すべて">すべて</option>
                             <option value="JPOP">JPOP</option>
                             <option value="洋楽">洋楽</option>
                             <option value="アニソン">アニソン</option>

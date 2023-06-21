@@ -21,173 +21,375 @@ SET time_zone = "+00:00";
 -- テーブルの構造 `favorite genre`
 --
 
-CREATE TABLE `favorite genre` (
+
+
+CREATE TABLE `favorite_genre` (
+
   `user_id` int(11) NOT NULL,
+
   `genre_id` int(11) NOT NULL,
+
   `genre_name` varchar(50) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 -- --------------------------------------------------------
 
---
--- テーブルの構造 `favorite post`
+
+
+
 --
 
-CREATE TABLE `favorite post` (
+-- テーブルの構造 `favorite_post`
+
+--
+
+
+
+
+CREATE TABLE `favorite_post` (
+
   `like_id` int(11) NOT NULL,
+
   `user_id` int(11) NOT NULL,
+
   `like_subject` int(11) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 -- --------------------------------------------------------
 
+
+
+
 --
+
 -- テーブルの構造 `genre`
+
 --
+
+
+
 
 CREATE TABLE `genre` (
+
   `genre_id` int(11) NOT NULL,
+
   `genre_name` varchar(50) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+
+
 --
+
 -- テーブルのデータのダンプ `genre`
+
 --
+
+
 
 INSERT INTO `genre` (`genre_id`, `genre_name`) VALUES
-(1, 'JPOP'),
-(2, '洋楽'),
-(3, 'アニソン'),
-(4, 'クラシック'),
-(5, 'ロック'),
-(6, 'VOCALOID'),
-(7, 'ギター'),
-(8, '楽器'),
-(9, 'その他');
+
+(1, 'すべて'),
+
+(2, 'JPOP'),
+
+(3, '洋楽'),
+
+(4, 'アニソン'),
+
+(5, 'クラシック'),
+
+(6, 'ロック'),
+
+(7, 'VOCALOID'),
+
+(8, 'ギター'),
+
+(9, '楽器'),
+
+(10, 'その他');
+
+
+
 
 -- --------------------------------------------------------
 
+
+
+
 --
+
 -- テーブルの構造 `post`
+
 --
+
+
+
 
 CREATE TABLE `post` (
+
   `post_id` int(11) NOT NULL,
+
   `user_id` int(11) NOT NULL,
+
   `genre_id` int(11) NOT NULL,
+
   `post_contents` varchar(200) NOT NULL,
+
   `date_time` datetime NOT NULL,
+
   `fabulous` int(11) NOT NULL,
+
   `comments` int(11) NOT NULL,
+
   `media1` longblob DEFAULT NULL,
+
   `media2` longblob DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 -- --------------------------------------------------------
 
+
+
+
 --
+
 -- テーブルの構造 `reply`
+
 --
+
+
+
 
 CREATE TABLE `reply` (
+
   `reply_id` int(11) NOT NULL,
+
   `reply_subject` int(11) NOT NULL,
+
   `user_id` int(11) NOT NULL,
+
   `post_id` int(11) NOT NULL,
+
   `reply_contents` varchar(200) NOT NULL,
+
   `date_time` datetime NOT NULL,
+
   `fabulous` int(11) NOT NULL,
+
   `comments` int(11) NOT NULL,
+
   `media1` longblob DEFAULT NULL,
+
   `media2` longblob DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
 
 -- --------------------------------------------------------
 
+
+
+
 --
+
 -- テーブルの構造 `user`
+
 --
+
+
+
 
 CREATE TABLE `user` (
+
   `user_id` int(11) NOT NULL,
+
   `user_name` varchar(10) NOT NULL,
+
   `email_address` varchar(50) NOT NULL,
-  `password` varchar(8) NOT NULL,
+
+  `password` varchar(200) NOT NULL,
+
   `media` longblob DEFAULT NULL,
+
   `self_introduction` varchar(200) DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- ダンプしたテーブルのインデックス
---
+
+
 
 --
--- テーブルのインデックス `favorite genre`
+
+-- ダンプしたテーブルのインデックス
+
 --
-ALTER TABLE `favorite genre`
+
+
+
+
+--
+
+-- テーブルのインデックス `favorite genre`
+
+--
+
+ALTER TABLE `favorite_genre`
+
   ADD UNIQUE KEY `a` (`user_id`,`genre_id`);
 
+
+
+
 --
+
 -- テーブルのインデックス `favorite post`
+
 --
-ALTER TABLE `favorite post`
+
+ALTER TABLE `favorite_post`
+
   ADD PRIMARY KEY (`like_id`);
 
+
+
+
 --
+
 -- テーブルのインデックス `genre`
+
 --
+
 ALTER TABLE `genre`
+
   ADD PRIMARY KEY (`genre_id`);
 
+
+
+
 --
+
 -- テーブルのインデックス `post`
+
 --
+
 ALTER TABLE `post`
+
   ADD PRIMARY KEY (`post_id`);
 
+
+
+
 --
+
 -- テーブルのインデックス `reply`
+
 --
+
 ALTER TABLE `reply`
+
   ADD PRIMARY KEY (`reply_id`);
 
+
+
+
 --
+
 -- テーブルのインデックス `user`
+
 --
+
 ALTER TABLE `user`
+
   ADD PRIMARY KEY (`user_id`);
 
---
--- ダンプしたテーブルの AUTO_INCREMENT
---
+
+
 
 --
--- テーブルの AUTO_INCREMENT `favorite post`
+
+-- ダンプしたテーブルの AUTO_INCREMENT
+
 --
-ALTER TABLE `favorite post`
+
+
+
+
+--
+
+-- テーブルの AUTO_INCREMENT `favorite_post`
+
+--
+
+ALTER TABLE `favorite_post`
+
   MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT;
 
+
+
+
 --
+
 -- テーブルの AUTO_INCREMENT `genre`
+
 --
+
 ALTER TABLE `genre`
+
   MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+
+
+
 --
+
 -- テーブルの AUTO_INCREMENT `post`
+
 --
+
 ALTER TABLE `post`
+
   MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- テーブルの AUTO_INCREMENT `reply`
---
-ALTER TABLE `reply`
-  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT;
+
+
 
 --
--- テーブルの AUTO_INCREMENT `user`
+
+-- テーブルの AUTO_INCREMENT `reply`
+
 --
+
+ALTER TABLE `reply`
+
+  MODIFY `reply_id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+
+
+--
+
+-- テーブルの AUTO_INCREMENT `user`
+
+--
+
 ALTER TABLE `user`
+
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;

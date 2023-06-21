@@ -5,6 +5,12 @@ $sql="SELECT*FROM user WHERE email_address=?";
 $ps=$pdo->prepare($sql);
 $ps->bindValue(1,$_POST['email'],PDO::PARAM_STR);
 $ps->execute();
-$userData=$ps->fetchAll();
-header('02_ログイン画面.php');
+
+foreach($ps as $row){
+    if(password_verify($_POST['password'], $row['password'])  ==  true){
+        header('Location:01_トップ画面.php');
+    }else{
+        header('Location:02_ログイン画面.php');
+    }
+}
 ?>

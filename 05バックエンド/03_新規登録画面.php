@@ -44,7 +44,7 @@
 
 <div class="magin10_yamanisi">
 
-            <input type="text" class="form-control" name="new_password" required
+            <input type="text" class="form-control" name="name" required
                 placeholder="ユーザーネーム"style="border-color:#FBA8B8;border-width:3px;"><br>
              </div>
 

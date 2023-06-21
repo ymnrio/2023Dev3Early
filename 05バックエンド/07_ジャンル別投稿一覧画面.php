@@ -49,12 +49,11 @@
           <div class="waku_ys">
             <div class="haikei_yp">
               <div class="padding30_ys"><br><br>
-                <form action="11_検索結果表示画面.html" class="search-form-006">
+                <form action="search.php" method="post" class="search-form-006">
                   <label>
-                    <input type="text" placeholder="キーワードを入力">
+                    <input type="text" name="keyword" placeholder="キーワードを入力">
                   </label>
                   <button type="submit" aria-label="検索"></button>
-                  </button>
                 </form>
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.html'" value="投稿">

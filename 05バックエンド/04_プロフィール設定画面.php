@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -23,12 +26,13 @@
 </head>
 
 <body>
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>
 
       <div class="col-md-6">
+
+      <form method="POST"action="new_profile.php"enctype="multipart/form-data">
 
         <div class="row">
           <div class="col-md-5"></div>
@@ -36,20 +40,34 @@
             <img class="image_middle" src="img/pink.png" style="margin-top:25px; ">
 
             <label class="btn container-fluid color_white_yamani aikn_ys start_0_ys border border-dark">
-              <input type="file" accept="image/*">
+              <input type="file" accept="image/*"name="file">
               <p class="p_pusu_ys">＋</p>
             </label>
 
           </div>
           <div class="col-md-6 usiro_ys">
-            <p style="margin-left:30px;margin-top: 45px;">そタコ</p>
+            <p style="margin-left:30px;margin-top: 45px;">
+
+          <?php   //名前表示
+          $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
+          'root','root');
+          $sql="select user_name from user where user_id = ?";
+          $ps=$pdo->prepare($sql);
+          $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);
+          $ps->execute();
+          foreach($ps as $row){
+            echo $row['user_name'];
+          }
+          ?>
+
+          </p>
           </div>
 
         </div>
 
         <textarea class="sayu_ys form-control alert-light magin40_yamanisi"
           style="height: 30px;width: 90%;text-align:left;border:none;overflow-wrap: break-word;margin-top: 70px;"
-          id="txt1" maxlength="200" placeholder="自己紹介"></textarea>
+          id="txt1" maxlength="200" placeholder="自己紹介" name="jikosyoukai"></textarea>
         <hr class="sayu_ys">
         <div style="text-align: right;margin-right: 30px;">
           <p>200文字</p>
@@ -60,16 +78,21 @@
         </div>
 
         <div class="example3">
-          <input type="checkbox" id="1" name="example2"><label for="1">JPOP</label>
-          <input type="checkbox" id="2" name="example2"><label for="2">洋楽</label>
-          <input type="checkbox" id="3" name="example2"><label for="3">アニソン</label>
-          <input type="checkbox" id="4" name="example2"><label for="4">クラシック</label>
+          <input type="checkbox" id="1" name="like_genre[]" value="1"><label for="1">すべて</label>
+          <input type="checkbox" id="2" name="like_genre[]" value="2"><label for="2">JPOP</label>
+          <input type="checkbox" id="3" name="like_genre[]" value="3"><label for="3">洋楽</label>
+          <input type="checkbox" id="4" name="like_genre[]" value="4"><label for="4">アニソン</label>
         </div>
         <div class="example3">
-          <input type="checkbox" id="5" name="example2"><label for="5">ロック</label>
-          <input type="checkbox" id="6" name="example2"><label for="6">VOCALOID</label>
-          <input type="checkbox" id="7" name="example2"><label for="7">ギター</label>
-          <input type="checkbox" id="8" name="example2"><label for="8">楽器</label>
+          <input type="checkbox" id="5" name="like_genre[]" value="5"><label for="5">クラシック</label>
+          <input type="checkbox" id="6" name="like_genre[]" value="6"><label for="6">ロック</label>
+          <input type="checkbox" id="7" name="like_genre[]" value="7"><label for="7">VOCALOID</label>
+          <input type="checkbox" id="8" name="like_genre[]" value="8"><label for="8">ギター</label>
+        </div>
+        <div class="example3">
+          <input type="checkbox" id="9" name="like_genre[]" value="9"><label for="9">楽器</label>
+          <input type="checkbox" id="10" name="like_genre[]" value="10"><label for="10">その他</label>
+         
         </div>
 
 
@@ -82,6 +105,7 @@
         <div style="text-align: right;margin-top: 25px;">
           <a class="skip_nh" href="07_ジャンル別投稿一覧画面.html" style="margin-right: 30px;">→スキップ</a>
         </div>
+      </form>
       </div>
       <div class="col-md-3 back_pink_yamani"></div>
     </div>
