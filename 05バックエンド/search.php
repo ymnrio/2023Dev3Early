@@ -8,7 +8,7 @@ $ps->execute();
 
 echo "$_POST[keyword]の検索結果<br>";
 foreach($ps->fetchAll() as $row) {
-    echo "$row[post_contents]:$row[]"
+    echo "$row[post_contents]:$row[user_name]"
 }
 
 ?>
