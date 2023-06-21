@@ -16,10 +16,11 @@ $ps->execute();
 
 
 //好きなギャンる
+/*
 $genre_name;
 if(isset($_POST['like_genre'])){
     foreach($_POST['like_genre'] as $row){
-        
+
         $sql="select genre_name from genre where genre_id = ?";
 
         $ps=$pdo->prepare($sql);
@@ -39,4 +40,6 @@ if(isset($_POST['like_genre'])){
 
     }
 }
+*/
+header('Location:07_ジャンル別投稿一覧画面.php');
 ?>
