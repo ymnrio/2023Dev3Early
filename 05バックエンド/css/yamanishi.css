@@ -31,6 +31,24 @@ figure.side_image {
   border-radius: 50%;
 }
 
+.kensaku_ys{
+  position: fixed;
+  top: 29px;
+  right: 30px;
+}
+
+.kensaku_box_ys{
+  position: fixed;
+  top: 29px;
+  right: 78px;
+  
+}
+
+.nabi_ys{
+margin-top: -15px;
+
+}
+
 .middll_yamani {
   text-align: center;
 }
@@ -262,6 +280,9 @@ figure.side_image {
   z-index: -10;
 }
 
+.kensaku_boder_ys{
+  border-top: solid 4px gray
+}
 
 
 /*tabの形状------------------------------*/
@@ -382,7 +403,7 @@ figure.side_image {
   background-color: #FBA8B8;
 }
 
-.hensin_waku_ys p {
+.hensin_waku_ys  .p_he_ys{
   display: inline-block;
   border: solid 2px #FBA8B8;
   width: 900px;
@@ -462,8 +483,8 @@ figure.side_image {
   background: #ef3f98;
   opacity: 0.6;
   border-radius: 50%;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin-right: 200px;
+  margin-bottom: 50px;
 }
 
 #page_top a {
@@ -507,3 +528,4 @@ figure.side_image {
 .preview-area img:not(:nth-child(4n)) {
   margin-right: 1.333%;
 }
+
