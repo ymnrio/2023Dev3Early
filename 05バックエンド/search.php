@@ -5,4 +5,7 @@ $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$POST['post_contents'],PDO::PARAM_STR);
 
 $ps->execute();
+
+echo "$_POST[keyword]の検索結果<br>";
+
 ?>
