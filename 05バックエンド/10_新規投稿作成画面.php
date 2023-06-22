@@ -50,16 +50,16 @@
                         <h5 style="position: relative;top:-50px;left:100px;">そた♩</h5>
 
                         <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
-                            <option value="すべて">すべて</option>
-                            <option value="JPOP">JPOP</option>
-                            <option value="洋楽">洋楽</option>
-                            <option value="アニソン">アニソン</option>
-                            <option value="クラシック">クラシック</option>
-                            <option value="ロック">ロック</option>
-                            <option value="VOCALOID">VOCALOID</option>
-                            <option value="ギター">ギター</option>
-                            <option value="楽器">楽器</option>
-                            <option value="その他">その他</option>
+                            <option value="1">すべて</option>
+                            <option value="2">JPOP</option>
+                            <option value="3">洋楽</option>
+                            <option value="4">アニソン</option>
+                            <option value="5">クラシック</option>
+                            <option value="6">ロック</option>
+                            <option value="7">VOCALOID</option>
+                            <option value="8">ギター</option>
+                            <option value="9">楽器</option>
+                            <option value="10">その他</option>
                         </select>
 
                         <hr start_0_ys magin40_yamanisi>
