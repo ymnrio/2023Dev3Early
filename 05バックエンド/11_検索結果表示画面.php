@@ -60,14 +60,7 @@
                         onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
                       　　　　　　<!--検索ワード表示する-->〇〇〇〇の検索結果表示
                   </h4>
-                  <?php
-                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-                  $sql = "SELECT * FROM favorite_genre";
-                  $ps=$pdo->prepare($sql);
-                  $ps->bindValue(1,$_POST['s_genre'], PDO::PARAM_INT);
-                  $ps->execute();
-
-                  ?>
+                  
                   <div class="p_ys">
                     <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
                     <div style="font-size: 20px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">

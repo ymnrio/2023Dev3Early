@@ -24,22 +24,24 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="1">　♪ JPOP</label>
-          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="2">　♪ 洋楽</label>
-          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="3">　♪ アニソン</label>
-          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="4">　♪ クラシック</label>
-          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="5">　♪ ロック</label>
-          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="6">　♪ VOCALOID</label>
-          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="7">　♪ ギター</label>
-          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="8">　♪ 楽器</label>
-          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label for="9">　♪ その他</label><br>
+          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="すべて"><label for="1">　♪ すべて</label>
+          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="2">　♪ JPOP</label>
+          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="3">　♪ 洋楽</label>
+          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="4">　♪ アニソン</label>
+          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="5">　♪ クラシック</label>
+          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="6">　♪ ロック</label>
+          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
+          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="8">　♪ ギター</label>
+          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="9">　♪ 楽器</label>
+          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
 
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="10" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label for="10">　プロフィール</gita-></label><br>
+          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="11" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label for="11">　ログアウト</gita-></label>
+          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
       </div>
+
 
       <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
         <!--<div class="row yoko_ys">
