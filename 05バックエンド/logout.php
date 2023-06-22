@@ -1,0 +1,4 @@
+<?
+
+header('Location:01_トップ画面.php');
+?>
