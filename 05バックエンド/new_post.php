@@ -1,16 +1,15 @@
 <?php
 session_start();
-$text=$_POST['text'];
-$genre=$_POST['genre'];
 $date=date('Y-m-d H:i:s');
 $zero=0;
 
-$media1 ;
-$media2 ;
-$row = array(); 
+$i = 0;
+
+$media = array(); 
 if(isset($_FILES['file']['name'])){
-        foreach($_FILES['file']['name'] as $row[]){
-                
+        foreach($_FILES['file']['name'] as $row){
+             $media[$i] = $row;  
+             $i += $i + 1;
         }
 }
 
@@ -20,13 +19,13 @@ $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,commen
         value(?,?,?,?,?,?,?,?)";
 $ps = $pdo->prepare($sql); 
 $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);//ユーザーID
-$ps->bindValue(2,$genre,PDO::PARAM_STR);//ジャンル
-$ps->bindValue(3,$text,PDO::PARAM_STR);//投稿内容
+$ps->bindValue(2,$_POST['genre'],PDO::PARAM_STR);//ジャンル
+$ps->bindValue(3,$_POST['text'],PDO::PARAM_STR);//投稿内容
 $ps->bindValue(4,$date,PDO::PARAM_STR);//日時
 $ps->bindValue(5,$zero,PDO::PARAM_STR);//いいね数
 $ps->bindValue(6,$zero,PDO::PARAM_STR);//コメント数
-$ps->bindValue(7,$row[0],PDO::PARAM_STR);//メディア1
-$ps->bindValue(8,$row[1],PDO::PARAM_STR);//メディア2
+$ps->bindValue(7,$media[0],PDO::PARAM_STR);//メディア1
+$ps->bindValue(8,$media[1],PDO::PARAM_STR);//メディア2
 $ps->execute();
 
 header('01_トップ画面.php');//modorimasu

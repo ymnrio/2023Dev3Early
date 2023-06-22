@@ -99,11 +99,11 @@ session_start();
         <div class="btn-group" data-toggle="buttons">
 
         </div>
-        <button onclick="location.href='07_ジャンル別投稿一覧画面.html'" class="btn container-fluid color_white_yamani "
+        <button onclick="location.href='07_ジャンル別投稿一覧画面.php'" class="btn container-fluid color_white_yamani "
           style="margin-top: 60px;background-color:#FBA8B8;width: 90%;margin-left: 30px;">登録</button>
 
         <div style="text-align: right;margin-top: 25px;">
-          <a class="skip_nh" href="07_ジャンル別投稿一覧画面.html" style="margin-right: 30px;">→スキップ</a>
+          <a class="skip_nh" href="07_ジャンル別投稿一覧画面.php" style="margin-right: 30px;">→スキップ</a>
         </div>
       </form>
       </div>

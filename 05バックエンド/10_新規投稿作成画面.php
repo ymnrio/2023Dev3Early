@@ -38,7 +38,7 @@
             <div class="col-md-6 col-lg-6 start_0_ys">
                 <div class="magin-sayu-ys  magin40_yamanisi">
 
-                    <button type="button" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;" onclick="location.href='05_プロフィール画面.html'">キャンセル</button>
+                    <button type="button" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;" onclick="location.href='05_プロフィール画面.php'">キャンセル</button>
 
                     <form method="POST" action="new_post.php">
 
@@ -50,16 +50,16 @@
                         <h5 style="position: relative;top:-50px;left:100px;">そた♩</h5>
 
                         <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
-                            <option value="すべて">すべて</option>
-                            <option value="JPOP">JPOP</option>
-                            <option value="洋楽">洋楽</option>
-                            <option value="アニソン">アニソン</option>
-                            <option value="クラシック">クラシック</option>
-                            <option value="ロック">ロック</option>
-                            <option value="VOCALOID">VOCALOID</option>
-                            <option value="ギター">ギター</option>
-                            <option value="楽器">楽器</option>
-                            <option value="その他">その他</option>
+                            <option value="1">すべて</option>
+                            <option value="2">JPOP</option>
+                            <option value="3">洋楽</option>
+                            <option value="4">アニソン</option>
+                            <option value="5">クラシック</option>
+                            <option value="6">ロック</option>
+                            <option value="7">VOCALOID</option>
+                            <option value="8">ギター</option>
+                            <option value="9">楽器</option>
+                            <option value="10">その他</option>
                         </select>
 
                         <hr start_0_ys magin40_yamanisi>

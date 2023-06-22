@@ -24,20 +24,20 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="JPOP"><label for="1">　♪ JPOP</label>
-          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="洋楽"><label for="2">　♪ 洋楽</label>
-          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="アニソン"><label for="3">　♪ アニソン</label>
-          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="クラシック"><label for="4">　♪ クラシック</label>
-          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ロック"><label for="5">　♪ ロック</label>
-          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="VOCALOID"><label for="6">　♪ VOCALOID</label>
-          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ギター"><label for="7">　♪ ギター</label>
-          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="楽器"><label for="8">　♪ 楽器</label>
-          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="その他"><label for="9">　♪ その他</label><br>
+          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="1">　♪ JPOP</label>
+          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="2">　♪ 洋楽</label>
+          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="3">　♪ アニソン</label>
+          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="4">　♪ クラシック</label>
+          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="5">　♪ ロック</label>
+          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="6">　♪ VOCALOID</label>
+          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="7">　♪ ギター</label>
+          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="8">　♪ 楽器</label>
+          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label for="9">　♪ その他</label><br>
 
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="10" name="example3" onclick="location.href='05_プロフィール画面.html'" value="遷移"><label for="10">　プロフィール</gita-></label><br>
+          <input type="radio" id="10" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label for="10">　プロフィール</gita-></label><br>
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="11" name="example3" onclick="location.href='01_トップ画面.html'" value="遷移"><label for="11">　ログアウト</gita-></label>
+          <input type="radio" id="11" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label for="11">　ログアウト</gita-></label>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
                   <button type="submit" aria-label="検索"></button>
                 </form>
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
-                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
                     ギター楽しい<br>
                     ギター楽しい<br>
@@ -75,7 +75,7 @@
                       </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
-                      <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
                       　3　
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
-                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     開発楽しい<br>
                     徹夜楽しい<br>
                     5月2日(火)5:12←イマココ<br>
@@ -104,7 +104,7 @@
                       </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
-                      <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
                       　3　
@@ -113,7 +113,7 @@
                 </div>
 
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
-                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
                     ギター楽しい<br>
                     ギター楽しい<br>
@@ -132,7 +132,7 @@
                       </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
-                      <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
                       　3　
