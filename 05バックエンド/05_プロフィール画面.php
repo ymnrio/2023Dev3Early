@@ -31,21 +31,21 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="すべて"><label for="1">　♪ すべて</label>
-          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="JPOP"><label for="2">　♪ JPOP</label>
-          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="洋楽"><label for="3">　♪ 洋楽</label>
-          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="アニソン"><label for="4">　♪ アニソン</label>
-          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="クラシック"><label for="5">　♪ クラシック</label>
-          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ロック"><label for="6">　♪ ロック</label>
-          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ギター"><label for="8">　♪ ギター</label>
-          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="楽器"><label for="9">　♪ 楽器</label>
-          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="すべて"><label for="1">　♪ すべて</label>
+          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="2">　♪ JPOP</label>
+          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="3">　♪ 洋楽</label>
+          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="4">　♪ アニソン</label>
+          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="5">　♪ クラシック</label>
+          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="6">　♪ ロック</label>
+          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
+          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="8">　♪ ギター</label>
+          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="9">　♪ 楽器</label>
+          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
 
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.html'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
+          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.html'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
+          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
       </div>
 
@@ -65,7 +65,7 @@
           </div>
 
           <div class="col-md-2 col-lg-2"><br>
-            <br><button type="button" class="btn container-fluid color_white_yamani"  onclick="location.href='06_プロフィール編集画面.html'" value="遷移"
+            <br><button type="button" class="btn container-fluid color_white_yamani"  onclick="location.href='06_プロフィール編集画面.php'" value="遷移"
               style="background-color:#FBA8B8;">編集</button>
           </div>
 
@@ -128,7 +128,7 @@
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
-                      <div style="font-size: 20px;"   onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size: 20px;"   onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         ギター楽しい<br>
                         ギター楽しい<br>
                         ギター楽しい<br><!--初心者が一番楽しい-->
@@ -147,7 +147,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -156,7 +156,7 @@
                     </div>
                     <div class="p_ys">
                       <img class="image_middle" src="img/pink.png">　やまママにし<br><br>
-                      <div style="font-size: 20px;" onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size: 20px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         aaaa<br>
                         <img src="img/やまったーlog.png" style="height: 200px;">
                       </div>
@@ -174,7 +174,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -193,7 +193,7 @@
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <div class="p_ys"><img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size:20px;"  onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size:20px;"  onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         楽しい<br>
                         楽しい<br>
                         楽しい<br>
@@ -212,7 +212,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -221,7 +221,7 @@
                     </div>
 
                     <div class="p_ys"><img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size:20px;"  onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size:20px;"  onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         楽しい<br>
                         楽しい<br>
                         a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
@@ -241,7 +241,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -258,7 +258,7 @@
             <div class="box">
               <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                 style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
-                onclick="location.href='10_新規投稿作成画面.html'">＋</button>
+                onclick="location.href='10_新規投稿作成画面.php'">＋</button>
             </div>
 
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">

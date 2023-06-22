@@ -43,12 +43,12 @@
                         style=" width: 130px;height: 40px;background: #FBA8B8;"
                         onclick="history.back()">キャンセル</button>
 
-                    <form method="POST" action="08_投稿詳細画面.html">
+                    <form method="POST" action="08_投稿詳細画面.php">
 
                         <div class="touroku_ys">
                             <button type="submit" class="btn container-fluid color_white_yamani"
                                 style=" width: 130px;height: 40px;background: #FBA8B8;"
-                                onclick="location.href='08_投稿詳細画面.html'">返信する</button>
+                                onclick="location.href='08_投稿詳細画面.php'">返信する</button>
                         </div>
 
                         <img class="image_middle magin20_yamanisi" src="img/pink.png">

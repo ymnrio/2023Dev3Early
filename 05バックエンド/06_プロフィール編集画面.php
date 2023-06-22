@@ -83,11 +83,11 @@
         <div class="row magin40_yamanisi">
           <div class="col-md-6" id="btn_nh">
             <!--<div class="col-md-3" id="btn_nh">-->
-            <button onclick="location.href='05_プロフィール画面.html'" class="btn container-fluid color_white_yamani"
+            <button onclick="location.href='05_プロフィール画面.php'" class="btn container-fluid color_white_yamani"
               style="background-color:#FBA8B8;width: 90%;margin-left: 30px;">キャンセル</button>
           </div>
           <div class="col-md-6" id="btn_nh">
-            <button onclick="location.href='05_プロフィール画面.html'" class="btn container-fluid color_white_yamani"
+            <button onclick="location.href='05_プロフィール画面.php'" class="btn container-fluid color_white_yamani"
               style="background-color:#FBA8B8;width: 90%;margin-right: 30px;">保存</button>
           </div>
         </div>

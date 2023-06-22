@@ -31,21 +31,21 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="すべて"><label for="1">　♪ すべて</label>
-          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="JPOP"><label for="2">　♪ JPOP</label>
-          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="洋楽"><label for="3">　♪ 洋楽</label>
-          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="アニソン"><label for="4">　♪ アニソン</label>
-          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="クラシック"><label for="5">　♪ クラシック</label>
-          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ロック"><label for="6">　♪ ロック</label>
-          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="ギター"><label for="8">　♪ ギター</label>
-          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="楽器"><label for="9">　♪ 楽器</label>
-          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="すべて"><label for="1">　♪ すべて</label>
+          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="2">　♪ JPOP</label>
+          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="3">　♪ 洋楽</label>
+          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="4">　♪ アニソン</label>
+          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="5">　♪ クラシック</label>
+          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="6">　♪ ロック</label>
+          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
+          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="8">　♪ ギター</label>
+          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="9">　♪ 楽器</label>
+          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
 
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.html'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
+          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.html'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
+          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
       </div>
       <div class="col-md-9 col-lg-9 back_pink_yamani start_0_ys" style="border-left:1px solid #c8c8c8;">
@@ -55,11 +55,11 @@
 
             <button type="button"
               class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys"
-              style="margin-left: 3%;width: 150px;" onclick="location.href='07_ジャンル別投稿一覧画面.html'" value="遷移">戻る</button>
+              style="margin-left: 3%;width: 150px;" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="遷移">戻る</button>
 
             <button type="button"
               class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys"
-              style="width: 150px;margin-left: 62%;" onclick="location.href='09_投稿返信画面.html'" value="投稿">返信する</button>
+              style="width: 150px;margin-left: 62%;" onclick="location.href='09_投稿返信画面.php'" value="投稿">返信する</button>
 
             <div class="waku_ys">
 
@@ -86,7 +86,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -102,7 +102,7 @@
                   <div class="padding30_ys">
                     <div class="p_he_ys">
                       <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size: 18px;" onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size: 18px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         ギター楽しい<br>
                         ギター楽しい<br>
                         ギター楽しい<br>
@@ -121,7 +121,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
@@ -134,7 +134,7 @@
                   <div class="padding30_ys">
                     <div class="p_he_ys">
                       <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size: 18px;" onclick="location.href='08_投稿詳細画面.html'" value="投稿">
+                      <div style="font-size: 18px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                         ギター楽しい<br>
                         ギター楽しい<br>
                         ギター楽しい<br>
@@ -153,7 +153,7 @@
                           </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                         </div>
                         <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.html" style="text-decoration: none;">
+                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
                             <img style="margin-left: 50px;" src="icon/コメント.svg">
                           </a>
                           　3　
