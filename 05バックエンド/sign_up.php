@@ -38,7 +38,8 @@ foreach($ps as $row){
     $_SESSION['user_id'] = $row['user_id'];
  
 }
-    }else{     
+    }else{    
+         
  header('Location:03_新規登録画面.php');  
     }
     
