@@ -17,7 +17,7 @@
 
 <body id="topanime" background="img/pink.png">
 <div>
-    <a href="02_ログイン画面.php">
+    <a href="auto_login.php">
       <div>
         <img src="img/やまったーlog.png" style="width: 1000px; margin-left: 130px; margin-top: 40px;">
       </div>
