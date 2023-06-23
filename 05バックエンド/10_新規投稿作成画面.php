@@ -40,7 +40,7 @@
 
                     <button type="button" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;" onclick="location.href='05_プロフィール画面.php'">キャンセル</button>
 
-                    <form method="POST" action="new_post.php">
+                    <form method="POST" action="new_post.php"enctype="multipart/form-data">
 
                         <div class="touroku_ys">
                             <button type="submit" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;">投稿する</button>
