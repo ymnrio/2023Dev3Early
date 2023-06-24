@@ -59,10 +59,49 @@
                 </form>
                 <?php
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-                $sql = "SELECT * FROM genre";
+                $sql = "SELECT post.post_id,  post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous,  post.comments, post.media1, post.mesia2, user.user_name, user.email_address, user.password, user.media, user.self_introduction FROM post INNER JOIN user ON post.user_id = user.user_id ORDER BY DESC date_time";
                 $selectData=$pdo->query($sql);
+
+                foreach($selectData as $row){
+                  $iconmedia = $row['media'];
+                
+                  echo '<div class="p_ys"><img class="image_middle" src="'
+                  if(isset($iconmedia)){
+                    echo 'img/pink.png';
+                  }else{
+                    echo $iconmedia;
+                  }'">　<br><br>'
+                  <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
+                    開発楽しい<br>
+                    徹夜楽しい<br>
+                    5月2日(火)5:12←イマココ<br>
+                    <img src="img/やまったーlog.png" style="height: 200px;">
+                  </div>
+                  <div class="row">
+                    <div class="col-md-9 col-lg-9 start_0_ys"></div>
+                    <div class="col-md-1 col-lg-1 start_0_ys">
+                      <input type="checkbox" id="like">
+
+                      <label for="like">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>　18　　　
+                      </label>
+                    </div>
+                    <div class="col-md-2 col-lg-2 start_0_ys">
+                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
+                        <img style="margin-left: 50px;" src="icon/コメント.svg">
+                      </a>
+                      　3　
+                    </div>
+                  </div>
+                </div>
+
+                }
                 ?>
-                <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
+                <!--<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
                     ギター楽しい<br>
@@ -74,12 +113,12 @@
                       <input type="checkbox" id="like">
 
                       <label for="like">
-                        <!--<div class="lavel_like">-->
+                        
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                           <path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>　18　　　
-                      </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
+                      </label>
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
                       <a href="09_投稿返信画面.php" style="text-decoration: none;">
@@ -103,12 +142,12 @@
                       <input type="checkbox" id="like">
 
                       <label for="like">
-                        <!--<div class="lavel_like">-->
+                        
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                           <path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>　18　　　
-                      </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
+                      </label>
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
                       <a href="09_投稿返信画面.php" style="text-decoration: none;">
@@ -131,12 +170,12 @@
                       <input type="checkbox" id="like">
 
                       <label for="like">
-                        <!--<div class="lavel_like">-->
+                      
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                           <path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                         </svg>　18　　　
-                      </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
+                      </label>
                     </div>
                     <div class="col-md-2 col-lg-2 start_0_ys">
                       <a href="09_投稿返信画面.php" style="text-decoration: none;">
@@ -145,7 +184,7 @@
                       　3　
                     </div>
                   </div>
-                </div>
+                </div>-->
                 <div class="box">
                   <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                     style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
