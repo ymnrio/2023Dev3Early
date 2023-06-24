@@ -9,7 +9,7 @@ foreach($ps as $row){
     if(password_verify($_POST['password'], $row['password'])  ==  true){
         header('Location:07_ジャンル別投稿一覧画面.php');
     }else{
-        if($row['email_address'] ==$_POST['email']){
+        if($row['email_address'] == $_POST['email']){
              "このメールアドレスはすでに利用されています。";
         }else{
             header('Location:02_ログイン画面.php');
