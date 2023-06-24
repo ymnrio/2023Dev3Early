@@ -51,14 +51,14 @@
           <div class="waku_ys">
             <div class="haikei_yp">
               <div class="padding30_ys"><br><br>
-                <form action="search.php" method="post" class="search-form-006">
+                <form action="11_テスト.php" method="post" class="search-form-006">
                   <label>
                     <input type="text" name="keyword" placeholder="キーワードを入力">
                   </label>
                   <button type="submit" aria-label="検索"></button>
                 </form>
                 <?php
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+  /*              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
                 $sql = "SELECT post.post_id,  post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous,  post.comments, post.media1, post.mesia2, user.user_name, user.email_address, user.password, user.media, user.self_introduction FROM post INNER JOIN user ON post.user_id = user.user_id ORDER BY DESC date_time";
                 $selectData=$pdo->query($sql);
 
@@ -100,7 +100,7 @@
                 </div>
 
                 }
-                ?>
+ */               ?>
                 <!--<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
