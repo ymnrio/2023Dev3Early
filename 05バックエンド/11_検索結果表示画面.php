@@ -67,7 +67,7 @@
                       ギター楽しい<br>
                       ギター楽しい<br>
                       ギター楽しい<br>
-                    </div>
+                    </div>　
                     <div class="row">
                       <div class="col-md-9 col-lg-9 start_0_ys"></div>
                       <div class="col-md-1 col-lg-1 start_0_ys">
