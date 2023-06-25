@@ -6,6 +6,4 @@ $ps=$pdo->prepare($sql);
 $ps->execute();
 $s_genre
 
-
-
 ?>
