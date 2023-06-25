@@ -20,7 +20,7 @@ foreach($ps as $row){
 
 
 //＄countの中に数値が入っているか確認
-    if((isset($count))){
+    if(isset($count)){
         header('Location:03_新規登録画面.php');  
     }else{
       
@@ -44,6 +44,7 @@ foreach($ps as $row){
     $_SESSION['user_id'] = $row['user_id'];
  
 }
+header('Location:04_プロフィール設定画面.php');
     }
-    header('Location:04_プロフィール設定画面.php');
+    
 ?>
