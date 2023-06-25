@@ -21,6 +21,7 @@ foreach($ps as $row){
 
 //＄countの中に数値が入っているか確認
     if(isset($count)){
+        $_SESSION['error'] = "このメールアドレスはすでに使用されています。";
         header('Location:03_新規登録画面.php');  
     }else{
       
