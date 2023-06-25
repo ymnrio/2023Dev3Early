@@ -51,7 +51,7 @@
           <div class="waku_ys">
             <div class="haikei_yp">
               <div class="padding30_ys"><br><br>
-                <form action="search.php" method="post" class="search-form-006">
+                <form action="11_テスト.php" method="post" class="search-form-006">
                   <label>
                     <input type="text" name="keyword" placeholder="キーワードを入力">
                   </label>
