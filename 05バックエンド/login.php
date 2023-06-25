@@ -17,6 +17,7 @@ foreach ($ps as $row) {
         header('Location:07_ジャンル別投稿一覧画面.php');
 
     }else{       
+        $_SESSION['error'] = "メールアドレスまたはパスワードが一致しません。";
             header('Location:02_ログイン画面.php');
         }
     }

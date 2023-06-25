@@ -43,6 +43,14 @@
               placeholder="パスワード"style="border-color:#FBA8B8;border-width:3px;"><br>
            </div>
 
+           <?php
+           session_start();
+           if((isset($_SESSION['error']))){
+            echo $_SESSION['error'];
+            unset($_SESSION['error']);
+            }
+             ?>
+
 <div class="magin20_yamanisi">
             <button type="submit"class="btn container-fluid color_white_yamani"
             style="background-color:#FBA8B8;">ログイン</button>
