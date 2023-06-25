@@ -61,27 +61,34 @@
             <?php
             $kyeword = $_POST['keyword'];
 echo                      '　　　　　　<!--検索ワード表示する-->'.$kyeword.'の検索結果表示
-                  </h4>'
-                  .//ここから検索されたワードを含む投稿を持ってくる
+                  </h4>';
+                  //ここから検索されたワードを含む投稿を持ってくる
 
         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 
-        $sql="select * from post where post_contents like '?'";
+        //$sql="select * from post INNER JOIN user ON user.user_id = post.user_id where post.post_contents like '%ギター%' ORDER BY post.post_id asc";
+        $sql="select * from post where post_contents like '%?%'";
 
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$kyeword,PDO::PARAM_STR);
         $ps->execute();
 
         foreach($ps as $row){
+            $user_id = $row['user_id'];
 
-            
+            $sql="select * from user where user_id = ?;";
+            $pss->bindValue(1,$user_id,PDO::PARAM_STR);
+            $pss->execute();
 
-                  '<div class="p_ys">
-                    <img class="image_middle" src="img/pink.png"> やまママにし<br><br>'.
-                    '<div style="font-size: 20px;" onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">'.'
-                      ギター楽しい<br>
-                      ギター楽しい<br>
-                      ギター楽しい<br>
+            foreach($pss as $user){
+                $user_name = $user['user_name'];
+                $user_media = $user['media'];
+            }
+
+echo                  '<div class="p_ys">
+                    <img class="image_middle" src="img/pink.png"> ';echo $user_name; echo'<br><br>'.
+                    '<div style="font-size: 20px;" onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">'
+                      .$row['post_contents'].'
                     </div>
                     <div class="row">
                       <div class="col-md-9 col-lg-9 start_0_ys"></div>
@@ -103,7 +110,7 @@ echo                      '　　　　　　<!--検索ワード表示する-->'
                         　3　
                       </div>
                     </div>
-                  </div>'
+                  </div>';
         }
             ?>        
                   

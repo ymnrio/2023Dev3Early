@@ -100,7 +100,7 @@
                 </div>
 
                 }
- */               ?>
+                ?>
                 <!--<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
