@@ -18,7 +18,7 @@ foreach ($ps as $row) {
 
     }else{       
         $_SESSION['error'] = "メールアドレスまたはパスワードが一致しません。";
-            header('Location:02_ログイン画面.php');
-        }   
+            header('Location:02_ログイン画面.php') ;
+        } 
     }
 ?>
