@@ -8,12 +8,8 @@ $ps->execute();
 foreach($ps as $row){
     if(password_verify($_POST['password'], $row['password'])  ==  true){
         header('Location:07_ジャンル別投稿一覧画面.php');
-    }else{
-        if($error['email'] == 'email_address'){
-
-        }$errors['member_check'] = "このメールアドレスはすでに利用されています。";
-            }else{
-        header('Location:02_ログイン画面.php');
+    }else{       
+            header('Location:02_ログイン画面.php');
+        }
     }
-}
 ?>

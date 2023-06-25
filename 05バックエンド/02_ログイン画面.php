@@ -43,8 +43,6 @@
           <input type="password" class="form-control" name="password" required
               placeholder="パスワード"style="border-color:#FBA8B8;border-width:3px;"><br>
            </div>
-
-
 <div class="magin20_yamanisi">
             <button type="submit"class="btn container-fluid color_white_yamani"
             style="background-color:#FBA8B8;">ログイン</button>
