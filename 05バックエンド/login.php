@@ -15,8 +15,9 @@ foreach ($ps as $row) {
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
 
         header('Location:07_ジャンル別投稿一覧画面.php');
-    } else {
-        header('Location:02_ログイン画面.php');
+
+    }else{       
+            header('Location:02_ログイン画面.php');
+        }
     }
-}
 ?>
