@@ -16,7 +16,6 @@ $ps->execute();
 
 
 //好きなギャンる
-/*
 $genre_name;
 if(isset($_POST['like_genre'])){
     foreach($_POST['like_genre'] as $row){
@@ -27,8 +26,8 @@ if(isset($_POST['like_genre'])){
         $ps->bindValue(1,$row,PDO::PARAM_STR);
         $ps->execute();
 
-        foreach($ps as $roww){
-            $genre_name = $roww['genre_name'];
+        foreach($ps as $name){
+            $genre_name = $name['genre_name'];
         }
 
         $sql="INSERT INTO favorite_genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
@@ -40,6 +39,5 @@ if(isset($_POST['like_genre'])){
 
     }
 }
-*/
 header('Location:07_ジャンル別投稿一覧画面.php');
 ?>
