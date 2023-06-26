@@ -59,7 +59,18 @@
                   </label>
                   <button type="submit" aria-label="検索"></button>
                 </form>
-               
+                <?php
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                $sql = "SELECT * FROM genre";
+                $selectData=$pdo->query($sql);
+
+                if(isset($_POST['example3'])){
+                    $_SESSION['genre'] = $_POST['example3'];
+                }
+
+                echo $_SESSION['genre'];
+                
+                ?>
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
                     ギター楽しい<br>
