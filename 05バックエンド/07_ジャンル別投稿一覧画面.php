@@ -53,8 +53,7 @@
                     $_SESSION['genre'] = $_POST['example3'];
                 }
 
-                echo $_SESSION['genre'];
-                
+                echo $_SESSION['genre'];  
               ?>
       <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
         <!--<div class="row yoko_ys">
