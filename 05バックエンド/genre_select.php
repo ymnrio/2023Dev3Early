@@ -12,7 +12,6 @@ foreach($ps as $row) {
     $row['user_id'];
     $row['genre_id'];
     $row['post_content'];
-    $row[];
 }
 
 header('Location:07_ジャンル別投稿一覧画面.php');
