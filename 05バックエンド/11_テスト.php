@@ -58,7 +58,7 @@
                         class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys"
                         style="margin-left: 3%; margin-top: -10px; width: 150px; "
                         onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
-            
+
                      　　　　　　<!--検索ワード表示する--><?php echo $_POST['keyword']; ?>の検索結果表示
                   </h4>
                   <!--ここから検索されたワードを含む投稿を持ってくる-->
@@ -66,15 +66,15 @@
 
         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 
-        $sql="select * from post where post_contents like '?'";
+        $sql="select * from post where post_contents like '%?%'";
 
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$kyeword,PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['$keyword'],PDO::PARAM_STR);
         $ps->execute();
 
         foreach($ps as $row){
 
-            
+
 
 echo            '<div class="p_ys">';
 echo            '<img class="image_middle" src="img/pink.png"> やまママにし<br><br>';
@@ -90,8 +90,8 @@ echo                '<input type="checkbox" id="like1">';
 
 echo                '<label for="like1">';
 echo                  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">';
-echo                    '<path';
-echo                      'd="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />';
+echo                    '<path'.
+                   'd="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />';
 echo                  '</svg>　18　　　';
 echo              '</div>';
 echo              '<div class="col-md-2 col-lg-2 start_0_ys">';
@@ -99,9 +99,9 @@ echo                '<a href="09_投稿返信画面.php" style="text-decoration:
 echo                  '<img style="margin-left: 50px;" src="icon/コメント.svg">';
 echo                '</a>';
 echo                '　3　';
-echo              '</div>';
-echo            '</div>'.
-          '</div>';
+echo              '</div>'.
+                '</div>'.
+               '</div>';
         }
             ?>        
                   
