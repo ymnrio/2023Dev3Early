@@ -10,11 +10,9 @@ $searchArray = $ps->fetchAll();
 
 foreach ($searchArray as $row) {
     if (password_verify($_POST['password'], $row['password'])) {
-        if(count($searchArray)!== 0){
         $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                                           'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
         header('Location:07_ジャンル別投稿一覧画面.php');
-        }
     } else {
         $_SESSION['error'] = "メールアドレスまたはパスワードが一致しません。";
         header('Location:02_ログイン画面.php');
