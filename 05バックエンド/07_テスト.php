@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -24,7 +25,7 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <form action="07_tesuto.php" method="post">
+          <form action="07_テスト.php" method="post">
           <input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>
           <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
           <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
@@ -62,6 +63,12 @@
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
                 $sql = "SELECT * FROM genre";
                 $selectData=$pdo->query($sql);
+
+                if(isset($_POST['example3'])){
+                    $_SESSION['genre'] = $_POST['example3'];
+                }
+
+                echo $_SESSION['genre'];
                 
                 ?>
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
