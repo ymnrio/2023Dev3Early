@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -37,6 +38,7 @@
           <input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>
           <input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
         </form>
+        
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
@@ -44,18 +46,6 @@
         </div>
       </div>
 
-              <?php
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-                $sql = "SELECT * FROM genre";
-                $selectData=$pdo->query($sql);
-
-                if(isset($_POST['example3'])){
-                    $_SESSION['genre'] = $_POST['example3'];
-                }
-
-                echo $_SESSION['genre'];
-                
-                ?>
       <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
         <!--<div class="row yoko_ys">
         <div class="col-md-12 start_0_ys"style="height: 100vh;">-->
@@ -70,6 +60,17 @@
                   </label>
                   <button type="submit" aria-label="検索"></button>
                 </form>
+                
+              <?php
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                $sql = "SELECT * FROM genre";
+                $selectData=$pdo->query($sql);
+
+                if(isset($_POST['example3'])){
+                    $_SESSION['genre'] = $_POST['example3'];
+                }
+                echo $_SESSION['genre'];
+                ?>
                 
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
