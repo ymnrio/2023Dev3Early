@@ -24,19 +24,21 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <input type="radio" id="1" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="すべて"><label for="1">　♪ すべて</label>
-          <input type="radio" id="2" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="JPOP"><label for="2">　♪ JPOP</label>
-          <input type="radio" id="3" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="洋楽"><label for="3">　♪ 洋楽</label>
-          <input type="radio" id="4" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="アニソン"><label for="4">　♪ アニソン</label>
-          <input type="radio" id="5" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="クラシック"><label for="5">　♪ クラシック</label>
-          <input type="radio" id="6" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ロック"><label for="6">　♪ ロック</label>
-          <input type="radio" id="7" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-          <input type="radio" id="8" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="ギター"><label for="8">　♪ ギター</label>
-          <input type="radio" id="9" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="楽器"><label for="9">　♪ 楽器</label>
-          <input type="radio" id="10" name="example3" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          <form action="07_ジャンル別投稿一覧画面.php" method="post">
+            <input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>
+            <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
+            <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
+            <input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>
+            <input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>
+            <input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>
+            <input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>
+            <input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>
+            <input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>
+            <input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          </form>
 
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
+          <input type="radio"  id="11" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
