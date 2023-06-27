@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter_2;charset=utf8',
 'root','root');
 
 $fileName = $_FILES['file']['name'];
@@ -37,11 +37,11 @@ if(isset($_POST['like_genre'])){
         $sql="INSERT INTO favorite_genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
-        $ps->bindValue(2,$_POST['like_genre'],PDO::PARAM_INT);
+        $ps->bindValue(2,$row,PDO::PARAM_INT);
         $ps->bindValue(3,$genre_name,PDO::PARAM_STR);
         $ps->execute();
-
+//yamatter_2になってるからきをつける
     }
 }
-//header('Location:07_ジャンル別投稿一覧画面.php');
+header('Location:07_ジャンル別投稿一覧画面.php');
 ?>
