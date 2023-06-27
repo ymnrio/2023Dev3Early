@@ -14,12 +14,16 @@ $ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
 $ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
 $ps->execute();
 
-
+/*
+foreach($_POST['like_genre'] as $row){
+echo $row.'<br>';
+}
+*/
 //好きなギャンる
+
 $genre_name;
 if(isset($_POST['like_genre'])){
     foreach($_POST['like_genre'] as $row){
-
         $sql="select genre_name from genre where genre_id = ?";
 
         $ps=$pdo->prepare($sql);
@@ -32,12 +36,12 @@ if(isset($_POST['like_genre'])){
 
         $sql="INSERT INTO favorite_genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);
-        $ps->bindValue(2,$_POST['like_genre'],PDO::PARAM_STR);
+        $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
+        $ps->bindValue(2,$_POST['like_genre'],PDO::PARAM_INT);
         $ps->bindValue(3,$genre_name,PDO::PARAM_STR);
         $ps->execute();
 
     }
 }
-header('Location:07_ジャンル別投稿一覧画面.php');
+//header('Location:07_ジャンル別投稿一覧画面.php');
 ?>
