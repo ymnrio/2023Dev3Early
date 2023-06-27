@@ -43,8 +43,8 @@ $ps->bindValue(1,$email,PDO::PARAM_STR);
 $ps->execute();
 foreach($ps as $row){
     $_SESSION['user_id'] = $row['user_id'];
- 
 }
+
 header('Location:04_プロフィール設定画面.php');
     }
     

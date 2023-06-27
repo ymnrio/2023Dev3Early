@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -61,8 +62,8 @@
           </div>
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
-            <p>ユーザー名
-            <p>ID:0000</p>
+            <p><?php echo $_SESSION['user']['name']; ?>
+            <p>ID:<?php echo $_SESSION['user']['id']; ?></p>
 
           </div>
 
@@ -80,13 +81,27 @@
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
-              <h6>自己紹介文</h6><br>
+              <h6><?php echo $_SESSION['user']['introduction']; ?></h6><br>
 
               <p>好きなジャンル</p>
+              <?php  
+    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+    $sql = "SELECT*  FROM favorite_genre WHERE user_id=?";
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
+    $ps->execute();
+
+    foreach($ps as $row){
+      $name = $row['genre_name'];
+echo      '<span class="border border-#FBA8B8 badge text-bg-white color_yamani">'.$name.'</span>  ';
+    }
+              
+              /*
               <span class="border border-#FBA8B8 badge text-bg-white color_yamani">アニソン</span>
               <span class="border border-#FBA8B8 badge text-bg-white color_yamani">JPOP</span>
               <span class="border border-#FBA8B8 badge text-bg-white color_yamani">ギター</span>
-
+              */
+              ?>
             </div>
             <hr>
           </div>

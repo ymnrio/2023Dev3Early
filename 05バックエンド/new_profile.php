@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter_2;charset=utf8',
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
 'root','root');
 
 $fileName = $_FILES['file']['name'];
@@ -14,11 +14,7 @@ $ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
 $ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
 $ps->execute();
 
-/*
-foreach($_POST['like_genre'] as $row){
-echo $row.'<br>';
-}
-*/
+
 //好きなギャンる
 
 $genre_name;
@@ -40,8 +36,7 @@ if(isset($_POST['like_genre'])){
         $ps->bindValue(2,$row,PDO::PARAM_INT);
         $ps->bindValue(3,$genre_name,PDO::PARAM_STR);
         $ps->execute();
-//yamatter_2になってるからきをつける
     }
 }
-header('Location:07_ジャンル別投稿一覧画面.php');
+header('Location:profile_session.php');
 ?>
