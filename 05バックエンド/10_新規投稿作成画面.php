@@ -56,7 +56,6 @@ session_start();
                         <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name']; ?></h5>
 
                         <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
-                            <option value="1">すべて</option>
                             <option value="2">JPOP</option>
                             <option value="3">洋楽</option>
                             <option value="4">アニソン</option>

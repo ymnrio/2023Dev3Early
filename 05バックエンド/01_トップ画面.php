@@ -17,12 +17,16 @@
 
 <body id="topanime" background="img/pink.png">
 <div>
-    <a href="auto_login.php">
+    <a href="session_check.php">
       <div>
         <img src="img/やまったーlog.png" style="width: 1000px; margin-left: 130px; margin-top: 40px;">
       </div>
     </a>
   </div>
+  <?php
+   session_start(); 
+   echo $_SESSION['user']['id'];
+  ?>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
   <script src="./script/script.js"></script>   
