@@ -45,7 +45,7 @@
       </div>
       <!--<div class="col-md-9 col-lg-9/8">-->
 
-      <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
+      <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_ys" style="height:100vh;">
         <!--<div class="row yoko_ys">
         <div class="col-md-12 start_0_ys"style="height: 100vh;">-->
         <hr class="start_0_ys">

@@ -48,7 +48,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root'
         </div>
       </div>
 
-      <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
+      <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_ys" style="height:100vh;">
         <hr class="start_0_ys">
         <div id="toukou" class="area">
           <div class="waku_ys">
