@@ -63,7 +63,9 @@
                 
               <?php
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-                $sql = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2, genre.genre_id, genre.genre_name FROM post INNER JOIN genre ON post.genre_id = genre.genre_id";
+                /*$sql = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2, genre.genre_id, genre.genre_name 
+                        FROM post INNER JOIN genre ON post.genre_id = genre.genre_id";*/
+                $sql = "SELECT * FROM post";
                 $selectData=$pdo->query($sql);
 
                 if(isset($_POST['example3'])){
