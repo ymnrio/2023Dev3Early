@@ -26,7 +26,7 @@ $ps->bindValue(6,$zero,PDO::PARAM_STR);//コメント数
 $ps->bindValue(7,$_FILES['file']['name'],PDO::PARAM_STR);//メディア1
 $ps->execute();
 
-//header('01_トップ画面.php');//modorimasu
+header('01_トップ画面.php');//modorimasu
 
 
 //動画ファイルと画像だけ選ぶことができるようにする
