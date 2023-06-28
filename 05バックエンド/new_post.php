@@ -5,12 +5,7 @@ session_start();
 $date=date('Y-m-d H:i:s');
 $zero=0;
 
-$media = array();
-if(isset($_FILES['file']['name']) && is_array($_FILES['file']['name'])) {
-    foreach($_FILES['file']['name'] as $row) {
-        $media[] = $row;
-    }
-}
+
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments,media1)
@@ -26,7 +21,7 @@ $ps->bindValue(6,$zero,PDO::PARAM_STR);//コメント数
 $ps->bindValue(7,$_FILES['file']['name'],PDO::PARAM_STR);//メディア1
 $ps->execute();
 
-header('01_トップ画面.php');//modorimasu
+header('Location:07_ジャンル別投稿一覧画面.php');//modorimasu
 
 
 //動画ファイルと画像だけ選ぶことができるようにする
