@@ -65,7 +65,7 @@
                   
                   <?php               
   $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-  $sql = "select * from post where post_contents LIKE ?";
+  $sql = "select * from post where post_contents LIKE ? ";
   $ps = $pdo->prepare($sql);
   $ps->bindValue(1,'%'.$_POST['keyword'].'%',PDO::PARAM_STR);
   $ps->execute();

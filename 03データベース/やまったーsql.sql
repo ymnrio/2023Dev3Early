@@ -392,4 +392,6 @@ ALTER TABLE `user`
 
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
+  ALTER TABLE favorite_genre DROP INDEX a;
+
 COMMIT;

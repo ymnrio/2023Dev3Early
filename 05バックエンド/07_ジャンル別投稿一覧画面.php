@@ -69,7 +69,7 @@
               if($_SESSION['genre'] == "すべて"){
                 
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                $sql = "select * from post";
+                $sql = "select * from post ORDER BY post_id DESC";
                 $ps = $pdo->prepare($sql);
                 $ps->execute();
                 foreach($ps as $row){
@@ -128,7 +128,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
               }else{//すべて以外を選択した時
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
                 //sesseion[genre]をidに変換
-                $sql = "select * from genre where genre_name = ?";
+                $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_STR);
                 $ps->execute();
@@ -137,7 +137,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                   $genre_id = $row['genre_id'];
                 }
 
-                $sql = "select * from post where genre_id = ?";
+                $sql = "select * from post where genre_id = ?";//オーダーばい、すべてはできるがその他はできん！！また今度
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$genre_id,PDO::PARAM_INT);
                 $ps->execute();
