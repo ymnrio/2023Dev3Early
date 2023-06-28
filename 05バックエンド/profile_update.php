@@ -1,0 +1,62 @@
+<?php
+
+session_start();
+
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+
+$fileName = $_FILES['iconimg']['name'];
+
+$sql = "UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
+$ps->bindValue(2,$fileName,PDO::PARAM_STR);
+$ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
+$ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
+$ps->execute();
+
+$sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+$ps->execute();
+foreach($ps as $row){
+    if($row['count(*)'] != 0){
+        $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
+        $ps = $pdo->prepare($sql);
+        $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
+        $ps->execute();
+    }
+
+    $genre_name;
+    if(isset($_POST['example2'])){
+        foreach($_POST['example2'] as $row){
+            $sql="SELECT genre_name FROM genre WHERE genre_id = ?";
+            $ps=$pdo->prepare($sql);
+            $ps->bindValue(1,$row,PDO::PARAM_INT);
+            $ps->execute();
+
+            foreach($ps as $name){
+                $genre_name = $name['genre_name'];
+            }
+
+            $sql="INSERT INTO favorite_genre(user_id,genre_id,genre_name)VALUES(?,?,?)";
+            $ps=$pdo->prepare($sql);
+            $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+            $ps->bindValue(2,$row,PDO::PARAM_INT);
+            $ps->bindValue(3,$genre_name,PDO::PARAM_STR);
+            $ps->execute();
+        }
+    }
+}
+
+$sql ="SELECT * FROM user WHERE user_id=?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+$ps->execute();
+foreach($ps as $row){
+    $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
+                             'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
+}
+
+header('Location:05_プロフィール画面.php');
+
+?>
