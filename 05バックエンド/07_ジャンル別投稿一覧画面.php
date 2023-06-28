@@ -52,7 +52,7 @@
           <div class="waku_ys">
             <div class="haikei_yp">
               <div class="padding30_ys"><br><br>
-                <form action="search.php" method="post" class="search-form-006">
+                <form action="11_検索結果表示画面.php" method="post" class="search-form-006">
                   <label>
                     <input type="text" name="keyword" placeholder="キーワードを入力">
                   </label>
@@ -69,7 +69,7 @@
               if($_SESSION['genre'] == "すべて"){
                 
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                $sql = "select * from post";
+                $sql = "select * from post ORDER BY post_id DESC";
                 $ps = $pdo->prepare($sql);
                 $ps->execute();
                 foreach($ps as $row){
@@ -84,13 +84,31 @@
 echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
                   '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
                     echo $row['post_contents'];
+
+                    //画像があるか検索
+                    /*
+                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $sql2 = "select * from post where post_id = ?";
+                    $ps2 = $pdo->prepare($sql2);
+                    $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+                    $ps2->execute();
+                    $img = null;
+                    foreach($ps2 as $row2){
+                      $img = $row2['media1'];
+                    }
+                    if(isset($img)){
+                      header("Content-Type: image/jpeg");
+                      echo $img;
+                    }
+                    */
 echo                  '</div>'.
                   '<div class="row">'.
                     '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
-                    '<div class="col-md-1 col-lg-1 start_0_ys">'.
-                      '<input type="checkbox" id="like">'.
+                    '<div class="col-md-1 col-lg-1 start_0_ys">';
+                    $like = "like".$row['post_id'];
+echo                      '<input type="checkbox" id="'.$like.'">'.
 
-                      '<label for="like">'.
+                      '<label for="'.$like.'">'.
                         '<!--<div class="lavel_like">-->'.
                         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
                           '<path
@@ -110,7 +128,7 @@ echo                  '</div>'.
               }else{//すべて以外を選択した時
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
                 //sesseion[genre]をidに変換
-                $sql = "select * from genre where genre_name = ?";
+                $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_STR);
                 $ps->execute();
@@ -119,7 +137,7 @@ echo                  '</div>'.
                   $genre_id = $row['genre_id'];
                 }
 
-                $sql = "select * from post where genre_id = ?";
+                $sql = "select * from post where genre_id = ?";//オーダーばい、すべてはできるがその他はできん！！また今度
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$genre_id,PDO::PARAM_INT);
                 $ps->execute();
@@ -138,10 +156,11 @@ echo             '<div class="p_ys"><img class="image_middle" src="img/pink.png"
 echo                '</div>'.
                 '<div class="row">'.
                   '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
-                  '<div class="col-md-1 col-lg-1 start_0_ys">'.
-                    '<input type="checkbox" id="like">'.
+                  '<div class="col-md-1 col-lg-1 start_0_ys">';
+                    $like = "like".$row['post_id'];
+echo                    '<input type="checkbox" id="'.$like.'">'.
 
-                    '<label for="like">'.
+                    '<label for="'.$like.'">'.
                       '<!--<div class="lavel_like">-->'.
                       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
                         '<path

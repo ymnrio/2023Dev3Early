@@ -60,94 +60,70 @@
                         class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys"
                         style="margin-left: 3%; margin-top: -10px; width: 150px; "
                         onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
-                      　　　　　　<!--検索ワード表示する-->〇〇〇〇の検索結果表示
+                      　　　　　　<!--検索ワード表示する--><?php echo $_POST['keyword']; ?>の検索結果表示
                   </h4>
                   
-                  <div class="p_ys">
-                    <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                    <div style="font-size: 20px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
-                      ギター楽しい<br>
-                      ギター楽しい<br>
-                      ギター楽しい<br>
-                    </div>　
-                    <div class="row">
-                      <div class="col-md-9 col-lg-9 start_0_ys"></div>
-                      <div class="col-md-1 col-lg-1 start_0_ys">
-                        <input type="checkbox" id="like1">
+                  <?php               
+  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+  $sql = "select * from post where post_contents LIKE ? ";
+  $ps = $pdo->prepare($sql);
+  $ps->bindValue(1,'%'.$_POST['keyword'].'%',PDO::PARAM_STR);
+  $ps->execute();
+  foreach($ps as $row){
+    $sql1 = "select * from user where user_id = ?";
+    $ps1 = $pdo->prepare($sql1);
+    $ps1->bindValue(1,$row['user_id'],PDO::PARAM_INT);
+    $ps1->execute();
+    $name=null;
+    foreach($ps1 as $row1){
+      $name = $row1['user_name'];
+    }
+echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
+    '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
+      echo $row['post_contents'];
 
-                        <label for="like1">
-                          <!--<div class="lavel_like">-->
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                          </svg>　18　　　
-                        </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
-                      </div>
-                      <div class="col-md-2 col-lg-2 start_0_ys">
-                        <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                          <img style="margin-left: 50px;" src="icon/コメント.svg">
-                        </a>
-                        　3　
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p_ys">
-                    <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                    <div style="font-size: 20px;"  onclick="location.href='08_投稿詳細画面.php'" value="投稿">
-                      開発楽しい<br>
-                      徹夜楽しい<br>
-                      5月2日(火)5:12←イマココ<br>
-                      <img src="img/やまったーlog.png" style="height: 200px;">
-                    </div>
-                    <div class="row">
-                      <div class="col-md-9 col-lg-9 start_0_ys"></div>
-                      <div class="col-md-1 col-lg-1 start_0_ys">
-                        <input type="checkbox" id="like2">
+      //画像があるか検索
+      /*
+      $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+      $sql2 = "select * from post where post_id = ?";
+      $ps2 = $pdo->prepare($sql2);
+      $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+      $ps2->execute();
+      $img = null;
+      foreach($ps2 as $row2){
+        $img = $row2['media1'];
+      }
+      if(isset($img)){
+        header("Content-Type: image/jpeg");
+        echo $img;
+      }
+      */
+echo                  '</div>'.
+    '<div class="row">'.
+      '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
+      '<div class="col-md-1 col-lg-1 start_0_ys">';
+      $like = "like".$row['post_id'];
+echo                      '<input type="checkbox" id="'.$like.'">'.
 
-                        <label for="like2">
-                          <!--<div class="lavel_like">-->
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                          </svg>　18　　　
-                        </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
-                      </div>
-                      <div class="col-md-2 col-lg-2 start_0_ys">
-                        <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                          <img style="margin-left: 50px;" src="icon/コメント.svg">
-                        </a>
-                        　3　
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p_ys">
-                    <img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                    <div style="font-size: 20px;"  onclick="location.href='08_投稿詳細画面.php'" value="投稿">
-                      ギター楽しい<br>
-                      ギター楽しい<br>
-                      ギター楽しい<br>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-9 col-lg-9 start_0_ys"></div>
-                      <div class="col-md-1 col-lg-1 start_0_ys">
-                        <input type="checkbox" id="like3">
-
-                        <label for="like3">
-                          <!--<div class="lavel_like">-->
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                          </svg>　18　　　
-                        </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
-                      </div>
-                      <div class="col-md-2 col-lg-2 start_0_ys">
-                        <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                          <img style="margin-left: 50px;" src="icon/コメント.svg">
-                        </a>
-                        　3　
-                      </div>
-                    </div>
-                  </div><p></p>
+        '<label for="'.$like.'">'.
+          '<!--<div class="lavel_like">-->'.
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
+            '<path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />'.
+          '</svg>　'.$row['fabulous'].'　　　'.
+        '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->'.
+      '</div>'.
+      '<div class="col-md-2 col-lg-2 start_0_ys">
+        <a href="09_投稿返信画面.php" style="text-decoration: none;">
+          <img style="margin-left: 50px;" src="icon/コメント.svg">
+        </a>
+        　'.$row['comments'].'　
+      </div>
+    </div>
+  </div>';
+  }
+?>
+                  
                   <div class="box">
                     <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                       style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
