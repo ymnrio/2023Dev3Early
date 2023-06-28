@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -25,37 +26,26 @@
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
           
-        <form action="07_ジャンル別投稿一覧画面.php" method="post">
-          <input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>
-          <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
-          <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
-          <input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>
-          <input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>
-          <input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>
-          <input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-          <input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>
-          <input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>
-          <input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
-        </form>
+          <form action="07_ジャンル別投稿一覧画面.php" method="post">
+            <input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>
+            <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
+            <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
+            <input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>
+            <input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>
+            <input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>
+            <input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>
+            <input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>
+            <input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>
+            <input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          </form>
+
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio"  id="11" name="example3" onclick="location.href='06_プロフィール編集画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
+          <input type="radio"  id="11" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
       </div>
 
-              <?php
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-                $sql = "SELECT * FROM genre";
-                $selectData=$pdo->query($sql);
-
-                if(isset($_POST['example3'])){
-                    $_SESSION['genre'] = $_POST['example3'];
-                }
-
-                echo $_SESSION['genre'];
-                
-              ?>
       <div class="col-md-9 col-lg-9/8 start_0_ys back_pink_yss" style="height:100vh;">
         <!--<div class="row yoko_ys">
         <div class="col-md-12 start_0_ys"style="height: 100vh;">-->
@@ -70,6 +60,19 @@
                   </label>
                   <button type="submit" aria-label="検索"></button>
                 </form>
+                
+              <?php
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                $sql = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2, genre.genre_id, genre.genre_name FROM post INNER JOIN genre ON post.genre_id = genre.genre_id";
+                $selectData=$pdo->query($sql);
+
+                if(isset($_POST['example3'])){
+                    $_SESSION['genre'] = $_POST['example3'];
+                }
+                echo $_SESSION['genre'];
+                ?>
+
+                
                 
                 <div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                   <div style="font-size: 20px;"　 onclick="location.href='08_投稿詳細画面.php'" value="投稿">
