@@ -1,4 +1,4 @@
-<?php session_start() ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -67,11 +67,24 @@
 <?php               
 
               if($_SESSION['genre'] == "すべて"){
-                echo "すべて";
-echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>'.
-                  '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">'.
-                    'ギター楽しい<br>'.
-                  '</div>'.
+                
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $sql = "select * from post";
+                $ps = $pdo->prepare($sql);
+                $ps->execute();
+                foreach($ps as $row){
+                  $sql1 = "select * from user where user_id = ?";
+                  $ps1 = $pdo->prepare($sql1);
+                  $ps1->bindValue(1,$row['user_id'],PDO::PARAM_INT);
+                  $ps1->execute();
+                  $name=null;
+                  foreach($ps1 as $row1){
+                    $name = $row1['user_name'];
+                  }
+echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
+                  '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
+                    echo $row['post_contents'];
+echo                  '</div>'.
                   '<div class="row">'.
                     '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
                     '<div class="col-md-1 col-lg-1 start_0_ys">'.
@@ -82,23 +95,29 @@ echo                '<div class="p_ys"><img class="image_middle" src="img/pink.p
                         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
                           '<path
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />'.
-                        '</svg>　18　　　'.
+                        '</svg>　'.$row['fabulous'].'　　　'.
                       '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->'.
                     '</div>'.
                     '<div class="col-md-2 col-lg-2 start_0_ys">
                       <a href="09_投稿返信画面.php" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
-                      　3　
+                      　'.$row['comments'].'　
                     </div>
                   </div>
                 </div>';
+                }
               }else{//すべて以外を選択した時
-                
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
+                $sql = "select * from post where genre_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_INT);
+                $ps->execute();
+                foreach($ps as $row){
 echo             '<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>'.
-                '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">'.
-                  'ギター楽しい<br>'.
-                '</div>'.
+                '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
+                 echo $row['post_contents']; 
+echo                '</div>'.
                 '<div class="row">'.
                   '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
                   '<div class="col-md-1 col-lg-1 start_0_ys">'.
@@ -120,6 +139,7 @@ echo             '<div class="p_ys"><img class="image_middle" src="img/pink.png"
                   </div>
                 </div>
               </div>';
+                }
               }
 ?>
                 

@@ -1,6 +1,6 @@
 <?php  
 session_start();
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -63,7 +63,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root'
                         onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
                       　　　　　　<!--検索ワード表示する--><?php echo $_POST['keyword']; ?>の検索結果表示
                   </h4>
-<?php          
+<?php     
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');     
 $sql="select * from post where post_contents like '%?%'";
 $ps=$pdo->prepare($sql);
 $ps->bindValue(1,$_POST['$keyword'],PDO::PARAM_STR);
