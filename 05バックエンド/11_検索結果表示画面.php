@@ -83,21 +83,19 @@ echo                '<div class="p_ys"><img class="image_middle" src="img/pink.p
       echo $row['post_contents'];
 
       //画像があるか検索
-      /*
+      
       $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
       $sql2 = "select * from post where post_id = ?";
       $ps2 = $pdo->prepare($sql2);
       $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
       $ps2->execute();
-      $img = null;
-      foreach($ps2 as $row2){
-        $img = $row2['media1'];
+      $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+
+      if(!empty($row2['media1'])){
+        $decoded = base64_decode($row2['media1']);
+        echo $decoded;
       }
-      if(isset($img)){
-        header("Content-Type: image/jpeg");
-        echo $img;
-      }
-      */
+      
 echo                  '</div>'.
     '<div class="row">'.
       '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
