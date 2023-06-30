@@ -88,7 +88,7 @@
               <button onclick="location.href='05_プロフィール画面.php'" class="btn container-fluid color_white_yamani" style="background-color:#FBA8B8;width: 90%;margin-left: 30px;">キャンセル</button>
             </div>
             <div class="col-md-6" id="btn_nh">
-              <button type="submit" class="btn container-fluid color_white_yamani" style="background-color:#FBA8B8;width: 90%;margin-right: 30px;">保存</button>
+              <button value="保存" name="update" type="submit" class="btn container-fluid color_white_yamani" style="background-color:#FBA8B8;width: 90%;margin-right: 30px;">保存</button>
             </div>
           </div>
         </div>

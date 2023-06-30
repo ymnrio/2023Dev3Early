@@ -5,7 +5,7 @@ session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 
 $fileName = $_FILES['iconimg']['name'];
-
+if(!empty($_POST['update'])){
 $sql = "UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
@@ -56,7 +56,7 @@ foreach($ps as $row){
     $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
 }
-
+}
 header('Location:05_プロフィール画面.php');
 
 ?>

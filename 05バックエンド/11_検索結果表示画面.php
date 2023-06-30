@@ -78,7 +78,7 @@
     foreach($ps1 as $row1){
       $name = $row1['user_name'];
     }
-echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
+echo  '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
     '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
       echo $row['post_contents'];
 
@@ -92,8 +92,7 @@ echo                '<div class="p_ys"><img class="image_middle" src="img/pink.p
       $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
       if(!empty($row2['media1'])){
-        $decoded = base64_decode($row2['media1']);
-        echo $decoded;
+        
       }
       
 echo                  '</div>'.
