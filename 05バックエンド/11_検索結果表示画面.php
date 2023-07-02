@@ -92,8 +92,12 @@ echo  '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $nam
       $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
       if(!empty($row2['media1'])){
-        
-      }
+        $image_data = $row2['media1'];
+
+$base64_image = base64_encode($image_data);
+
+echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+}
       
 echo                  '</div>'.
     '<div class="row">'.
