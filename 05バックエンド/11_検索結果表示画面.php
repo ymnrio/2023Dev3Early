@@ -78,7 +78,16 @@
     foreach($ps1 as $row1){
       $name = $row1['user_name'];
     }
-echo  '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
+echo  '<div class="p_ys">';
+
+//アイコン表示
+  if (!empty($row1['media1']) || isset($row1['media1'])) {//設定している場合
+    echo 'aa';
+  }else{ //設定してない場合
+    echo '<img class="image_middle" src="img/pink.png">　';
+  }
+
+echo   $name.'<br><br>'.
     '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
       echo $row['post_contents'];
 
