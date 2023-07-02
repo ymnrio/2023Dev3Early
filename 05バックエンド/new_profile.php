@@ -4,16 +4,28 @@ session_start();
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
 'root','root');
 
-$fileName = $_FILES['file']['name'];
+if (!empty($_FILES['file']['name'])) {
+    $file = $_FILES['file'];
+    
+    $filename = $file['name'];
+    $filetype = $file['type'];
+    $filedata = file_get_contents($file['tmp_name']);
 
-$sql="update user set media=?,self_introduction=? where user_id = ?";
-
-$ps=$pdo->prepare($sql);
-$ps->bindValue(1,$fileName,PDO::PARAM_STR);
-$ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
-$ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
-$ps->execute();
-
+    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+    $sql ="update user set media=?,self_introduction=? where user_id = ?";
+    $ps=$pdo->prepare($sql);
+    $ps->bindValue(1,$filedata,PDO::PARAM_LOB);
+    $ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
+    $ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
+    $ps->execute();
+    }else{ //ないばあい
+        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+        $sql ="update user set self_introduction=? where user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST['jikosyoukai'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_SESSION['user_id'],PDO::PARAM_STR);
+        $ps->execute();
+}
 
 //好きなギャンる
 
