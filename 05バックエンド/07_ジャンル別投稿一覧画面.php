@@ -81,8 +81,10 @@
                   foreach($ps1 as $row1){
                     $name = $row1['user_name'];
                   }
-echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
-                  '<div style="font-size: 20px;"　 onclick="location.href='."'08_投稿詳細画面.php'".'" value="投稿">';
+echo              '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
+                  '<form action="08_投稿詳細画面.php" method="post">'.
+                  '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">'.
+                  '<div style="font-size: 20px;">';
                     echo $row['post_contents'];
 
                     //画像があるか検索
@@ -101,8 +103,9 @@ echo                '<div class="p_ys"><img class="image_middle" src="img/pink.p
                       echo $img;
                     }
                     */
-echo                  '</div>'.
-                  '<div class="row">'.
+echo                '</div>'.
+                    '</button>'.
+                    '<div class="row">'.
                     '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
                     '<div class="col-md-1 col-lg-1 start_0_ys">';
                     $like = "like".$row['post_id'];
@@ -116,11 +119,12 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                         '</svg>　'.$row['fabulous'].'　　　'.
                       '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->'.
                     '</div>'.
+                    '</form>'.
                     '<div class="col-md-2 col-lg-2 start_0_ys">
-                    <form action="09_投稿返信画面.php" name="reply" value="'.$row['post_id'].'" method="post">
-                      <a href="09_投稿返信画面.php" onclick="document.a_form.submit();" style="text-decoration: none;">
+                    <form action="09_投稿返信画面.php" method="post">
+                      <button name="reply" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
-                      </a>
+                      </button>
                     </form>
                       　'.$row['comments'].'　
                     </div>
