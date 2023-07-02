@@ -117,9 +117,11 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                       '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->'.
                     '</div>'.
                     '<div class="col-md-2 col-lg-2 start_0_ys">
-                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
+                    <form action="09_投稿返信画面.php" name="reply" value="'.$row['post_id'].'" method="post">
+                      <a href="09_投稿返信画面.php" onclick="document.a_form.submit();" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
+                    </form>
                       　'.$row['comments'].'　
                     </div>
                   </div>
