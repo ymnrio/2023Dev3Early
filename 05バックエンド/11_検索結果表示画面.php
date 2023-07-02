@@ -40,7 +40,7 @@
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio"  id="11" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="12" name="example3" onclick="location.href='01_トップ画面.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
+          <input type="radio" id="12" name="example3" onclick="location.href='logout.php.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
       </div>
       <!--<div class="col-md-9 col-lg-9/8">-->
