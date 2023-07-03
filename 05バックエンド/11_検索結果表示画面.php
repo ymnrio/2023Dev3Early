@@ -73,16 +73,21 @@
                     $name = null;
                     foreach ($ps1 as $row1) {
                       $name = $row1['user_name'];
-                      $media1 = $row1['media'];
+                      $aikon = $row1['media'];
                     }
                     echo  '<div class="p_ys">';
 
                     //アイコン表示
-                    if (!empty($media) || isset($media)) { //設定している場合
-                      echo 'aa';
+                    if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                      $base64_image = base64_encode($aikon);
+
+                      echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
                     } else { //設定してない場合
                       echo '<img class="image_middle" src="img/pink.png">　';
                     }
+                    
 
                     echo   $name . '<br><br>' .
                     '<form action="08_投稿詳細画面.php" method="post">'.
@@ -107,19 +112,19 @@
                       echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                     }
 
-                    echo                  '</div>' .
+                    echo  '</div>' .
                       '</buton>'.
                       '<div class="row">' .
                       '<div class="col-md-8 col-lg-8 start_0_ys"></div>' .
                       '<div class="col-md-1 col-lg-1 start_0_ys">';
                     $like = "like" . $row['post_id'];
-                    echo                      '<input type="checkbox" id="' . $like . '">' .
+                    echo '<input type="checkbox" id="' . $like . '">' .
 
                       '<label for="' . $like . '">' .
                       '<!--<div class="lavel_like">-->' .
                       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
                       '<path
-              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
                       '</svg>　' . $row['fabulous'] . '　　　' .
                       '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
                       '</div>' .
