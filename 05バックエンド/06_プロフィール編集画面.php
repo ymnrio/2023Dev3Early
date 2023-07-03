@@ -43,7 +43,7 @@ $ps->execute();
 
 ?>
 <body>
-  <form action="profile_update.php" method="post">
+  <form action="profile_update.php" method="post" enctype="multipart/form-data">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-3 back_pink_yamani" style="height:100vh"></div>

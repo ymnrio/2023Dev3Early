@@ -3,7 +3,7 @@
 session_start();
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-
+/*
 $fileName = $_FILES['iconimg']['name'];
 if(!empty($_POST['update'])){
 $sql = "UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
@@ -13,6 +13,30 @@ $ps->bindValue(2,$fileName,PDO::PARAM_STR);
 $ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
 $ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
+*/
+if (!empty($_FILES['file']['name'])) {
+    $file = $_FILES['file'];
+    
+    $filename = $file['name'];
+    $filetype = $file['type'];
+    $filedata = file_get_contents($file['tmp_name']);
+
+    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+    $sql ="UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
+    $ps=$pdo->prepare($sql);
+    $ps->bindValue(1,$_POST['username'],PDO::PARAM_LOB);
+    $ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
+    $ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
+    $ps->bindValue(4,$_SESSION['user_id'],PDO::PARAM_STR);
+    $ps->execute();
+    }else{ //ないばあい
+        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+        $sql ="update user set self_introduction=? where user_id = ?";
+        $ps=$pdo->prepare($sql);
+        $ps->bindValue(1,$_POST['jikosyoukai'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_SESSION['user_id'],PDO::PARAM_STR);
+        $ps->execute();
+}
 
 $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
 $ps = $pdo->prepare($sql);
