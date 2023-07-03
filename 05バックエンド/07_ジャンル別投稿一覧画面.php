@@ -83,7 +83,7 @@
                   }
 echo              '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'. $name.'<br><br>'.
                   '<form action="08_投稿詳細画面.php" method="post">'.
-                  '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">'.
+                  '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                     echo $row['post_contents'];
 
