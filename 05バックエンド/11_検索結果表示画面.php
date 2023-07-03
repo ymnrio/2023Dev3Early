@@ -110,7 +110,7 @@ echo   $name.'<br><br>'.
 
 echo                  '</div>'.
     '<div class="row">'.
-      '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
+      '<div class="col-md-8 col-lg-8 start_0_ys"></div>'.
       '<div class="col-md-1 col-lg-1 start_0_ys">';
       $like = "like".$row['post_id'];
 echo                      '<input type="checkbox" id="'.$like.'">'.
@@ -123,14 +123,11 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
           '</svg>　'.$row['fabulous'].'　　　'.
         '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->'.
       '</div>'.
-      '<div class="col-md-2 col-lg-2 start_0_ys">
+      '<div class="col-md-3 col-lg-3 start_0_ys">
         <a href="09_投稿返信画面.php" style="text-decoration: none;">
           <img style="margin-left: 50px;" src="icon/コメント.svg">
         </a>
-        <div class="" style=" position: relative;
-        bottom: 43px;
-        left: 10px;
-      ">
+        <div class="" style=" position: relative;bottom: 43px;left: 100px;">
         　'.$row['comments'].
         '</div>
       </div>
