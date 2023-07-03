@@ -73,11 +73,12 @@
                     $name = null;
                     foreach ($ps1 as $row1) {
                       $name = $row1['user_name'];
+                      $media1 = $row1['media'];
                     }
                     echo  '<div class="p_ys">';
 
                     //アイコン表示
-                    if (!empty($row1['media1']) || isset($row1['media1'])) { //設定している場合
+                    if (!empty($media) || isset($media)) { //設定している場合
                       echo 'aa';
                     } else { //設定してない場合
                       echo '<img class="image_middle" src="img/pink.png">　';
