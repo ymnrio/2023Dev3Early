@@ -1,5 +1,5 @@
 <?php
-  session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -24,6 +24,17 @@
   </style>
 </head>
 
+<?php
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+$sql = "SELECT self_introduction FROM user WHERE user_id = ?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
+$ps->execute();
+foreach ($ps as $row) {
+  $shokai = $row['self_introduction'];
+}
+?>
+
 <body>
   <form action="profile_update.php" method="post">
     <div class="container-fluid">
@@ -42,15 +53,16 @@
 
             </div>
             <div class="col-md-6 usiro_ys">
-              <!--<p style="margin-left:30px;margin-top: 45px;"><?php //echo $_SESSION['user']['name'] ?></p>-->
+              <!--<p style="margin-left:30px;margin-top: 45px;"><?php //echo $_SESSION['user']['name'] 
+                                                                ?></p>-->
             </div>
           </div><br>
-            <p  style="margin-left: 30px;">名前</p>
-            <input type="text" class="form-control" name="username" required
-              value="<?php echo $_SESSION['user']['name']; ?>"style="width:570px; margin: 0 auto; border-color:#FBA8B8;border-width:3px;">
-          
-          <textarea class="sayu_ys form-control alert-light magin40_yamanisi " style="width: 90%;height: 30px;text-align:left;border:none;overflow-wrap: break-word;margin-top: 70px;" 
-          name="introduction" id="txt1" maxlength="200" placeholder="自己紹介"></textarea>
+          <p style="margin-left: 30px;">名前</p>
+          <input type="text" class="form-control" name="username" required value="<?php echo $_SESSION['user']['name']; ?>" style="width:570px; margin: 0 auto; border-color:#FBA8B8;border-width:3px;">
+
+          <textarea class="sayu_ys form-control alert-light magin40_yamanisi " 
+          style="width: 90%;height: 30px;text-align:left;border:none;overflow-wrap: break-word;margin-top: 70px;" 
+          name="introduction" id="txt1" maxlength="200" placeholder="自己紹介"><?php echo $shokai; ?></textarea>
           <hr class="sayu_ys">
           <div style="text-align: right;margin-right: 30px;">
             <p>200文字</p>
