@@ -103,11 +103,11 @@ echo   $name.'<br><br>'.
       if(!empty($row2['media1'])){
         $image_data = $row2['media1'];
 
-$base64_image = base64_encode($image_data);
+      $base64_image = base64_encode($image_data);
 
-echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
-}
-      
+      echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+      }
+
 echo                  '</div>'.
     '<div class="row">'.
       '<div class="col-md-9 col-lg-9 start_0_ys"></div>'.
@@ -127,13 +127,18 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
         <a href="09_投稿返信画面.php" style="text-decoration: none;">
           <img style="margin-left: 50px;" src="icon/コメント.svg">
         </a>
-        　'.$row['comments'].'　
+        <div class="" style=" position: relative;
+        bottom: 43px;
+        left: 10px;
+      ">
+        　'.$row['comments'].
+        '</div>
       </div>
     </div>
   </div>';
   }
 ?>
-                  
+
                   <div class="box">
                     <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                       style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
