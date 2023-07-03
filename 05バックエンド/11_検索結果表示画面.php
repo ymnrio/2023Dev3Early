@@ -129,7 +129,7 @@
         </a>
         <div class="" style=" position: relative;bottom: 43px;left: 100px;">
         　' . $row['comments'] .
-                      '</div>
+         '</div>
       </div>
     </div>
   </div>';

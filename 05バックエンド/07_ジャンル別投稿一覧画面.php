@@ -126,7 +126,9 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </button>
                     </form>
-                      　'.$row['comments'].'　
+                    <div style=" position: relative;bottom: 43px;left: 100px;">
+                    　' . $row['comments'] .
+                    '</div>
                     </div>
                   </div>
                 </div>';
@@ -182,7 +184,9 @@ echo                    '<input type="checkbox" id="'.$like.'">'.
                     <a href="09_投稿返信画面.php" style="text-decoration: none;">
                       <img style="margin-left: 50px;" src="icon/コメント.svg">
                     </a>
-                    　'.$row['comments'].'　
+                    <div style=" position: relative;bottom: 43px;left: 100px;">
+                    　' . $row['comments'] .
+                    '</div>
                   </div>
                 </div>
               </div>';

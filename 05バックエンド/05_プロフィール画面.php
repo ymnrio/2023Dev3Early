@@ -199,7 +199,9 @@
                       <a href="09_投稿返信画面.php" style="text-decoration: none;">
                         <img style="margin-left: 50px;" src="icon/コメント.svg">
                       </a>
-                      　' . $row['comments'] . '　
+                      <div class="" style=" position: relative;bottom: 43px;left: 100px;">
+                        　' . $row['comments'] .
+                      '</div>
                     </div>
                   </div>
                 </div>';
