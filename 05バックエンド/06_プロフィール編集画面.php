@@ -34,7 +34,14 @@ foreach ($ps as $row) {
   $shokai = $row['self_introduction'];
 }
 ?>
+<?php
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+$sql = "SELECT genre_id FROM favorite_genre WHERE user_id = ?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
+$ps->execute();
 
+?>
 <body>
   <form action="profile_update.php" method="post">
     <div class="container-fluid">
@@ -71,9 +78,8 @@ foreach ($ps as $row) {
           <div class="text-line " style="margin-bottom: 20px;">
             <p>好きなジャンル</p>
           </div>
-
           <div class="example3">
-            <input type="checkbox" id="1" name="example2[]" value="1"><label for="1">すべて</label>
+            <input type="checkbox" id="1" name="example2[]" value="1" <?php if($_POST['hoge'] == "好き"){echo 'checked="checked"';}?>><label for="1">すべて</label>
             <input type="checkbox" id="2" name="example2[]" value="2"><label for="2">JPOP</label>
             <input type="checkbox" id="3" name="example2[]" value="3"><label for="3">洋楽</label>
             <input type="checkbox" id="4" name="example2[]" value="4"><label for="4">アニソン</label><br>
