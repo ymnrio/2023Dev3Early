@@ -73,17 +73,17 @@
                     $name = null;
                     foreach ($ps1 as $row1) {
                       $name = $row1['user_name'];
-                      $media1 = $row1['media'];
+                      $aikon = $row1['media'];
                     }
                     echo  '<div class="p_ys">';
 
                     //アイコン表示
-                    if (!empty($media1) || isset($media1)) { //設定している場合
-                      echo '<img class="image_middle" src="';$image_data = $row2['media1'];
+                    if (!empty($aikon) || isset($aikon)) { //設定している場合
 
-                      $base64_image = base64_encode($image_data);
+                      $base64_image = base64_encode($aikon);
 
-                      echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';'">　';
+                      echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
                     } else { //設定してない場合
                       echo '<img class="image_middle" src="img/pink.png">　';
                     }
