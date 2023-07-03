@@ -87,7 +87,6 @@
                     } else { //設定してない場合
                       echo '<img class="image_middle" src="img/pink.png">　';
                     }
-                    
 
                     echo   $name . '<br><br>' .
                     '<form action="08_投稿詳細画面.php" method="post">'.
