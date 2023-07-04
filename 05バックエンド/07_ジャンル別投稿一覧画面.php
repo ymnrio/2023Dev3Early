@@ -163,6 +163,20 @@ echo            '<div class="p_ys"><img class="image_middle" src="img/pink.png">
                 '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                 '<div style="font-size: 20px;">';
                  echo $row['post_contents']; 
+                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+      $sql2 = "select * from post where post_id = ?";
+      $ps2 = $pdo->prepare($sql2);
+      $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+      $ps2->execute();
+      $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+
+      if(!empty($row2['media1'])){
+        $image_data = $row2['media1'];
+
+$base64_image = base64_encode($image_data);
+
+echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+}
 echo            '</div>'.
                 '</button>'.
                 '<div class="row">'.
