@@ -80,7 +80,7 @@ foreach($ps as $row){
     $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
 }
-}
+
 header('Location:05_プロフィール画面.php');
 
 ?>
