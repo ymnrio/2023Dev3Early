@@ -14,7 +14,7 @@ $ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
 $ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
 */
-if (!empty($_FILES['file']['name'])) {
+if (!empty($_FILES['file']['name']) || isset($_FILES['file']['name'])) {
     $file = $_FILES['file'];
     
     $filename = $file['name'];
@@ -24,10 +24,10 @@ if (!empty($_FILES['file']['name'])) {
     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
     $sql ="UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
     $ps=$pdo->prepare($sql);
-    $ps->bindValue(1,$_POST['username'],PDO::PARAM_LOB);
-    $ps->bindValue(2,$_POST['jikosyoukai'],PDO::PARAM_STR);
-    $ps->bindValue(3,$_SESSION['user_id'],PDO::PARAM_STR);
-    $ps->bindValue(4,$_SESSION['user_id'],PDO::PARAM_STR);
+    $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
+    $ps->bindValue(2,$filedata,PDO::PARAM_LOB);
+    $ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
+    $ps->bindValue(4,$_SESSION['user_id'],PDO::PARAM_INT);
     $ps->execute();
     }else{ //ないばあい
         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
