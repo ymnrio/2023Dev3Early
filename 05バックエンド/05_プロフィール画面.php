@@ -51,13 +51,33 @@
         </div>
       </div>
 
-
       <div class="col-md-9 col-lg-9">
 
         <div class="row yoko_ys" style="margin-top:20px;">
 
           <div class="col-md-2 col-lg-2"><br>
-            <img class="image_middle" src="img/pink.png">
+            <?php 
+            $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+            $sql1 = "select * from user where user_id = ?";
+            $ps1 = $pdo->prepare($sql1);
+            $ps1->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+            $ps1->execute();
+            $name=null;
+            foreach($ps1 as $row1){
+                $name = $row1['user_name'];
+                $aikon = $row1['media'];
+              }
+              //アイコン表示
+              if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                $base64_image = base64_encode($aikon);
+
+                echo  '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+              } else { //設定してない場合
+                echo '<img class="image_middle" src="img/pink.png">　';
+              };
+            ?>
           </div>
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
@@ -66,39 +86,41 @@
 
           </div>
 
-          <div class="col-md-2 col-lg-2">
-            <br><button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='06_プロフィール編集画面.php'" value="遷移" style="background-color:#FBA8B8;">編集</button><br>
-            <br><button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='12_アカウント削除画面.php'" value="遷移" style="background-color:#FBA8B8;">アカウント削除</button>
+          <div class="col-md-2 col-lg-2"><br>
+            <button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='06_プロフィール編集画面.php'" value="遷移" style="background-color:#FBA8B8;">編集</button>
+            <button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='12_アカウント削除画面.php'" value="遷移" style="background-color:#FBA8B8; padding:7px 0px 7px 0px; margin-top:15px;">アカウント削除</button>
           </div>
         </div>
-
-
-
 
         <div class="row yoko_ys">
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
               <h6><?php echo $_SESSION['user']['introduction']; ?></h6><br>
-
-              <p>好きなジャンル</p>
+              
               <?php
               $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-              $sql = "SELECT*  FROM favorite_genre WHERE user_id=?";
+              $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
               $ps->execute();
 
-              foreach ($ps as $row) {
-                $name = $row['genre_name'];
-                echo      '<span class="border border-#FBA8B8 badge text-bg-white color_yamani">' . $name . '</span>  ';
+              $sql1 = "SELECT count(*)  FROM favorite_genre WHERE user_id=?";
+              $ps1 = $pdo->prepare($sql1);
+              $ps1->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
+              $ps1->execute();
+
+              foreach($ps1 as $row1){
+                $count = $row1['count(*)'];
               }
 
-              /*
-              <span class="border border-#FBA8B8 badge text-bg-white color_yamani">アニソン</span>
-              <span class="border border-#FBA8B8 badge text-bg-white color_yamani">JPOP</span>
-              <span class="border border-#FBA8B8 badge text-bg-white color_yamani">ギター</span>
-              */
+            if(!empty($count)){
+              echo '<p style="color:#FBA8B8; border-bottom:1px solid #FBA8B8; width:115px">好きなジャンル</p>';
+              foreach ($ps as $row) {
+                $name = $row['genre_name'];
+                echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani">' . $name . '</span>  ';
+              }
+            }
               ?>
             </div>
             <hr>
@@ -157,7 +179,19 @@
                       foreach ($ps1 as $row1) {
                         $name = $row1['user_name'];
                       }
-                      echo                '<div class="p_ys"><img class="image_middle" src="img/pink.png">　' . $name . '<br><br>' .
+                      echo                '<div class="p_ys">';
+                      //アイコン表示
+                  if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                    $base64_image = base64_encode($aikon);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+
+                  echo   $name . '<br><br>' .
                       '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';

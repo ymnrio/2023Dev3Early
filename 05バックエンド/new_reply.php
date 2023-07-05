@@ -32,5 +32,5 @@ $_SESSION['subject_id']
 $sql3 = "UPDATE  "
 
 
-header('01_トップ画面.php');//modorimasu
+//header('01_トップ画面.php');//遷移先？
 ?>

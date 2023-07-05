@@ -3,20 +3,10 @@
 session_start();
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-/*
-$fileName = $_FILES['iconimg']['name'];
-if(!empty($_POST['update'])){
-$sql = "UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
-$ps->bindValue(2,$fileName,PDO::PARAM_STR);
-$ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
-$ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-*/
-if (!empty($_FILES['file']['name']) || isset($_FILES['file']['name'])) {
+
+if (!empty($_FILES['file']['name'])) {
     $file = $_FILES['file'];
-    
+
     $filename = $file['name'];
     $filetype = $file['type'];
     $filedata = file_get_contents($file['tmp_name']);
@@ -27,23 +17,25 @@ if (!empty($_FILES['file']['name']) || isset($_FILES['file']['name'])) {
     $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
     $ps->bindValue(2,$filedata,PDO::PARAM_LOB);
     $ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
-    $ps->bindValue(4,$_SESSION['user_id'],PDO::PARAM_INT);
+    $ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
     $ps->execute();
     }else{ //ないばあい
         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-        $sql ="update user set self_introduction=? where user_id = ?";
+        $sql ="update user set user_name=? ,self_introduction=? where user_id = ?";
         $ps=$pdo->prepare($sql);
-        $ps->bindValue(1,$_POST['jikosyoukai'],PDO::PARAM_STR);
-        $ps->bindValue(2,$_SESSION['user_id'],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_POST['introduction'],PDO::PARAM_STR);
+        $ps->bindValue(3,$_SESSION['user']['id'],PDO::PARAM_STR);
         $ps->execute();
-}
+
+    }
 
 $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
 foreach($ps as $row){
-    if($row['count(*)'] != 0){
+    if($row['count(*)'] != 0){ //0以外なら好きなジャンルを消す
         $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
@@ -51,8 +43,8 @@ foreach($ps as $row){
     }
 
     $genre_name;
-    if(isset($_POST['example2'])){
-        foreach($_POST['example2'] as $row){
+    if(isset($_POST['example2'])){  //ジャンル選択したか確認
+        foreach($_POST['example2'] as $row){    //好きなジャンルを再設定
             $sql="SELECT genre_name FROM genre WHERE genre_id = ?";
             $ps=$pdo->prepare($sql);
             $ps->bindValue(1,$row,PDO::PARAM_INT);
@@ -72,7 +64,7 @@ foreach($ps as $row){
     }
 }
 
-$sql ="SELECT * FROM user WHERE user_id=?";
+$sql ="SELECT * FROM user WHERE user_id=?"; //せションの再設定
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
@@ -82,5 +74,4 @@ foreach($ps as $row){
 }
 
 header('Location:05_プロフィール画面.php');
-
 ?>
