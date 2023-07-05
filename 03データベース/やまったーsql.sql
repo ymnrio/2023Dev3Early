@@ -394,4 +394,6 @@ ALTER TABLE `user`
 
   ALTER TABLE favorite_genre DROP INDEX a;
 
+ALTER TABLE reply DROP COLUMN post_id;
+
 COMMIT;
