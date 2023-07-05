@@ -66,10 +66,10 @@
 
           </div>
 
-          <div class="col-md-2 col-lg-2"><br>
-            <br><button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='06_プロフィール編集画面.php'" value="遷移" style="background-color:#FBA8B8;">編集</button>
+          <div class="col-md-2 col-lg-2">
+            <br><button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='06_プロフィール編集画面.php'" value="遷移" style="background-color:#FBA8B8;">編集</button><br>
+            <br><button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='12_アカウント削除画面.php'" value="遷移" style="background-color:#FBA8B8;">アカウント削除</button>
           </div>
-
         </div>
 
 

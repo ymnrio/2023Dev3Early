@@ -79,10 +79,18 @@ $ps->execute();
             <p>好きなジャンル</p>
           </div>
          
-
-          <div class="example3">
-            <input type="checkbox" id="1" name="example2[]" value="1"><label for="1">すべて</label>
-            <input type="checkbox" id="2" name="example2[]" value="2"><label for="2">JPOP</label>
+<?php
+            $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
+            'root','root');
+            $sql="select genre_id from favorite_genre where user_id = ?";
+            $ps=$pdo->prepare($sql);
+            $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
+            $ps->execute();
+            $searchArray = $ps->fetchAll();
+  
+echo '        <div class="example3">
+            <input type="checkbox" id="1" name="example2[]" value="1" ><label for="1">すべて</label>'.
+            '<input type="checkbox" id="2" name="example2[]" value="2"><label for="2">JPOP</label>
             <input type="checkbox" id="3" name="example2[]" value="3"><label for="3">洋楽</label>
             <input type="checkbox" id="4" name="example2[]" value="4"><label for="4">アニソン</label><br>
           </div>
@@ -96,9 +104,9 @@ $ps->execute();
             <input type="checkbox" id="9" name="example2[]" value="9"><label for="9">楽器</label>
             <input type="checkbox" id="10" name="example2[]" value="10"><label for="10">その他</label>
 
-          </div>
+          </div>';
 
-
+?>
           <div class="btn-group" data-toggle="buttons">
 
           </div>
