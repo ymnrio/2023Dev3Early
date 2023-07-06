@@ -30,17 +30,17 @@ if (!empty($_FILES['file']['name'])) {
 
     }
 
-$sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-foreach($ps as $row){
-    if($row['count(*)'] != 0){ //0以外なら好きなジャンルを消す
-        $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
-        $ps = $pdo->prepare($sql);
-        $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
-        $ps->execute();
-    }
+    $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        if($row['count(*)'] != 0){ //0以外なら好きなジャンルを消す
+            $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
+            $ps->execute();
+        }
 
     $genre_name;
     if(isset($_POST['example2'])){  //ジャンル選択したか確認
@@ -64,14 +64,22 @@ foreach($ps as $row){
     }
 }
 
-$sql ="SELECT * FROM user WHERE user_id=?"; //せションの再設定
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-foreach($ps as $row){
-    $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
+    $sql ="SELECT * FROM user WHERE user_id=?"; //せションの再設定
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
-}
+    }
+
+    $sql = "SELECT genre_id FROM favorite_genre WHERE user_id";//好きなジャンルを光らせる
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        
+    }
 
 header('Location:05_プロフィール画面.php');
 ?>
