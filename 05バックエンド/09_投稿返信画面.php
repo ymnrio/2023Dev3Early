@@ -51,7 +51,7 @@ session_start();
                         </div>
 
                         <img class="image_middle magin20_yamanisi" src="img/pink.png">
-                        <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name']; ?></h5>
+                        <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name'] . $_POST['reply']; ?></h5>
 
 
                         <textarea name="replyctt" class="form-control alert-light toukou_bokku_ys" id="txt1" maxlength="300" required placeholder="｜返信内容"></textarea><br>
@@ -59,7 +59,7 @@ session_start();
 
 
                         <label>
-                            <input type="file" onchange="preview(this)" multiple>メディアを選択
+                            <input type="file" onchange="preview(this)" multiple accept="image/*,video/*" name="file" value="up">メディアを選択
                             <div class="preview-area"></div>
 
                             <script>
