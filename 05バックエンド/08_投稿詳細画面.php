@@ -58,8 +58,9 @@ session_start();
           <div class="col-md-12 col-lg-12" style="height: 100vh;">
 
             <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="location.href='07_ジャンル別投稿一覧画面.php'" value="遷移">戻る</button>
-
-            <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" onclick="location.href='09_投稿返信画面.php'" value="投稿">返信する</button>
+            <form action="new_reply.php" method="post">
+              <button type="hidden" name="reply" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" value="<?php echo $_POST['detail']; ?>">返信する</button>
+            </form>
 
             <div class="waku_ys">
 
