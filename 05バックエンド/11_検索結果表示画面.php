@@ -12,7 +12,13 @@
   <!--<link href="css/nakai.css" rel="stylesheet" type="text/css">-->
   <link href="css/yamane.css" rel="stylesheet" type="text/css">
   <link href="css/yamanishi.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
+  <style>
+.material-symbols-outlined {
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;font-size: 40px;
+}
+</style>
 
 <body>
   <div class="container-fluid">
@@ -74,6 +80,7 @@
                     foreach ($ps1 as $row1) {
                       $name = $row1['user_name'];
                       $aikon = $row1['media'];
+                      $user_id = $row1['user_id'];
                     }
                     echo  '<div class="p_ys">';
 
@@ -88,8 +95,14 @@
                       echo '<img class="image_middle" src="img/pink.png">　';
                     }
 
-                    echo   $name . '<br><br>' .
-                    '<form action="08_投稿詳細画面.php" method="post">'.
+                    echo   $name ;
+                  //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                    '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                      <span class="material-symbols-outlined">person</span></a>
+                    </button>
+                  </form>';
+echo                '<form action="08_投稿詳細画面.php" method="post">'.
                     '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                     '<div style="font-size: 20px;">';
                     echo $row['post_contents'];
@@ -114,7 +127,7 @@
                     echo  '</div>' .
                       '</buton>'.
                       '<div class="row">' .
-                      '<div class="col-md-8 col-lg-8 start_0_ys"></div>' .
+                      '<div class="col-md-9 col-lg-9 start_0_ys"></div>' .
                       '<div class="col-md-1 col-lg-1 start_0_ys">';
                     $like = "like" . $row['post_id'];
                     echo '<input type="checkbox" id="' . $like . '">' .
@@ -128,7 +141,7 @@
                       '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
                       '</div>' .
                       '</form>'.
-                      '<div class="col-md-3 col-lg-3 start_0_ys">
+                      '<div class="col-md-2 col-lg-2 start_0_ys">
         <a href="09_投稿返信画面.php" style="text-decoration: none;">
           <img style="margin-left: 50px;" src="icon/コメント.svg">
         </a>

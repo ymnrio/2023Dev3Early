@@ -58,15 +58,23 @@
 
           <div class="col-md-2 col-lg-2"><br>
             <?php 
+            echo $_POST['user_id'];
             $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
-            $ps1->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+            $ps1->bindValue(1,$_POST['user_id'],PDO::PARAM_INT);
             $ps1->execute();
+
+            $user_id = null;
             $name=null;
+            $aikon = null;
+            $introduction = null;
+
             foreach($ps1 as $row1){
                 $name = $row1['user_name'];
                 $aikon = $row1['media'];
+                $user_id = $row1['user_id'];
+                $introduction = $row1['self_introduction'];
               }
               //アイコン表示
               if (!empty($aikon) || isset($aikon)) { //設定している場合
@@ -82,13 +90,12 @@
           </div>
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
-            <p><?php echo $_SESSION['user']['name']; ?>
-            <p>ID:<?php echo $_SESSION['user']['id']; ?></p>
+            <p><?php echo $name; ?>
+            <p>ID:<?php echo $user_id; ?></p>
 
           </div>
 
-          <div class="col-md-2 col-lg-2"><br>
-            <button type="button" class="btn container-fluid color_white_yamani" onclick="location.href='06_プロフィール編集画面.php'" value="遷移" style="background-color:#FBA8B8;">編集</button>
+          <div class="col-md-2 col-lg-2">
           </div>
         </div>
 
@@ -96,18 +103,18 @@
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
-              <h6><?php echo $_SESSION['user']['introduction']; ?></h6><br>
+              <h6><?php echo $introduction; ?></h6><br>
               
               <?php
               $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
               $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
-              $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
+              $ps->bindValue(1, $user_id, PDO::PARAM_STR);
               $ps->execute();
 
               $sql1 = "SELECT count(*)  FROM favorite_genre WHERE user_id=?";
               $ps1 = $pdo->prepare($sql1);
-              $ps1->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
+              $ps1->bindValue(1, $user_id, PDO::PARAM_STR);
               $ps1->execute();
 
               foreach($ps1 as $row1){
@@ -168,7 +175,7 @@
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $sql = "select * from post where user_id = ?";
                     $ps = $pdo->prepare($sql);
-                    $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
+                    $ps->bindValue(1, $user_id, PDO::PARAM_INT);
                     $ps->execute();
                     foreach ($ps as $row) {
                       $sql1 = "select * from user where user_id = ?";

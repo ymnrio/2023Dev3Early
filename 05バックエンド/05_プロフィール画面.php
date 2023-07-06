@@ -18,9 +18,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
   <link href=”https://use.fontawesome.com/releases/v6.0.0/css/all.css” rel=”stylesheet”>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-<style>
-
+  <style>
+.material-symbols-outlined {
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;font-size: 40px;
+}
 </style>
 
 <body>
@@ -177,8 +180,10 @@
                       $ps1->bindValue(1, $row['user_id'], PDO::PARAM_INT);
                       $ps1->execute();
                       $name = null;
+                      $user_id = null;
                       foreach ($ps1 as $row1) {
                         $name = $row1['user_name'];
+                        $user_id = $row1['user_id'];
                       }
                       echo                '<div class="p_ys">';
                       //アイコン表示
@@ -192,8 +197,17 @@
                     echo '<img class="image_middle" src="img/pink.png">　';
                   }
 
-                  echo   $name . '<br><br>' .
-                      '<form action="08_投稿詳細画面.php" method="post">'.
+                  echo   $name ;
+
+                  
+                  //ゴミ箱
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                    '<button name="user_id" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 770px;">
+                      <span class="material-symbols-outlined">delete</span></a>
+                    </button>
+                  </form>';
+
+echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
                       echo $row['post_contents'];

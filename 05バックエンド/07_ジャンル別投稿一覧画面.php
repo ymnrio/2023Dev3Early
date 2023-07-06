@@ -14,8 +14,13 @@
   <!--<link href="css/nakai.css" rel="stylesheet" type="text/css">-->
   <link href="css/yamane.css" rel="stylesheet" type="text/css">
   <link href="css/yamanishi.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
-
+  <style>
+.material-symbols-outlined {
+  font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 48;font-size: 40px;
+}
+</style>
 <body>
   <div class="container-fluid">
     <div class="row magin-10_ys">
@@ -81,6 +86,7 @@
                   foreach($ps1 as $row1){
                     $name = $row1['user_name'];
                     $aikon = $row1['media'];
+                    $user_id = $row1['user_id'];
                   }
                   echo  '<div class="p_ys">';
 
@@ -95,27 +101,33 @@
                     echo '<img class="image_middle" src="img/pink.png">　';
                   }
 
-                  echo   $name . '<br><br>' .
-                  '<form action="08_投稿詳細画面.php" method="post">'.
+                  echo   $name ;
+                  //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                    '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                      <span class="material-symbols-outlined">person</span></a>
+                    </button>
+                  </form>';
+echo             '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                     echo $row['post_contents'];
 
                     //画像があるか検索
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-      $sql2 = "select * from post where post_id = ?";
-      $ps2 = $pdo->prepare($sql2);
-      $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
-      $ps2->execute();
-      $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+                    $sql2 = "select * from post where post_id = ?";
+                    $ps2 = $pdo->prepare($sql2);
+                    $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+                    $ps2->execute();
+                    $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
-      if(!empty($row2['media1'])){
-        $image_data = $row2['media1'];
+                    if(!empty($row2['media1'])){
+                      $image_data = $row2['media1'];
 
-$base64_image = base64_encode($image_data);
+                      $base64_image = base64_encode($image_data);
 
-echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
-}
+                      echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                    }
                     
 echo                '</div>'.
                     '</button>'.
@@ -172,6 +184,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                 foreach($ps1 as $row1){
                     $name = $row1['user_name'];
                     $aikon = $row1['media'];
+                    $user_id = $row1['user_id'];
                   }
                   echo  '<div class="p_ys">';
 
@@ -186,25 +199,33 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                     echo '<img class="image_middle" src="img/pink.png">　';
                   }
 
-                  echo   $name . '<br><br>' .
-                '<form action="08_投稿詳細画面.php" method="post">'.
-                '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
-                '<div style="font-size: 20px;">';
+                  echo   $name ;
+                  //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                    <span class="material-symbols-outlined">person</span></a>
+                </button>
+                </form>';
+echo              '<form action="08_投稿詳細画面.php" method="post">'.
+                  '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
+                  '<div style="font-size: 20px;">';
+                    echo $row['post_contents'];
+
                  echo $row['post_contents']; 
                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-      $sql2 = "select * from post where post_id = ?";
-      $ps2 = $pdo->prepare($sql2);
-      $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
-      $ps2->execute();
-      $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+                  $sql2 = "select * from post where post_id = ?";
+                  $ps2 = $pdo->prepare($sql2);
+                  $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+                  $ps2->execute();
+                  $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
-      if(!empty($row2['media1'])){
-        $image_data = $row2['media1'];
+                if(!empty($row2['media1'])){
+                  $image_data = $row2['media1'];
 
-$base64_image = base64_encode($image_data);
+                  $base64_image = base64_encode($image_data);
 
-echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
-}
+                  echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                }
 echo            '</div>'.
                 '</button>'.
                 '<div class="row">'.
