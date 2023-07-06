@@ -108,7 +108,7 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
                       <span class="material-symbols-outlined">face</span>
                     </button>
                   </form>';
-                  
+
 echo             '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
@@ -194,7 +194,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
 
                     $base64_image = base64_encode($aikon);
 
-                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+                    echo '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
 
                   } else { //設定してない場合
                     echo '<img class="image_middle" src="img/pink.png">　';

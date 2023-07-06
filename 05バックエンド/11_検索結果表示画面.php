@@ -89,7 +89,7 @@
 
                       $base64_image = base64_encode($aikon);
 
-                      echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+                      echo  '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
 
                     } else { //設定してない場合
                       echo '<img class="image_middle" src="img/pink.png">　';
