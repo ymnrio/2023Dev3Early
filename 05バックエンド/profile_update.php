@@ -3,18 +3,8 @@
 session_start();
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-/*
-$fileName = $_FILES['iconimg']['name'];
-if(!empty($_POST['update'])){
-$sql = "UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
-$ps->bindValue(2,$fileName,PDO::PARAM_STR);
-$ps->bindValue(3,$_POST['introduction'],PDO::PARAM_STR);
-$ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-*/
-if (!empty($_FILES['file']['name']) || isset($_FILES['file']['name'])) {
+
+if (!empty($_FILES['file']['name'])) {
     $file = $_FILES['file'];
 
     $filename = $file['name'];
@@ -40,17 +30,17 @@ if (!empty($_FILES['file']['name']) || isset($_FILES['file']['name'])) {
 
     }
 
-$sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-foreach($ps as $row){
-    if($row['count(*)'] != 0){ //0以外なら好きなジャンルを消す
-        $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
-        $ps = $pdo->prepare($sql);
-        $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
-        $ps->execute();
-    }
+    $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        if($row['count(*)'] != 0){ //0以外なら好きなジャンルを消す
+            $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
+            $ps = $pdo->prepare($sql);
+            $ps->bindValue(1,$_SESSION['user']['id'], PDO::PARAM_INT);
+            $ps->execute();
+        }
 
     $genre_name;
     if(isset($_POST['example2'])){  //ジャンル選択したか確認
@@ -74,14 +64,22 @@ foreach($ps as $row){
     }
 }
 
-$sql ="SELECT * FROM user WHERE user_id=?"; //せションの再設定
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-$ps->execute();
-foreach($ps as $row){
-    $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
+    $sql ="SELECT * FROM user WHERE user_id=?"; //せションの再設定
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
-}
+    }
+
+    $sql = "SELECT genre_id FROM favorite_genre WHERE user_id";//好きなジャンルを光らせる
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        
+    }
 
 header('Location:05_プロフィール画面.php');
 ?>
