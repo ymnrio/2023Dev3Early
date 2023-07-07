@@ -86,7 +86,7 @@
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
             <p><?php echo $_SESSION['user']['name']; ?>
-            <p>ID:<?php echo $_SESSION['user']['id']; ?></p>
+            <p>ID:<?php echo $_SESSION['user']['id']; ?></p><?php echo $_SESSION['trash'] ?>
 
           </div>
 
@@ -349,6 +349,12 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
           <div class="col-md-12 start_0_ys"></div>
         </div>
       </div>
+            
+      <?php 
+          if(!empty($_SESSION['trash'])){
+            
+          }
+      ?>
     </div>
 
 
