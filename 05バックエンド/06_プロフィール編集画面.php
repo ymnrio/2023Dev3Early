@@ -85,6 +85,7 @@ $ps->execute();
             $sql="select genre_id from favorite_genre where user_id = ?";
             $ps=$pdo->prepare($sql);
             $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
+            //$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
             $ps->execute();
             $searchArray = $ps->fetchAll();
   

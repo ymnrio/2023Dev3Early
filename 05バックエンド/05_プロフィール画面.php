@@ -201,8 +201,8 @@
 
                   
                   //ゴミ箱
-echo             '<form action="13_他人プロフィール.php" method="post">'.
-                    '<button name="user_id" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 770px;">
+echo             '<form action="trash.php" method="post">'.
+                    '<button name="trash" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 770px;">
                       <span class="material-symbols-outlined">delete</span></a>
                     </button>
                   </form>';
@@ -338,6 +338,13 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
             <div id="page_top"><a href="#"></a></div>
             <!--wrapper-->
 
+
+              <!--削除画面-->
+              <?php 
+              if(!empty($_POST['trash']) || isset($_POST['trash'])){
+                echo "aaa";
+              }
+              ?>
           </div>
           <div class="col-md-12 start_0_ys"></div>
         </div>
