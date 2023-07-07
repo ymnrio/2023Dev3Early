@@ -78,7 +78,13 @@ if (!empty($_FILES['file']['name'])) {
     $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
     $ps->execute();
     foreach($ps as $row){
-        
+        $favoriteArr = $row['genre_id'];
+    }
+
+    for($i=1; $i<11; $i++){
+        if(in_array($row,$favoriteArr)){
+            echo 
+        }
     }
 
 header('Location:05_プロフィール画面.php');
