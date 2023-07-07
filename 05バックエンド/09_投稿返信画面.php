@@ -43,7 +43,7 @@ session_start();
 
                     <button type="button" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;" onclick="history.back()">キャンセル</button>
 
-                    <form method="POST" action="new_reply.php">
+                    <form method="POST" action="new_reply.php" enctype="multipart/form-data">
 
                         <div class="touroku_ys">
                             <button type="hidden" name="newreply" value="<?php echo $_POST['reply']; ?>"
