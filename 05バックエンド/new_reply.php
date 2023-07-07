@@ -32,7 +32,7 @@ if (!empty($_FILES['file']['name'])) {
                 value(?,?,?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$reply_id,PDO::PARAM_STR);//返信ID
-        $ps->bindValue(2,$_POST['reply'],PDO::PARAM_STR);//返信元ID
+        $ps->bindValue(2,$_POST['newreply'],PDO::PARAM_STR);//返信元ID
         $ps->bindValue(3,$_SESSION['user']['id'],PDO::PARAM_STR);//ユーザーID
         $ps->bindValue(4,$_POST['replyctt'],PDO::PARAM_STR);//返信内容
         $ps->bindValue(5,$date,PDO::PARAM_STR);//日時
@@ -42,11 +42,11 @@ if (!empty($_FILES['file']['name'])) {
         $ps->execute();
         }else{ //ないばあい
         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-        $sql ="INSERT into post(reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments)
+        $sql ="INSERT into reply(reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments)
                 value(?,?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$reply_id,PDO::PARAM_STR);//返信ID
-        $ps->bindValue(2,$_POST['reply'],PDO::PARAM_STR);//返信元ID
+        $ps->bindValue(2,$_POST['newreply'],PDO::PARAM_STR);//返信元ID
         $ps->bindValue(3,$_SESSION['user']['id'],PDO::PARAM_STR);//ユーザーID
         $ps->bindValue(4,$_POST['replyctt'],PDO::PARAM_STR);//返信内容
         $ps->bindValue(5,$date,PDO::PARAM_STR);//日時
@@ -56,11 +56,11 @@ if (!empty($_FILES['file']['name'])) {
 }
 
 //返信した投稿または返信投稿のコメント数を更新
-$a = substr($_POST['reply'],0,2);
+$a = substr($_POST['newreply'],0,2);
 if($a == "00"){
         $sql = "SELECT comments FROM reply WHERE reply_id = ?";
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1,$_POST['reply'],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['newreply'],PDO::PARAM_STR);
         $ps->execute();
         foreach($ps as $row){
                 $newcomments = $row['comments'] + 1;
@@ -69,13 +69,13 @@ if($a == "00"){
         $sql = "UPDATE reply SET comments = ? WHERE reply_id = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$newcomments,PDO::PARAM_INT);
-        $ps->bindValue(2,$_POST['reply'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_POST['newreply'],PDO::PARAM_STR);
         $ps->execute();
 
 }else{
         $sql = "SELECT comments FROM post WHERE post_id = ?";
         $ps = $pdo->prepare($sql);
-        $ps->bindValue(1,$_POST['reply'],PDO::PARAM_STR);
+        $ps->bindValue(1,$_POST['newreply'],PDO::PARAM_STR);
         $ps->execute();
         foreach($ps as $row){
                 $newcomments = $row['comments'] + 1;
@@ -84,7 +84,7 @@ if($a == "00"){
         $sql = "UPDATE post SET comments = ? WHERE post_id = ?";
         $ps = $pdo->prepare($sql);
         $ps->bindValue(1,$newcomments,PDO::PARAM_INT);
-        $ps->bindValue(2,$_POST['reply'],PDO::PARAM_STR);
+        $ps->bindValue(2,$_POST['newreply'],PDO::PARAM_STR);
         $ps->execute();
 }
 
