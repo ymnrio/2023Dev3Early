@@ -58,7 +58,6 @@
 
           <div class="col-md-2 col-lg-2"><br>
             <?php 
-            echo $_POST['user_id'];
             $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
