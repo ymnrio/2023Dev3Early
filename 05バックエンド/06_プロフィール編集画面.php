@@ -51,7 +51,28 @@ $ps->execute();
           <div class="row">
             <div class="col-md-5"></div>
             <div class="col-md-1">
-              <img class="image_middle" src="img/pink.png" style="margin-top:25px; ">
+              <!--<img class="image_middle" src="img/pink.png" style="margin-top:25px; ">-->
+              <?php
+              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+              $sql = "SELECT media FROM user WHERE user_id = ?";
+              $ps = $pdo->prepare($sql);
+              $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
+              $ps->execute();
+              $aikon = null;
+              foreach($ps as $row){
+                $aikon = $row['media'];
+              }
+              if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                $base64_image = base64_encode($aikon);
+
+                echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+              } else { //設定してない場合
+
+                echo '<img class="image_middle" src="img/pink.png">　';
+              }
+              ?>
 
               <label class="btn container-fluid color_white_yamani aikn_ys start_0_ys border border-dark">
                 <input type="file" name="file" accept="image/*">
@@ -92,7 +113,7 @@ $ps->execute();
             foreach($ps as $row){
               $genre[] = $row['genre_id'];
             }
-  
+          
 echo '        <div class="example3">';
             if(in_array(1,$genre)){
 echo          '<input type="checkbox" id="1" name="example2[]" checked="checked" value="1" ><label for="1">すべて</label>';
@@ -149,7 +170,6 @@ echo          '<input type="checkbox" id="10" name="example2[]" checked="checked
 echo           '<input type="checkbox" id="10" name="example2[]" value="10"><label for="10">その他</label>';
             };
 echo          '</div>';
-
 ?>
           <div class="btn-group" data-toggle="buttons">
 

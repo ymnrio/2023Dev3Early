@@ -201,7 +201,7 @@ echo      '<form action="drop.php" method="post">
                         $name = $row1['user_name'];
                         $user_id = $row1['user_id'];
                       }
-                      echo                '<div class="p_ys">';
+                      echo'<div class="p_ys">';
                       //アイコン表示
                   if (!empty($aikon) || isset($aikon)) { //設定している場合
 
@@ -210,7 +210,9 @@ echo      '<form action="drop.php" method="post">
                     echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
 
                   } else { //設定してない場合
+
                     echo '<img class="image_middle" src="img/pink.png">　';
+                    
                   }
 
                   echo   $name ;
