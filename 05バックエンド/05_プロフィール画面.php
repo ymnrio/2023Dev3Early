@@ -86,7 +86,7 @@
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
             <p><?php echo $_SESSION['user']['name']; ?>
-            <p>ID:<?php echo $_SESSION['user']['id']; ?></p><?php echo $_SESSION['trash']?>
+            <p>ID:<?php echo $_SESSION['user']['id']; ?></p>
 <?php
          if(!empty($_SESSION['trash'])){ 
 echo      '<form action="drop.php" method="post">
