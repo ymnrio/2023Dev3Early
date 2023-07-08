@@ -84,28 +84,71 @@ $ps->execute();
             'root','root');
             $sql="select genre_id from favorite_genre where user_id = ?";
             $ps=$pdo->prepare($sql);
-            $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
-            //$ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+            //$ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
+            $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
             $ps->execute();
-            $searchArray = $ps->fetchAll();
+            //$searchArray = $ps->fetchAll();
+            $genre = array();
+            foreach($ps as $row){
+              $genre[] = $row['genre_id'];
+            }
   
-echo '        <div class="example3">
-            <input type="checkbox" id="1" name="example2[]" value="1" ><label for="1">すべて</label>'.
-            '<input type="checkbox" id="2" name="example2[]" value="2"><label for="2">JPOP</label>
-            <input type="checkbox" id="3" name="example2[]" value="3"><label for="3">洋楽</label>
-            <input type="checkbox" id="4" name="example2[]" value="4"><label for="4">アニソン</label><br>
-          </div>
-          <div class="example3">
-            <input type="checkbox" id="5" name="example2[]" value="5"><label for="5">クラシック</label>
-            <input type="checkbox" id="6" name="example2[]" value="6"><label for="6">ロック</label>
-            <input type="checkbox" id="7" name="example2[]" value="7"><label for="7">VOCALOID</label>
-            <input type="checkbox" id="8" name="example2[]" value="8"><label for="8">ギター</label>
-          </div>
-          <div class="example3">
-            <input type="checkbox" id="9" name="example2[]" value="9"><label for="9">楽器</label>
-            <input type="checkbox" id="10" name="example2[]" value="10"><label for="10">その他</label>
-
-          </div>';
+echo '        <div class="example3">';
+            if(in_array(1,$genre)){
+echo          '<input type="checkbox" id="1" name="example2[]" checked="checked" value="1" ><label for="1">すべて</label>';
+            }else{
+echo          '<input type="checkbox" id="1" name="example2[]" value="1" ><label for="1">すべて</label>';
+            };
+            if(in_array(2,$genre)){
+echo          '<input type="checkbox" id="2" name="example2[]" checked="checked" value="2"><label for="2">JPOP</label>';
+            }else{
+echo           '<input type="checkbox" id="2" name="example2[]" value="2"><label for="2">JPOP</label>';
+            };
+            if(in_array(3,$genre)){
+echo          '<input type="checkbox" id="3" name="example2[]" checked="checked" value="3"><label for="3">洋楽</label>';
+            }else{
+echo           '<input type="checkbox" id="3" name="example2[]" value="3"><label for="3">洋楽</label>';
+            };
+            if(in_array(4,$genre)){
+echo          '<input type="checkbox" id="4" name="example2[]" checked="checked" value="4"><label for="4">アニソン</label><br>';
+            }else{
+echo          '<input type="checkbox" id="4" name="example2[]" value="4"><label for="4">アニソン</label><br>';
+            };
+echo       '</div>
+          <div class="example3">';
+            if(in_array(5,$genre)){
+echo          '<input type="checkbox" id="5" name="example2[]" checked="checked" value="5"><label for="5">クラシック</label>';
+            }else{
+echo          '<input type="checkbox" id="5" name="example2[]" value="5"><label for="5">クラシック</label>';
+            };
+            if(in_array(6,$genre)){
+echo          '<input type="checkbox" id="6" name="example2[]" checked="checked" value="6"><label for="6">ロック</label>';
+            }else{
+echo           '<input type="checkbox" id="6" name="example2[]" value="6"><label for="6">ロック</label>';
+            };
+            if(in_array(7,$genre)){
+echo          '<input type="checkbox" id="7" name="example2[]" checked="checked" value="7"><label for="7">VOCALOID</label>';
+            }else{
+echo          '<input type="checkbox" id="7" name="example2[]" value="7"><label for="7">VOCALOID</label>';
+            };
+            if(in_array(8,$genre)){
+echo          '<input type="checkbox" id="8" name="example2[]" checked="checked" value="8"><label for="8">ギター</label>';
+            }else{
+echo          '<input type="checkbox" id="8" name="example2[]" value="8"><label for="8">ギター</label>';
+            };
+echo        '</div>
+          <div class="example3">';
+            if(in_array(9,$genre)){
+echo          '<input type="checkbox" id="9" name="example2[]" checked="checked" value="9"><label for="9">楽器</label>';
+            }else{
+echo          '<input type="checkbox" id="9" name="example2[]" value="9"><label for="9">楽器</label>';
+            };
+            if(in_array(10,$genre)){
+echo          '<input type="checkbox" id="10" name="example2[]" checked="checked" value="10"><label for="10">その他</label>';
+            }else{
+echo           '<input type="checkbox" id="10" name="example2[]" value="10"><label for="10">その他</label>';
+            };
+echo          '</div>';
 
 ?>
           <div class="btn-group" data-toggle="buttons">
