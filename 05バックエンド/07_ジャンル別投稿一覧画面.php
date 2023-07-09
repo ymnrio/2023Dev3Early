@@ -172,7 +172,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                   $genre_id = $row['genre_id'];
                 }
 
-                $sql = "select * from post where genre_id = ?";//オーダーばい、すべてはできるがその他はできん！！また今度
+                $sql = "select * from post where genre_id = ? order by post_id desc;";//オーダーばい、すべてはできるがその他はできん！！また今度
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$genre_id,PDO::PARAM_INT);
                 $ps->execute();

@@ -186,7 +186,7 @@ echo      '<form action="drop.php" method="post">
                   <div class="padding30_ys">
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $sql = "select * from post where user_id = ?";
+                    $sql = "select * from post where user_id = ? order by post_id desc";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
                     $ps->execute();
@@ -212,7 +212,7 @@ echo      '<form action="drop.php" method="post">
                   } else { //設定してない場合
 
                     echo '<img class="image_middle" src="img/pink.png">　';
-                    
+
                   }
 
                   echo   $name ;
