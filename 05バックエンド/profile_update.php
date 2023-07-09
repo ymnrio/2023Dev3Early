@@ -27,7 +27,6 @@ if (!empty($_FILES['file']['name'])) {
         $ps->bindValue(2,$_POST['introduction'],PDO::PARAM_STR);
         $ps->bindValue(3,$_SESSION['user']['id'],PDO::PARAM_STR);
         $ps->execute();
-
     }
 
     $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";

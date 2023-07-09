@@ -63,7 +63,6 @@
                   </label>
                   <button type="submit" aria-label="検索"></button>
                 </form>
-                
               <?php
                if(isset($_POST['example3'])){
                 $_SESSION['genre'] = $_POST['example3'];
@@ -129,7 +128,7 @@ echo             '<form action="08_投稿詳細画面.php" method="post">'.
 
                       echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
                     }
-                    
+
 echo                '</div>'.
                     '</button>'.
                     '<div class="row">'.
@@ -162,7 +161,6 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                 }
               }else{//すべて以外を選択した時
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
-                //sesseion[genre]をidに変換
                 $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_STR);
@@ -172,7 +170,7 @@ echo                      '<input type="checkbox" id="'.$like.'">'.
                   $genre_id = $row['genre_id'];
                 }
 
-                $sql = "select * from post where genre_id = ? order by post_id desc;";//オーダーばい、すべてはできるがその他はできん！！また今度
+                $sql = "select * from post where genre_id = ? order by post_id desc;";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$genre_id,PDO::PARAM_INT);
                 $ps->execute();

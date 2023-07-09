@@ -59,13 +59,26 @@
             <div class="haikei_yp">
               <div class="padding30_ys"><br><br>
                 <div class="row">
+                  <?php
+                  //@が入っているか入ってないか調べる
+                  $check = null;
+                  $check = substr($_POST['keyword'], 0, 1);
+                  ?>
                   <h4>
                     <div class="col-md-12 col-lg-12">
-                      <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%; margin-top: -10px; width: 150px; " onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
-                      　　　　　　<!--検索ワード表示する--><?php echo '"'.$_POST['keyword'].'"'; ?>の検索結果表示
-                  </h4>
-
-                  <?php
+                      <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: -10px; margin-top: -10px; width: 150px; " onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
+                      
+                <?php
+                 
+                  if($check=='@'){ //@がある場合
+                    
+                    echo '<div style="text-align: center;margin-top:-30px;">';
+                    echo $_POST['keyword'].'のアカウント検索結果'.'</h4>';
+                    
+                  }else{ //＠がない場合
+                  
+                  echo '<div style="text-align: center;margin-top:-30px;">';
+                  echo '"'.$_POST['keyword'].'"'.'の検索結果表示'.'</h4>';
                   $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                   $sql = "select * from post where post_contents LIKE ? order by post_id desc";
                   $ps = $pdo->prepare($sql);
@@ -152,6 +165,7 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
     </div>
   </div>';
                   }
+                }
                   ?>
 
                   <div class="box">

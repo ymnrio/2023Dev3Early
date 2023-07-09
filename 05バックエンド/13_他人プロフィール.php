@@ -172,7 +172,7 @@
                   <div class="padding30_ys">
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $sql = "select * from post where user_id = ?";
+                    $sql = "select * from post where user_id = ? order by post_id desc";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
                     $ps->execute();
