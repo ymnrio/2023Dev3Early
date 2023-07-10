@@ -164,8 +164,8 @@ session_start();
                                     </svg>　' . $row['fabulous'] . '　　　
                                   </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                                 </div>
-                                <div class="col-md-2 col-lg-2 start_0_ys">
-                                <form action="09_投稿返信画面.php" method="post">
+                                <div class="col-md-2 col-lg-2 start_0_ys">';
+                        echo '<form action="09_投稿返信画面.php" method="post">
                                 <button name="reply" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
                                   <img style="margin-left: 50px;" src="icon/コメント.svg">
                                 </button>
@@ -218,8 +218,8 @@ session_start();
 
                     echo                '</div>' .
                       '</button>
-                        <div class="row">
-                          <div class="col-md-9 col-lg-9 start_0_ys"></div>
+                      <div class="row">
+                        <div class="col-md-9 col-lg-9 start_0_ys"></div>
                           <div class="col-md-1 col-lg-1 start_0_ys">
                             <input type="checkbox" id="' . $row['reply_id'] . '">
 
@@ -231,12 +231,13 @@ session_start();
                             </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                           </div>
                           <div class="col-md-2 col-lg-2 start_0_ys">
-                          <form action="09_投稿返信画面.php" method="post">
-                            <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
-                              <img style="margin-left: 50px;" src="icon/コメント.svg">
-                            </button>
-                          </form>
-                          　' . $row['comments'] . '　
+                            <form action="09_投稿返信画面.php" method="post">
+                              <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                                <img style="margin-left: 50px;" src="icon/コメント.svg">
+                              </button>
+                            </form>
+                            <div style=" position: relative;bottom: 43px;left: 100px;">
+                            　' . $row['comments'] . '　
                           </div>
                         </div>
                       </div>
