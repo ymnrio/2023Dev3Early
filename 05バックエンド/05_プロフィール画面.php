@@ -86,7 +86,23 @@
 
           <div class="col-md-8 col-lg-8" style="margin-left:-50px;"><br>
             <p><?php echo $_SESSION['user']['name']; ?>
-            <p>ID:<?php echo $_SESSION['user']['id']; ?></p><?php echo $_SESSION['trash'] ?>
+            <p>ID:<?php echo $_SESSION['user']['id']; ?></p>
+<?php
+         if(!empty($_SESSION['trash'])){ 
+echo      '<form action="drop.php" method="post">
+            <div style="width: 400px;height: 200px;border: 1px solid; background-color: rgba(251, 140, 184, 0.9);position: fixed;z-index:10; margin-top:180px;margin-left:50px;">
+              <img src="icon/ギター.svg">
+              <img style="margin-left: 326px;" src="icon/マイク(カラオケ).svg">
+              <h5 style="text-align: center;">本当に削除してもよろしいでしょうか
+                <img style="margin-top: -8px;margin-right: 8px;" src="icon/16音符.svg"></h5>
+              <button type="hidden" name="cancel" value="キャンセル"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left:50px;margin-top: 30px;">キャンセル</button>
+              <button type="hidden" name="drop" value="'.$_SESSION['trash'].'"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left: 55px;margin-top: 30px;">削除</button><br>
+              <img style="margin-top: 30px;" src="icon/ヘッドフォン.svg">
+              <img style="margin-left: 326px;margin-top: 30px;" src="icon/ピアノ.svg">
+            </div>
+          </form>';
+         }
+?>
 
           </div>
 
@@ -170,7 +186,7 @@
                   <div class="padding30_ys">
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $sql = "select * from post where user_id = ?";
+                    $sql = "select * from post where user_id = ? order by post_id desc";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
                     $ps->execute();
@@ -185,7 +201,7 @@
                         $name = $row1['user_name'];
                         $user_id = $row1['user_id'];
                       }
-                      echo                '<div class="p_ys">';
+                      echo'<div class="p_ys">';
                       //アイコン表示
                   if (!empty($aikon) || isset($aikon)) { //設定している場合
 
@@ -194,7 +210,9 @@
                     echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
 
                   } else { //設定してない場合
+
                     echo '<img class="image_middle" src="img/pink.png">　';
+
                   }
 
                   echo   $name ;
@@ -261,6 +279,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                 </div>
               </div>
               <!--↑投稿-->
+              
             </div>
 
             <div id="iine" class="area">
@@ -337,27 +356,13 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
 
             <div id="page_top"><a href="#"></a></div>
             <!--wrapper-->
-
-
-              <!--削除画面-->
-              <?php 
-              if(!empty($_POST['trash']) || isset($_POST['trash'])){
-                echo "aaa";
-              }
-              ?>
           </div>
           <div class="col-md-12 start_0_ys"></div>
         </div>
       </div>
-            
-      <?php 
-          if(!empty($_SESSION['trash'])){
-            
-          }
-      ?>
     </div>
-
-
+  </div>
+</div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="sprict/yamanishi.js"></script>
     <script src="sprict/yamanisi_climb.js"></script>

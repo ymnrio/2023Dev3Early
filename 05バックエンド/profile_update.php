@@ -27,7 +27,6 @@ if (!empty($_FILES['file']['name'])) {
         $ps->bindValue(2,$_POST['introduction'],PDO::PARAM_STR);
         $ps->bindValue(3,$_SESSION['user']['id'],PDO::PARAM_STR);
         $ps->execute();
-
     }
 
     $sql ="SELECT count(*) FROM favorite_genre WHERE user_id=?";
@@ -73,7 +72,7 @@ if (!empty($_FILES['file']['name'])) {
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
     }
 
-    $sql = "SELECT genre_id FROM favorite_genre WHERE user_id";//好きなジャンルを光らせる
+/*    $sql = "SELECT genre_id FROM favorite_genre WHERE user_id";//好きなジャンルを光らせる
     $ps = $pdo->prepare($sql);
     $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
     $ps->execute();
@@ -83,9 +82,9 @@ if (!empty($_FILES['file']['name'])) {
 
     for($i=1; $i<11; $i++){
         if(in_array($row,$favoriteArr)){
-            echo 
+         //   echo ;
         }
     }
-
+*/
 header('Location:05_プロフィール画面.php');
 ?>
