@@ -230,6 +230,7 @@ session_start();
                               </svg>　' . $row['fabulous'] . '　　　
                             </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                           </div>
+                          </form>
                           <div class="col-md-2 col-lg-2 start_0_ys">
                             <form action="09_投稿返信画面.php" method="post">
                               <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
