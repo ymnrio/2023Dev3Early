@@ -79,33 +79,33 @@ session_start();
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_id = ?";
                       $ps = $pdo->prepare($sql);
-                      $ps->bindValue(1,$_POST['detail'],PDO::PARAM_STR);
+                      $ps->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
                       $ps->execute();
                       foreach ($ps as $row) {
                         echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
                             <div style="font-size: 20px;">'
                           . $row['reply_contents'];
-                          //画像があるか検索
-                          $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
-                          $ps2 = $pdo->prepare($sql2);
-                          $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
-                          $ps2->execute();
-                          $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+                        //画像があるか検索
+                        $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
+                        $ps2 = $pdo->prepare($sql2);
+                        $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
+                        $ps2->execute();
+                        $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
-                          if (!empty($row2['media1'])) {
-                            $image_data = $row2['media1'];
+                        if (!empty($row2['media1'])) {
+                          $image_data = $row2['media1'];
 
-                            $base64_image = base64_encode($image_data);
+                          $base64_image = base64_encode($image_data);
 
-                            echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                          }
-                          echo '</div>
+                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                        }
+                        echo '</div>
                             <div class="row">
                               <div class="col-md-9 col-lg-9 start_0_ys"></div>
                                 <div class="col-md-1 col-lg-1 start_0_ys">
-                                  <input type="checkbox" id="'.$row['reply_id'].'">
+                                  <input type="checkbox" id="' . $row['reply_id'] . '">
 
-                                  <label for="'.$row['reply_id'].'">
+                                  <label for="' . $row['reply_id'] . '">
                                     <!--<div class="lavel_like">-->
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -125,39 +125,39 @@ session_start();
                             </div>
                           </div>';
                       }
-                    }else{
+                    } else {
                       $sql = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2, 
                               user.user_name, user.email_address, user.password, user.media, user.self_introduction 
                               FROM post INNER JOIN user ON post.user_id = user.user_id 
                               WHERE post_id = ?";
                       $ps = $pdo->prepare($sql);
-                      $ps->bindValue(1,$_POST['detail'],PDO::PARAM_INT);
+                      $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
                       $ps->execute();
                       foreach ($ps as $row) {
-                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　'.$row['user_name'].'<br><br>
+                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　' . $row['user_name'] . '<br><br>
                             <div style="font-size: 20px;">'
                           . $row['post_contents'];
-                          //画像があるか検索
-                          $sql2 = "SELECT * FROM post WHERE post_id = ?";
-                          $ps2 = $pdo->prepare($sql2);
-                          $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
-                          $ps2->execute();
-                          $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+                        //画像があるか検索
+                        $sql2 = "SELECT * FROM post WHERE post_id = ?";
+                        $ps2 = $pdo->prepare($sql2);
+                        $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
+                        $ps2->execute();
+                        $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
-                          if (!empty($row2['media1'])) {
-                            $image_data = $row2['media1'];
+                        if (!empty($row2['media1'])) {
+                          $image_data = $row2['media1'];
 
-                            $base64_image = base64_encode($image_data);
+                          $base64_image = base64_encode($image_data);
 
-                            echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                          }
-                          echo '</div>
+                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                        }
+                        echo '</div>
                             <div class="row">
                               <div class="col-md-9 col-lg-9 start_0_ys"></div>
                                 <div class="col-md-1 col-lg-1 start_0_ys">
-                                  <input type="checkbox" id="'.$row['post_id'].'">
+                                  <input type="checkbox" id="' . $row['post_id'] . '">
 
-                                  <label for="'.$row['post_id'].'">
+                                  <label for="' . $row['post_id'] . '">
                                     <!--<div class="lavel_like">-->
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -189,52 +189,54 @@ session_start();
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_subject = ? ORDER BY date_time DESC";
                   $ps = $pdo->prepare($sql);
-                  $ps->bindValue(1,$_POST['detail'],PDO::PARAM_INT);
+                  $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
                   $ps->execute();
                   foreach ($ps as $row) {
-                  echo '<div class="haikei_yp">
+                    echo '<div class="haikei_yp">
                     <div class="padding30_ys">
                       <div class="p_he_ys">
-                        <img class="image_middle" src="img/pink.png"> '.$row['user_name'].'<br><br>
-                        <form action="08_投稿詳細画面.php" method="post">'.
-                  '<button name="detail" type="hidden" value="'.$row['reply_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
-                  '<div style="font-size: 18px;">';
+                        <img class="image_middle" src="img/pink.png"> ' . $row['user_name'] . '<br><br>
+                        <form action="08_投稿詳細画面.php" method="post">' .
+                      '<button name="detail" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
+                      '<div style="font-size: 18px;">';
                     echo $row['reply_contents'];
 
                     //画像があるか検索
                     $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
                     $ps2 = $pdo->prepare($sql2);
-                    $ps2->bindValue(1,$row['reply_id'],PDO::PARAM_INT);
+                    $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                     $ps2->execute();
                     $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
 
-                    if(!empty($row2['media1'])){
+                    if (!empty($row2['media1'])) {
                       $image_data = $row2['media1'];
 
                       $base64_image = base64_encode($image_data);
 
-                      echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                      echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                     }
-                    
-echo                '</div>'.
-                    '</button>
+
+                    echo                '</div>' .
+                      '</button>
                         <div class="row">
                           <div class="col-md-9 col-lg-9 start_0_ys"></div>
                           <div class="col-md-1 col-lg-1 start_0_ys">
-                            <input type="checkbox" id="'.$row['reply_id'].'">
+                            <input type="checkbox" id="' . $row['reply_id'] . '">
 
-                            <label for="'.$row['reply_id'].'">
+                            <label for="' . $row['reply_id'] . '">
                               <!--<div class="lavel_like">-->
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                              </svg>　'.$row['fabulous'].'　　　
+                              </svg>　' . $row['fabulous'] . '　　　
                             </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
                           </div>
                           <div class="col-md-2 col-lg-2 start_0_ys">
-                            <a href="09_投稿返信画面.php" style="text-decoration: none;">
+                          <form action="09_投稿返信画面.php" method="post">
+                            <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
                               <img style="margin-left: 50px;" src="icon/コメント.svg">
-                            </a>
-                            　'.$row['comments'].'　
+                            </button>
+                          </form>
+                          　' . $row['comments'] . '　
                           </div>
                         </div>
                       </div>
