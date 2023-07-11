@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -57,45 +58,24 @@
         <div id="toukou" class="area">
           <div class="waku_ys">
             <div class="haikei_yp">
-              <div class="padding30_ys"><br><br>
-                <div class="row">
-                  <?php
-                  //@が入っているか入ってないか調べる
-                  $check = null;
-                  $check = substr($_POST['keyword'], 0, 1);
-                  ?>
-                  <h4>
-                    <div class="col-md-12 col-lg-12">
-                      <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: -10px; margin-top: -10px; width: 150px; " onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
-                      
+              <div class="padding30_ys"><br><br> 
+                <h4>
+                  <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: -10px; margin-top: -10px; width: 150px; " onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
+                  <div style="text-align: center;margin-top:-30px;">
+                <?php echo '"'.$_POST['keyword'].'"の検索結果'.'</h4>'?>
+
                 <?php
-                 
-                  if($check=='@'){ //@がある場合
-                    
-                    echo '<div style="text-align: center;margin-top:-30px;">';
-                    echo $_POST['keyword'].'のアカウント検索結果'.'</h4>';
-                    
-                  }else{ //＠がない場合
-                  
-                  echo '<div style="text-align: center;margin-top:-30px;">';
-                  echo '"'.$_POST['keyword'].'"'.'の検索結果表示'.'</h4>';
-                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                  $sql = "select * from post where post_contents LIKE ? order by post_id desc";
-                  $ps = $pdo->prepare($sql);
-                  $ps->bindValue(1, '%' . $_POST['keyword'] . '%', PDO::PARAM_STR);
-                  $ps->execute();
-                  foreach ($ps as $row) {
-                    $sql1 = "select * from user where user_id = ? ";
-                    $ps1 = $pdo->prepare($sql1);
-                    $ps1->bindValue(1, $row['user_id'], PDO::PARAM_INT);
-                    $ps1->execute();
-                    $name = null;
-                    foreach ($ps1 as $row1) {
-                      $name = $row1['user_name'];
-                      $aikon = $row1['media'];
-                      $user_id = $row1['user_id'];
-                    }
-                    echo  '<div class="p_ys">';
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $sql = "select * from user where user_name LIKE ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1, '%' . $_POST['keyword'] . '%', PDO::PARAM_STR);
+                $ps->execute();
+               foreach($ps as $row){
+                $name = $row['user_name'];
+                $aikon = $row['media'];
+                $user_id = $row['user_id'];
+
+                echo  '<div class="p_ys">';
 
                     //アイコン表示
                     if (!empty($aikon) || isset($aikon)) { //設定している場合
@@ -109,64 +89,104 @@
                     }
 
                     echo   $name ;
-                  //他人のプロフィールに遷移
-echo             '<form action="13_他人プロフィール.php" method="post">'.
-                    '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
-                      <span class="material-symbols-outlined">face</span></a>
-                    </button>
-                  </form>';
-echo                '<form action="08_投稿詳細画面.php" method="post">'.
-                    '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
-                    '<div style="font-size: 20px;">';
-                    echo $row['post_contents'];
-
-                    //画像があるか検索
-
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $sql2 = "select * from post where post_id = ?";
-                    $ps2 = $pdo->prepare($sql2);
-                    $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
-                    $ps2->execute();
-                    $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-
-                    if (!empty($row2['media1'])) {
-                      $image_data = $row2['media1'];
-
-                      $base64_image = base64_encode($image_data);
-
-                      echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                    }
-
-                    echo  '</div>' .
-                      '</buton>'.
-                      '<div class="row">' .
-                      '<div class="col-md-9 col-lg-9 start_0_ys"></div>' .
-                      '<div class="col-md-1 col-lg-1 start_0_ys">';
-                    $like = "like" . $row['post_id'];
-                    echo '<input type="checkbox" id="' . $like . '">' .
-
-                      '<label for="' . $like . '">' .
-                      '<!--<div class="lavel_like">-->' .
-                      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
-                      '<path
-                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
-                      '</svg>　' . $row['fabulous'] . '　　　' .
-                      '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
-                      '</div>' .
-                      '</form>'.
-                      '<div class="col-md-2 col-lg-2 start_0_ys">
-        <a href="09_投稿返信画面.php" style="text-decoration: none;">
-          <img style="margin-left: 50px;" src="icon/コメント.svg">
-        </a>
-        <div class="" style=" position: relative;bottom: 43px;left: 100px;">
-        　' . $row['comments'] .
-         '</div>
-      </div>
-    </div>
-  </div>';
+                    //他人のプロフィールに遷移
+                    echo'<form action="13_他人プロフィール.php" method="post">'.
+                        '<button name="user_id" type="hidden" value="'.$user_id.'" style="height:0px; text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                        <span class="material-symbols-outlined">face</span></a>
+                        </button>
+                        </form> 
+                    </div>';
+               };
+?>
+              <div style="margin-bottom:50px"></div>
+<?php //投稿
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $sql = "select * from post where post_contents LIKE ? order by post_id desc";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1, '%' . $_POST['keyword']. '%', PDO::PARAM_STR);
+                $ps->execute();
+                foreach ($ps as $row) {
+                  $sql1 = "select * from user where user_id = ? ";
+                  $ps1 = $pdo->prepare($sql1);
+                  $ps1->bindValue(1, $row['user_id'], PDO::PARAM_INT);
+                  $ps1->execute();
+                  $name = null;
+                  foreach ($ps1 as $row1) {
+                    $name = $row1['user_name'];
+                    $aikon = $row1['media'];
+                    $user_id = $row1['user_id'];
                   }
-                }
-                  ?>
+                  echo  '<div class="p_ys">';
+
+                  //アイコン表示
+                  if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                    $base64_image = base64_encode($aikon);
+
+                    echo  '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+
+                  echo   $name ;
+                //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                  '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                    <span class="material-symbols-outlined">face</span></a>
+                  </button>
+                </form>';
+echo                '<form action="08_投稿詳細画面.php" method="post">'.
+                  '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
+                  '<div style="font-size: 20px;">';
+                  echo $row['post_contents'];
+
+                  //画像があるか検索
+
+                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                  $sql2 = "select * from post where post_id = ?";
+                  $ps2 = $pdo->prepare($sql2);
+                  $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
+                  $ps2->execute();
+                  $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+
+                  if (!empty($row2['media1'])) {
+                    $image_data = $row2['media1'];
+
+                    $base64_image = base64_encode($image_data);
+
+                    echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                  }
+
+                  echo  '</div>' .
+                    '</buton>'.
+                    '<div class="row">' .
+                    '<div class="col-md-9 col-lg-9 start_0_ys"></div>' .
+                    '<div class="col-md-1 col-lg-1 start_0_ys">';
+                  $like = "like" . $row['post_id'];
+                  echo '<input type="checkbox" id="' . $like . '">' .
+
+                    '<label for="' . $like . '">' .
+                    '<!--<div class="lavel_like">-->' .
+                    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
+                    '<path
+                      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
+                    '</svg>　' . $row['fabulous'] . '　　　' .
+                    '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
+                    '</div>' .
+                    '</form>'.
+                    '<div class="col-md-2 col-lg-2 start_0_ys">
+                    <a href="09_投稿返信画面.php" style="text-decoration: none;">
+                    <img style="margin-left: 50px;" src="icon/コメント.svg">
+                    </a>
+                    <div class="" style=" position: relative;bottom: 43px;left: 100px;">
+                    　' . $row['comments'] .
+                    '</div>
+                     </div>
+                    </div>
+                    </div>';
+                    }
+?>
 
                   <div class="box">
                     <button type="button" class="btn container-fluid color_white_yamani border border-dark" style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;" onclick="location.href='10_新規投稿作成画面.php'">＋</button>
@@ -189,5 +209,4 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
     <script src="sprict/yamanishi.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
-
 </html>
