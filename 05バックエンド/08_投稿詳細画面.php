@@ -82,8 +82,26 @@ session_start();
                       $ps->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
                       $ps->execute();
                       foreach ($ps as $row) {
-                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　' . $row['user_name'] . '<br><br>
-                            <div style="font-size: 20px;">'
+                        echo '<div class="p_ys">';
+                        //アイコン表示
+                  if (!empty($row['media']) || isset($row['media'])) { //設定している場合
+
+                    $base64_image = base64_encode($row['media']);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+
+                  echo   $row['user_name'] ;
+                  //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                    '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                      <span class="material-symbols-outlined">face</span>
+                    </button>
+                  </form>
+                      <div style="font-size: 20px;">'
                           . $row['reply_contents'];
                         //画像があるか検索
                         $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
@@ -101,7 +119,7 @@ session_start();
                         }
                         echo '</div>
                             <div class="row">
-                              <div class="col-md-9 col-lg-9 start_0_ys"></div>
+                              <div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>
                                 <div class="col-md-1 col-lg-1 start_0_ys">
                                   <input type="checkbox" id="' . $row['reply_id'] . '">
 
@@ -134,7 +152,34 @@ session_start();
                       $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
                       $ps->execute();
                       foreach ($ps as $row) {
-                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　' . $row['user_name'] . '<br><br>
+                        echo '<div class="p_ys">';
+                        //アイコン表示
+                  if (!empty($row['media']) || isset($row['media'])) { //設定している場合
+
+                    $base64_image = base64_encode($row['media']);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+
+                  echo   $row['user_name'] ;
+                  //ジャンル表示
+                  $sql1 = "SELECT genre_name from genre where genre_id = ?";
+                      $ps1 = $pdo->prepare($sql1);
+                      $ps1->bindValue(1, $row['genre_id'], PDO::PARAM_INT);
+                      $ps1->execute();
+                      foreach($ps1 as $row1){
+                        $genre_name = $row1['genre_name'];
+                      }
+                      echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
+                  //他人のプロフィールに遷移
+echo             '<form action="13_他人プロフィール.php" method="post">'.
+                    '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                      <span class="material-symbols-outlined">face</span>
+                    </button>
+                  </form>
                             <div style="font-size: 20px;">'
                           . $row['post_contents'];
                         //画像があるか検索
@@ -153,7 +198,7 @@ session_start();
                         }
                         echo '</div>
                             <div class="row">
-                              <div class="col-md-9 col-lg-9 start_0_ys"></div>
+                              <div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>
                                 <div class="col-md-1 col-lg-1 start_0_ys">
                                   <input type="checkbox" id="' . $row['post_id'] . '">
 
@@ -194,12 +239,30 @@ session_start();
                   foreach ($ps as $row) {
                     echo '<div class="haikei_yp">
                     <div class="padding30_ys">
-                      <div class="p_he_ys">
-                        <img class="image_middle" src="img/pink.png"> ' . $row['user_name'] . '<br><br>
-                        <form action="08_投稿詳細画面.php" method="post">' .
-                      '<button name="detail" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
+                      <div class="p_he_ys">';
+                      //アイコン表示
+                      if (!empty($row['media']) || isset($row['media'])) { //設定している場合
+    
+                        $base64_image = base64_encode($row['media']);
+    
+                        echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+    
+                      } else { //設定してない場合
+                        echo '<img class="image_middle" src="img/pink.png">　';
+                      }
+    
+                      echo   $row['user_name'] ;
+                      //他人のプロフィールに遷移
+                      echo'<form action="13_他人プロフィール.php" method="post">'.
+                        '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
+                          <span class="material-symbols-outlined">face</span>
+                        </button>
+                      </form>';
+    
+                      echo '<form action="08_投稿詳細画面.php" method="post">'.
+                      '<button name="detail" type="hidden" value="'.$row['reply_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                       '<div style="font-size: 18px;">';
-                    echo $row['reply_contents'];
+                      echo $row['reply_contents'];
 
                     //画像があるか検索
                     $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
@@ -216,10 +279,10 @@ session_start();
                       echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                     }
 
-                    echo                '</div>' .
+                    echo'</div>' .
                       '</button>
                       <div class="row">
-                        <div class="col-md-9 col-lg-9 start_0_ys"></div>
+                        <div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>
                           <div class="col-md-1 col-lg-1 start_0_ys">
                             <input type="checkbox" id="' . $row['reply_id'] . '">
 

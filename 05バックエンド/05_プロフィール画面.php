@@ -216,6 +216,15 @@ echo      '<form action="drop.php" method="post">
                   }
 
                   echo   $name ;
+                  //ジャンル表示
+                  $sql1 = "SELECT genre_name from genre where genre_id = ?";
+                      $ps1 = $pdo->prepare($sql1);
+                      $ps1->bindValue(1, $row['genre_id'], PDO::PARAM_INT);
+                      $ps1->execute();
+                      foreach($ps1 as $row1){
+                        $genre_name = $row1['genre_name'];
+                      }
+                      echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
 
                   
                   //ゴミ箱
@@ -248,7 +257,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                       echo                  '</div>' .
                        '</button>'.
                         '<div class="row">' .
-                        '<div class="col-md-9 col-lg-9 start_0_ys"></div>' .
+                        '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>' .
                         '<div class="col-md-1 col-lg-1 start_0_ys">';
                       $like = "like" . $row['post_id'];
                       echo                      '<input type="checkbox" id="' . $like . '">' .
