@@ -185,7 +185,7 @@
                       foreach ($ps1 as $row1) {
                         $name = $row1['user_name'];
                       }
-                      echo                '<div class="p_ys">';
+                      echo   '<div class="p_ys">';
                       //アイコン表示
                   if (!empty($aikon) || isset($aikon)) { //設定している場合
 
@@ -211,7 +211,7 @@
   echo                    '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
-                      echo $row['post_contents'];
+                      echo '<div style=" margin-top:48px;">'.$row['post_contents'].'</div>';
 
                       //画像があるか検索
                       $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
