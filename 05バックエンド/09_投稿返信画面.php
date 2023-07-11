@@ -50,7 +50,27 @@ session_start();
                                     class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8; margin-left:-35px;">返信する</button>
                         </div>
 
-                        <img class="image_middle magin20_yamanisi" src="img/pink.png">
+                        <?php
+                //アイコン表示
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $sql = "select * from user where user_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+                $ps->execute();
+                foreach($ps as $row){
+                    $aikon = $row['media'];
+                }
+                  if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                    $base64_image = base64_encode($aikon);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+?>
                         <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name']; ?></h5>
 
 

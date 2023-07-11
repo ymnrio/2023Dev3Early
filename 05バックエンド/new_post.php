@@ -8,7 +8,7 @@ $zero=0;
 //画像がある場合
 if (!empty($_FILES['file']['name'])) {
         $file = $_FILES['file'];
-        
+
         $filename = $file['name'];
         $filetype = $file['type'];
         $filedata = file_get_contents($file['tmp_name']);
@@ -36,7 +36,7 @@ if (!empty($_FILES['file']['name'])) {
         $ps->bindValue(4,$date,PDO::PARAM_STR);//日時
         $ps->bindValue(5,$zero,PDO::PARAM_STR);//いいね数
         $ps->bindValue(6,$zero,PDO::PARAM_STR);//コメント数
-        $ps->execute();    
+        $ps->execute();
 }
 
 header('Location:07_ジャンル別投稿一覧画面.php');//modorimasu

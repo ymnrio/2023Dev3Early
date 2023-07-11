@@ -51,8 +51,27 @@ session_start();
                         <div class="touroku_ys">
                             <button type="submit" class="btn container-fluid color_white_yamani" style=" width: 130px;height: 40px;background: #FBA8B8;">投稿する</button>
                         </div>
+<?php
+                //アイコン表示
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $sql = "select * from user where user_id = ?";
+                $ps = $pdo->prepare($sql);
+                $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+                $ps->execute();
+                foreach($ps as $row){
+                    $aikon = $row['media'];
+                }
+                  if (!empty($aikon) || isset($aikon)) { //設定している場合
 
-                        <img class="image_middle magin20_yamanisi" src="img/pink.png">
+                    $base64_image = base64_encode($aikon);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+?>
                         <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name']; ?></h5>
 
                         <select class="form-select" style="border-color:#FBA8B8;border-width:3px;" name="genre">
