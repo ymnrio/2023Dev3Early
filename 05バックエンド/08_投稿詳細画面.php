@@ -82,7 +82,7 @@ session_start();
                       $ps->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
                       $ps->execute();
                       foreach ($ps as $row) {
-                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　やまママにし<br><br>
+                        echo '<div class="p_ys"><img class="image_middle" src="img/pink.png">　' . $row['user_name'] . '<br><br>
                             <div style="font-size: 20px;">'
                           . $row['reply_contents'];
                         //画像があるか検索
