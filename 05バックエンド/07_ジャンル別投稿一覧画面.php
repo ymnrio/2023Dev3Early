@@ -184,7 +184,7 @@ echo              '<a href="09_投稿返信画面.php" style="text-decoration: n
                         <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
                       </a>
                       <div style="position: relative;top:-55px;left:190px;">
-                      　' . $row['comments'] .
+                      　' . nl2br($row['comments']).
                     '</div>
                   </div>
                 </div>';  
@@ -247,7 +247,7 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
 echo              '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
-                    echo $row['post_contents'];
+                    echo nl2br($row['post_contents']);
 
                  //echo $row['post_contents']; 
                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
@@ -315,7 +315,7 @@ echo                    '<input type="checkbox" id="'.$like.'">'.
                       </button>
                     </form>
                     <div style=" position: relative;bottom: 43px;left: 100px;">
-                    　' . $row['comments'] .
+                    　' .nl2br($row['post_contents']).
                     '</div>
                   </div>
                 </div>
