@@ -239,7 +239,7 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
                   foreach ($ps as $row) {
                     echo '<div class="haikei_yp">
                     <div class="padding30_ys">
-                      <div class="p_he_ys">';
+                    <div class="p_he_ys">';
                       //アイコン表示
                       if (!empty($row['media']) || isset($row['media'])) { //設定している場合
     
@@ -250,8 +250,29 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
                       } else { //設定してない場合
                         echo '<img class="image_middle" src="img/pink.png">　';
                       }
-    
-                      echo   $row['user_name'] ;
+                      $a = substr($_POST['detail'],0,2);
+                      if($a == "00"){
+                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user.id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                                 user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                 FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
+                        $ps3 = $pdo->prepare($sql3);
+                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                        $ps3->execute();
+                        foreach ($ps3 as $row3) {
+                          $uname = $row3['user_name'];
+                        }
+                      }else{
+                        $sql3 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
+                                 user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                 FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
+                        $ps3 = $pdo->prepare($sql3);
+                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                        $ps3->execute();
+                        foreach ($ps3 as $row3) {
+                          $subjectname = $row3['user_name'];
+                        }
+                      }
+                      echo   $row['user_name'].' <span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
                       //他人のプロフィールに遷移
                       echo'<form action="13_他人プロフィール.php" method="post">'.
                         '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
