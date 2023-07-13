@@ -116,7 +116,7 @@ echo      '<form action="drop.php" method="post">
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
-              <h6><?php echo $_SESSION['user']['introduction']; ?></h6><br>
+              <h6><?php echo nl2br($_SESSION['user']['introduction']); ?></h6><br>
               
               <?php
               $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
@@ -272,11 +272,9 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                         '</div>' .
                         '</form>'.
                         '<div class="col-md-2 col-lg-2 start_0_ys">
-                        <form action="09_投稿返信画面.php" method="post">
-                        <button name="reply" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
-                          <img style="margin-left: 50px;" src="icon/コメント.svg">
-                        </button>
-                      </form>
+                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
+                        <img style="margin-left: 50px;" src="icon/コメント.svg">
+                      </a>
                       <div class="" style=" position: relative;bottom: 43px;left: 100px;">
                         　' . $row['comments'] .
                       '</div>
