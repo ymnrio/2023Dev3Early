@@ -56,7 +56,7 @@ CREATE TABLE `favorite_post` (
 
   `user_id` int(11) NOT NULL,
 
-  `like_subject` int(11) NOT NULL
+  `like_subject` varchar(50) NOT NULL
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -176,9 +176,9 @@ CREATE TABLE `post` (
 
 CREATE TABLE `reply` (
 
-  `reply_id` int(11) NOT NULL,
+  `reply_id` varchar(50) NOT NULL,
 
-  `reply_subject` int(11) NOT NULL,
+  `reply_subject` varchar(50) NOT NULL,
 
   `user_id` int(11) NOT NULL,
 
@@ -331,16 +331,6 @@ ALTER TABLE `user`
 
 
 --
-
--- テーブルの AUTO_INCREMENT `favorite_post`
-
---
-
-ALTER TABLE `favorite_post`
-
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT;
-
-
 
 
 --
