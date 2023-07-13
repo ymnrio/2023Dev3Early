@@ -252,14 +252,14 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
                       }
                       $a = substr($_POST['detail'],0,2);
                       if($a == "00"){
-                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user.id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
-                          $uname = $row3['user_name'];
+                          $subjectname = $row3['user_name'];
                         }
                       }else{
                         $sql3 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
