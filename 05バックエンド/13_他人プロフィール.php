@@ -102,7 +102,7 @@
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
-              <h6><?php echo $introduction; ?></h6><br>
+              <h6><?php echo nl2br($introduction); ?></h6><br>
               
               <?php
               $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
