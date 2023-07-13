@@ -186,9 +186,11 @@
                   <div class="padding30_ys">
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user.id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
-                            post.post_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
-                            FROM reply INNER JOIN post ON post.user_id = reply.user_id WHERE reply.user_id = ? order by post.date_time DESC";
+                    $sql = "SELECT * FROM (
+                      SELECT reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments, media1, media2
+                      FROM reply UNION ALL
+                      SELECT post_id, NULL, genre_id, post_contents, date_time, fabulous, comments, media1, media2
+                      FROM post ) AS a WHERE user_id = ? ORDER BY date_time DESC";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
                     $ps->execute();
@@ -199,8 +201,6 @@
                       $ps1->execute();
                       $name = null;
                       $user_id = null;
-                      $reply_id = $row['reply_id'];
-                      $post_id = $row['post_id'];
                       foreach ($ps1 as $row1) {
                         $name = $row1['user_name'];
                         $user_id = $row1['user_id'];
@@ -219,11 +219,12 @@
 
                       echo   $name;
                       //ジャンル表示
-
-                      if (empty($row['post_id'])) { //投稿の場合
-                        $sql2 = "SELECT genre_name from genre where genre_id = ?";
+                      $a = substr($row['reply_id'],0,2);
+                      if($a != "00"){ //投稿の場合
+                        $sql2 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
+                                 genre.genre_id, genre.genre_name FROM post INNER JOIN genre ON post.genre_id = genre.genre_id WHERE post.post_id = ?";
                         $ps2 = $pdo->prepare($sql2);
-                        $ps2->bindValue(1, $row['genre_id'], PDO::PARAM_INT);
+                        $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                         $ps2->execute();
                         foreach ($ps2 as $row2) {
                           $genre_name = $row2['genre_name'];
@@ -233,21 +234,21 @@
 
                         //ゴミ箱
                         echo '<form action="trash.php" method="post">' .
-                             '<button name="trash" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 770px;">
+                             '<button name="trash" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 770px;">
                               <span class="material-symbols-outlined">delete</span></a>
                               </button>
                               </form>';
 
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
-                             '<button name="detail" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
+                             '<button name="detail" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
                              '<div style="font-size: 20px;">';
-                        echo $row['post_contents'];
+                        echo $row['reply_contents'];
 
                         //画像があるか検索
                         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                         $sql3 = "select * from post where post_id = ?";
                         $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $row['post_id'], PDO::PARAM_INT);
+                        $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                         $ps3->execute();
                         $row3 = $ps3->fetch(PDO::FETCH_ASSOC);
 
@@ -263,7 +264,7 @@
                           '<div class="row">' .
                           '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
                           '<div class="col-md-1 col-lg-1 start_0_ys">';
-                        $like = "like" . $row['post_id'];
+                        $like = "like" . $row['reply_id'];
                         echo                      '<input type="checkbox" id="' . $like . '">' .
 
                           '<label for="' . $like . '">' .
@@ -286,11 +287,11 @@
                             </div>
                             </div>';
                       } else { //返信の場合
-                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user.id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                         $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                        $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
                           $subjectname = $row3['user_name'];
@@ -351,8 +352,6 @@
                              </div>
                              </div>';
                       }
-                      $reply_id = null;
-                      $post_id = null;
                     }
                     ?>
                   </div>
