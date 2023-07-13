@@ -1,18 +1,22 @@
 <?php
-//echo $_POST['like'].'<br>';
-echo $_POST['favorite'];
 session_start();
+$data = $_POST['like']; 
+$dataArray = explode(',', $data);
+
+$like = $dataArray[0];
+$favorite = $dataArray[1];
+
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
-$a = substr($_POST['favorite'],0,2);
+$a = substr($favorite,0,2);
 //追加なのか削除なのかの分岐
-if($_POST['like']){
+if($like == 1){
         //いいねしたのが投稿か返信か判別
         if($a == "00"){
                 //返信のカウントを追加したいいね数を取得
                 $sql = "SELECT fabulous FROM reply WHERE reply_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$_POST['favorite'],PDO::PARAM_STR);
+                $ps->bindValue(1,$favorite,PDO::PARAM_STR);
                 $ps->execute();
                         foreach($ps as $row){
                                 $newfabulous = $row['fabulous'] + 1;
@@ -22,14 +26,14 @@ if($_POST['like']){
                 $sql = "UPDATE reply SET fabulous = ? WHERE reply_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$newfabulous,PDO::PARAM_INT);
-                $ps->bindValue(2,$_POST['favorite'],PDO::PARAM_STR);
+                $ps->bindValue(2,$favorite,PDO::PARAM_STR);
                 $ps->execute();
 
         }else{
                 //投稿のカウントを追加したいいね数を取得
                 $sql = "SELECT fabulous FROM post WHERE post_id = ?";
                 $ps = $pdo->prepare($sql);
-                $ps->bindValue(1,$_POST['favorite'],PDO::PARAM_STR);
+                $ps->bindValue(1,$favorite,PDO::PARAM_STR);
                 $ps->execute();
                         foreach($ps as $row){
                                 $newfabulous = $row['fabulous'] + 1;
@@ -39,7 +43,7 @@ if($_POST['like']){
                 $sql = "UPDATE post SET fabulous = ? WHERE post_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$newfabulous,PDO::PARAM_INT);
-                $ps->bindValue(2,$_POST['favorite'],PDO::PARAM_STR);
+                $ps->bindValue(2,$favorite,PDO::PARAM_STR);
                 $ps->execute();
         }
 
@@ -47,7 +51,7 @@ if($_POST['like']){
                 $sql = "INSERT INTO favorite_post(user_id, like_subject) VALUES(?,?)";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-                $ps->bindValue(2,$_POST['favorite'],PDO::PARAM_STR);
+                $ps->bindValue(2,$favorite,PDO::PARAM_STR);
                 $ps->execute();
 
 }else{
@@ -93,5 +97,6 @@ if($_POST['like']){
                 $ps->bindValue(1,$_POST['favorite'],PDO::PARAM_STR);
                 $ps->execute();
 
-}
+};
+header('Location:07_ジャンル別投稿一覧画面.php');
 ?>

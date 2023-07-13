@@ -168,9 +168,8 @@ echo                '<button type="hidden" name="like" value="1" style="width:90
                   }else{
 echo                '<form action="addlike.php" method="post">';
                       $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
-                    '<input type="hidden" value="'.$row['post_id'].'" name="favorite">'.//投稿idまたは返信id
-                    '<input type="checkbox" checked="checked" id="'.$like.'">'.
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+                    '<input type="checkbox" id="'.$like.'">'.
                     '<label for="'.$like.'">'.
                       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
                         '<path
@@ -184,7 +183,7 @@ echo              '<a href="09_投稿返信画面.php" style="text-decoration: n
                         <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
                       </a>
                       <div style="position: relative;top:-55px;left:190px;">
-                      　' . nl2br($row['comments']).
+                      　' . $row['comments'].
                     '</div>
                   </div>
                 </div>';  
@@ -249,7 +248,7 @@ echo              '<form action="08_投稿詳細画面.php" method="post">'.
                   '<div style="font-size: 20px;">';
                     echo nl2br($row['post_contents']);
 
-                 //echo $row['post_contents']; 
+
                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
