@@ -153,7 +153,7 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
 
                   //画像があるか検索
 
-                 /* $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
                   $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
@@ -166,10 +166,7 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
                     $base64_image = base64_encode($image_data);
 
                     echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                  }*/
-                  $videoFile = $row['media1'];
-
-                  echo "<video src='$videoFile' controls></video>";
+                  }
 
                   echo  '</div>' .
                     '</buton>'.
