@@ -259,7 +259,7 @@ echo             '<form action="13_他人プロフィール.php" method="post">'
                         $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
-                          $uname = $row3['user_name'];
+                          $subjectname = $row3['user_name'];
                         }
                       }else{
                         $sql3 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
