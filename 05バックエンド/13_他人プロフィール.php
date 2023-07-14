@@ -102,7 +102,7 @@
 
           <div class="col-md-12 start_0_ys"><br>
             <div class="padding20_ys">
-              <h6><?php echo nl2br($introduction); ?></h6><br>
+              <h6><?php echo $introduction; ?></h6><br>
               
               <?php
               $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
@@ -211,52 +211,76 @@
   echo                    '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
-                      echo '<div style=" margin-top:48px;">'.nl2br($row['post_contents']).'</div>';
-
-                      //画像があるか検索
+                        echo nl2br($row['post_contents']).
+                        '</div>';
+                        //画像があるか検索
+                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $sql2 = "select * from post where post_id = ?";
+                        $ps2 = $pdo->prepare($sql2);
+                        $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
+                        $ps2->execute();
+                        $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+      
+                        if(!empty($row2['media1'])){
+                          $image_data = $row2['media1'];
+      
+                          $base64_image = base64_encode($image_data);
+      
+                          echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                        }
+      echo                '</button>'.  
+                        '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
+                        '</form>';
                       $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                      $sql2 = "select * from post where post_id = ?";
-                      $ps2 = $pdo->prepare($sql2);
-                      $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
-                      $ps2->execute();
-                      $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-
-                      if (!empty($row2['media1'])) {
-                        $image_data = $row2['media1'];
-
-                        $base64_image = base64_encode($image_data);
-
-                        echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                      $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
+                      $ps3 = $pdo->prepare($sql3);
+                      $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+                      $ps3->bindValue(2,$row['post_id'],PDO::PARAM_STR);
+                      $ps3->execute();
+                      $check_like = null;
+                      foreach($ps3 as $row3){
+                       $check_like = $row3['like_id'];
                       }
-                      echo                  '</div>' .
-                       '</button>'.
-                        '<div class="row">' .
-                        '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>' .
-                        '<div class="col-md-1 col-lg-1 start_0_ys">';
-                      $like = "like" . $row['post_id'];
-                      echo                      '<input type="checkbox" id="' . $like . '">' .
-
-                        '<label for="' . $like . '">' .
-                        '<!--<div class="lavel_like">-->' .
-                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
-                        '<path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
-                        '</svg>　' . $row['fabulous'] . '　　　' .
-                        '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
-                        '</div>' .
-                        '</form>'.
-                        '<div class="col-md-2 col-lg-2 start_0_ys">
-                      <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                        <img style="margin-left: 50px;" src="icon/コメント.svg">
-                      </a>
-                      <div class="" style=" position: relative;bottom: 43px;left: 100px;">
-                        　' . $row['comments'] .
-                      '</div>
-                    </div>
-                  </div>
-                </div>';
-                    }
-                    ?>
+                      echo '<div style="position: relative;top:-45px;left:640px;width: 150px;height:30px;">';
+      
+                      if(isset($check_like)){//いいね判別
+      echo               '<form action="addlike.php" method="post">';
+                        $like = "like".$row['post_id'];
+      echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+                        '<input type="checkbox" checked="checked" id="'.$like.'">'.
+                        '<label for="'.$like.'">'.
+                          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
+                            '<path
+                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />'.
+                              '</svg>　'.$row['fabulous'].'　　　'.
+                        '</label>
+                        </button>
+                        </form>';
+                      }else{
+      echo                '<form action="addlike.php" method="post">';
+                          $like = "like".$row['post_id'];
+      echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+                        '<input type="checkbox" id="'.$like.'">'.
+                        '<label for="'.$like.'">'.
+                          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
+                            '<path
+                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />'.
+                              '</svg>　'.$row['fabulous'].'　　　'.
+                        '</label>
+                        </button>
+                        </form>';
+                      }               
+      echo              '<a href="09_投稿返信画面.php" style="text-decoration: none;">
+                            <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
+                          </a>
+                          <div style="position: relative;top:-55px;left:190px;">
+                          　' . $row['comments'].
+                        '</div>
+                      </div>
+                    </div>';  
+                }
+              
+      ?>
 
                   </div>
                 </div>
@@ -269,60 +293,108 @@
 
                 <div class="haikei_yp">
                   <div class="padding30_ys">
-                    <div class="p_ys"><img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size:20px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
-                        楽しい<br>
-                        楽しい<br>
-                        楽しい<br>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-9 col-lg-9 start_0_ys"></div>
-                        <div class="col-md-1 col-lg-1 start_0_ys">
-                          <input type="checkbox" id="like3">
+                  <?php
+                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $sql = "select * from favorite_post where user_id = ? order by like_id desc";//いいねしてるツイ参照
+                    $ps = $pdo->prepare($sql);
+                    $ps->bindValue(1, $user_id, PDO::PARAM_INT);
+                    $ps->execute();
+                    foreach ($ps as $row) {
 
-                          <label for="like3">
-                            <!--<div class="lavel_like">-->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>　18　　　
-                          </label>
-                        </div>
-                        <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                            <img style="margin-left: 50px;" src="icon/コメント.svg">
+                      $sql1 = "select * from post where post_id = ?";//元ツイ参照
+                      $ps1 = $pdo->prepare($sql1);
+                      $ps1->bindValue(1, $row['like_subject'], PDO::PARAM_INT);
+                      $ps1->execute();
+                      foreach ($ps1 as $row1) {
+                        $post_id = $row1['post_id'];
+                        $user_id = $row1['user_id'];
+                        $genre_id = $row1['genre_id'];
+                        $post_contets = $row1['post_contents'];
+                        $date_time= $row1['date_time'];
+                        $fabulous = $row1['fabulous'];
+                        $comments = $row1['comments'];
+                        $media1 = $row1['media1'];
+                      }
+
+                      $sql2 = "select * from user where user_id=?";//いいねされてる垢を参照
+                      $ps2 = $pdo->prepare($sql2);
+                      $ps2->bindValue(1, $user_id, PDO::PARAM_INT);
+                      $ps2->execute();
+                      foreach($ps2 as $row2){
+                        $user_name = $row2['user_name'];
+                        $aikon = $row2['media'];
+                        $self_introduction = $row2['self_introduction'];
+                      }
+
+
+                      echo   '<div class="p_ys">';
+                      //アイコン表示
+                  if (!empty($aikon) || isset($aikon)) { //設定している場合
+
+                    $base64_image = base64_encode($aikon);
+
+                    echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
+
+                  } else { //設定してない場合
+                    echo '<img class="image_middle" src="img/pink.png">　';
+                  }
+
+                  echo   $user_name ;
+                  //ジャンル表示
+                  $sql3 = "SELECT genre_name from genre where genre_id = ?";
+                      $ps3 = $pdo->prepare($sql3);
+                      $ps3->bindValue(1, $genre_id, PDO::PARAM_INT);
+                      $ps3->execute();
+                      foreach($ps3 as $row3){
+                        $genre_name = $row3['genre_name'];
+                      }
+                      echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">'. $genre_name . '</span>  ';
+
+  echo                    '<form action="08_投稿詳細画面.php" method="post">'.
+                      '<button name="detail" type="hidden" value="'.$post_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
+                        '<div style="font-size: 20px;">';
+                        echo nl2br($post_contets).
+                        '</div>';
+                        //画像があるか検索
+                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $sql4 = "select * from post where post_id = ?";
+                        $ps4 = $pdo->prepare($sql4);
+                        $ps4->bindValue(1,$post_id,PDO::PARAM_INT);
+                        $ps4->execute();
+                        $row4 = $ps4->fetch(PDO::FETCH_ASSOC);
+      
+                        if(!empty($media1)){
+                          $image_data = $media1;
+      
+                          $base64_image = base64_encode($image_data);
+      
+                          echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                        }
+      echo                '</button>'.  
+                        '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$date_time.'</p>'.
+                        '</form>';     
+                      echo '<div style="position: relative;top:-45px;left:640px;width: 150px;height:40px;">';
+                        $like = "like";
+      echo                '<button type="hidden" name="like" value="1,'.$post_id.'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+                        '<input type="checkbox" checked="checked" id="'.$like.'" disabled>'.
+                        '<label for="'.$like.'">'.
+                          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
+                            '<path
+                              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />'.
+                              '</svg>　'.$fabulous.'　　　'.
+                        '</label>
+                        </button>'; 
+      echo              '<a href="09_投稿返信画面.php" style="text-decoration: none;">
+                            <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
                           </a>
-                          　3　
-                        </div>
+                          <div style="position: relative;top:-55px;left:190px;">
+                          　' . $comments.
+                        '</div>
                       </div>
-                    </div>
-
-                    <div class="p_ys"><img class="image_middle" src="img/pink.png"> やまママにし<br><br>
-                      <div style="font-size:20px;" onclick="location.href='08_投稿詳細画面.php'" value="投稿">
-                        楽しい<br>
-                        楽しい<br>
-                        a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-                        <img src="img/やまったーlog.png" style="height: 200px;">
-                      </div>
-                      <div class="row">
-                        <div class="col-md-9 col-lg-9 start_0_ys"></div>
-                        <div class="col-md-1 col-lg-1 start_0_ys">
-                          <input type="checkbox" id="like4">
-
-                          <label for="like4">
-                            <!--<div class="lavel_like">-->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                            </svg>　18　　　
-                          </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
-                        </div>
-                        <div class="col-md-2 col-lg-2 start_0_ys">
-                          <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                            <img style="margin-left: 50px;" src="icon/コメント.svg">
-                          </a>
-                          　3　
-                        </div>
-                      </div>
-                    </div>
+                    </div>';  
+                }
+              
+                    ?>
                   </div>
                 </div>
               </div>
