@@ -187,10 +187,10 @@
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $sql = "SELECT * FROM (
-                      SELECT reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments, media1, media2
-                      FROM reply UNION ALL
-                      SELECT post_id, NULL, genre_id, post_contents, date_time, fabulous, comments, media1, media2
-                      FROM post ) AS a WHERE user_id = ? ORDER BY date_time DESC";
+                            SELECT reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments, media1, media2
+                            FROM reply UNION ALL
+                            SELECT post_id, NULL, user_id, post_contents, date_time, fabulous, comments, media1, media2
+                            FROM post ) AS a WHERE user_id = ? ORDER BY date_time DESC";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
                     $ps->execute();
@@ -288,7 +288,7 @@
                             </div>';
                       } else { //返信の場合
                         $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
-                                 user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                        user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
