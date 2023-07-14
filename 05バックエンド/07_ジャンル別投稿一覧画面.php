@@ -179,9 +179,11 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                     </button>
                     </form>';
                   }               
-echo              '<a href="09_投稿返信画面.php" style="text-decoration: none;">
-                        <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
-                      </a>
+                echo '<form action="09_投稿返信画面.php" method="post">
+                      <button name="reply" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                      <img style="margin-left: 137px; margin-top:-55px;" src="icon/コメント.svg">
+                      </button>
+                      </form>
                       <div style="position: relative;top:-55px;left:190px;">
                       　' . $row['comments'].
                     '</div>
@@ -305,9 +307,11 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                   </button>
                   </form>';
                 }               
-echo              '<a href="09_投稿返信画面.php" style="text-decoration: none;">
-                      <img style="margin-left:137px; margin-top:-55px;" src="icon/コメント.svg">
-                    </a>
+              echo '<form action="09_投稿返信画面.php" method="post">
+                    <button name="reply" type="hidden" value="' . $row['post_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                    <img style="margin-left: 137px; margin-top:-55px;" src="icon/コメント.svg">
+                    </button>
+                    </form>
                     <div style="position: relative;top:-55px;left:190px;">
                     　' . $row['comments'].
                   '</div>

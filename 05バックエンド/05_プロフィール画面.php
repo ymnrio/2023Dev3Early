@@ -277,9 +277,11 @@
                           '</div>' .
                           '</form>' .
                           '<div class="col-md-2 col-lg-2 start_0_ys">
-                           <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                           <img style="margin-left: 50px;" src="icon/コメント.svg">
-                           </a>
+                          <form action="09_投稿返信画面.php" method="post">
+                          <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                          <img style="margin-left: 50px;" src="icon/コメント.svg">
+                          </button>
+                          </form>
                            <div class="" style=" position: relative;bottom: 43px;left: 100px;">
                            　' . $row['comments'] .
                            '</div>
@@ -342,10 +344,12 @@
                             '</div>' .
                             '</form>' .
                             '<div class="col-md-2 col-lg-2 start_0_ys">
-                             <a href="09_投稿返信画面.php" style="text-decoration: none;">
-                             <img style="margin-left: 50px;" src="icon/コメント.svg">
-                             </a>
-                             <div class="" style=" position: relative;bottom: 43px;left: 100px;">
+                            <form action="09_投稿返信画面.php" method="post">
+                            <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                            <img style="margin-left: 50px;" src="icon/コメント.svg">
+                            </button>
+                            </form>
+                            <div class="" style=" position: relative;bottom: 43px;left: 100px;">
                              　' . $row['comments'] .
                             '</div>
                              </div>
