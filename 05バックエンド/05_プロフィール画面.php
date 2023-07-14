@@ -291,7 +291,7 @@
                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                         $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_STR);
+                        $ps3->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
                           $subjectname = $row3['user_name'];
