@@ -108,6 +108,8 @@ session_start();
                         }
                       }
                     }
+                    $a = substr($_POST['detail'], 0, 2);
+                    if ($a == "00") {
                       $sql = "SELECT reply.reply_id, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
                               user.user_name, user.email_address, user.password, user.media, user.self_introduction 
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
