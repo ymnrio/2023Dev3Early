@@ -74,6 +74,40 @@ session_start();
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $a = substr($_POST['detail'], 0, 2);
                     if ($a == "00") {
+                      $sql6 = "SELECT * FROM reply WHERE reply_id = ?";
+                      $ps6 = $pdo->prepare($sql6);
+                      $ps6->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                      $ps6->execute();
+                      foreach ($ps6 as $row6) {
+                        $a = substr($row6['reply_subject'], 0, 2);
+                        if ($a == "00") {
+                          $sql7 = "SELECT * FROM reply WHERE reply_id = ?";
+                          $ps7 = $pdo->prepare($sql7);
+                          $ps7->bindValue(1, $row6['reply_subject'], PDO::PARAM_STR);
+                          $ps7->execute();
+                          foreach ($ps7 as $row7) {
+                            
+                          }
+                        }
+                      }
+                    }else{
+                      $sql6 = "SELECT * FROM reply WHERE reply_id = ?";
+                      $ps6 = $pdo->prepare($sql6);
+                      $ps6->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                      $ps6->execute();
+                      foreach ($ps6 as $row6) {
+                        $a = substr($row6['reply_subject'], 0, 2);
+                        if ($a == "00") {
+                          $sql7 = "SELECT * FROM reply WHERE reply_id = ?";
+                          $ps7 = $pdo->prepare($sql7);
+                          $ps7->bindValue(1, $row6['reply_subject'], PDO::PARAM_STR);
+                          $ps7->execute();
+                          foreach ($ps7 as $row7) {
+                            
+                          }
+                        }
+                      }
+                    }
                       $sql = "SELECT reply.reply_id, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
                               user.user_name, user.email_address, user.password, user.media, user.self_introduction 
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
