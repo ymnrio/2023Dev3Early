@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+unset($_SESSION['trash']);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -32,7 +34,8 @@
           <hr class="color_yamani">
           
           <form action="07_ジャンル別投稿一覧画面.php" method="post">
-            <input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>
+            <!--<input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>-->
+            <input type="hidden" id="1" name="example3"  value="すべて" style="background-color:white;border:none;"><label for="1">　♪ すべて</label>
             <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
             <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
             <input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>
@@ -59,15 +62,19 @@
               <div class="padding30_ys"><br><br>
                 <form action="11_検索結果表示画面.php" method="post" class="search-form-006">
                   <label>
-                    <input type="text" name="keyword" placeholder="キーワードを入力">
+                    <input type="text" name="keyword" style="border: solid 2px #FBA8B8;position: fixed; top: 10px;left: 350px;z-index: 10;" placeholder="キーワードを入力">
                   </label>
-                  <button type="submit" aria-label="検索"></button>
-                </form>
+                  <button type="submit" class="kensaku_ys" style="position: fixed; top: 10px;right: 104px;" aria-label="検索"></button>
+                </form >
+              <br>
+                
               <?php
                if(isset($_POST['example3'])){
                 $_SESSION['genre'] = $_POST['example3'];
               }
+              //echo $_SESSION['genre'];
                 ?>
+
 <?php               
 
               if($_SESSION['genre'] == "すべて"){

@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['trash']);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
