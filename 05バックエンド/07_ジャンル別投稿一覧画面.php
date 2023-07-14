@@ -35,7 +35,7 @@ unset($_SESSION['trash']);
           
           <form action="07_ジャンル別投稿一覧画面.php" method="post">
             <!--<input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>-->
-            <input type="hidden" id="1" name="example3"  value="すべて" style="background-color:white;border:none;"><label for="1">　♪ すべて</label>
+            <input type="submit" id="1" name="example3"  value="すべて" style="background-color:white;border:none;"><label for="1">　♪ すべて</label>
             <input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>
             <input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>
             <input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>
