@@ -418,13 +418,29 @@ margin-top: -15px;
   background-color: #FBA8B8;
 }
 
-
 .example2 label {
   display: block;
   width: 270px;
   /*初期値200px*/
-  background: #fff;
-  color: #FBA8B8;
+  /*background: #fff;
+  color: #FBA8B8;*/
+  padding: 10px;
+  /*margin: 10px;*/
+  box-sizing: border-box;
+  text-align: left;
+  text-decoration: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.example2check {
+  display: block;
+  width: 270px;
+  /*初期値200px*/
+  background: #FBA8B8;
+  color: #fff;
   padding: 10px;
   /*margin: 10px;*/
   box-sizing: border-box;
