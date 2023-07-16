@@ -374,7 +374,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
                           echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                         }
-                        echo                  '</div>' .
+                        echo '</div>' .
                           '</button>' .
                           '<div class="row">' .
                           '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
@@ -490,7 +490,6 @@ echo        '<hr class="start_0_ys color_yamani"><br>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="sprict/yamanishi.js"></script>
