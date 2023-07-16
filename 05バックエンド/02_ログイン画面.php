@@ -47,7 +47,7 @@ session_start();
            </div>
 
            <?php
-           session_start();
+
            if((isset($_SESSION['error']))){
             echo '<div style="color: red; text-align: center;">'.$_SESSION['error'].'</div>';
             unset($_SESSION['error']);
