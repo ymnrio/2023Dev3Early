@@ -308,35 +308,58 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
                           echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                         }
-                        echo                  '</div>' .
-                          '</button>' .
-                          '<div class="row">' .
-                          '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
-                          '<div class="col-md-1 col-lg-1 start_0_ys">';
-                        $like = "like" . $row['reply_id'];
-                        echo '<input type="checkbox" id="' . $like . '">' .
+                        echo  '</button>
+                        <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
+                        </form>';
+                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
+                        $ps3 = $pdo->prepare($sql3);
+                        $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+                        $ps3->bindValue(2,$row['reply_id'],PDO::PARAM_STR);
+                        $ps3->execute();
+                        $check_like = null;
+                        foreach($ps3 as $row3){
+                          $check_like = $row3['like_id'];
+                        } 
+                        echo '<div style="position: relative;top:-45px;left:640px;width: 150px;height:30px;">';
 
-                          '<label for="' . $like . '">' .
-                          '<!--<div class="lavel_like">-->' .
-                          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
-                          '<path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
-                          '</svg>　' . $row['fabulous'] . '　　　' .
-                          '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
-                          '</div>' .
-                          '</form>' .
-                          '<div class="col-md-2 col-lg-2 start_0_ys">
-                          <form action="09_投稿返信画面.php" method="post">
-                          <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
-                          <img style="margin-left: 50px;" src="icon/コメント.svg">
+                        if(isset($check_like)){//いいね判別
+                          echo '<form action="addlike.php" method="post">';
+                          $like = "like".$row['reply_id'];
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          <input type="checkbox" checked="checked" id="'.$like.'">
+                          <label for="'.$like.'">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>　'.$row['fabulous'].'　　　';
+echo                        '</label>
                           </button>
-                          </form>
-                           <div class="" style=" position: relative;bottom: 43px;left: 100px;">
-                           　' . $row['comments'] .
-                           '</div>
-                            </div>
-                            </div>
-                            </div>';
+                          </form>';
+                        }else{
+                          echo '<form action="addlike.php" method="post">';
+                          $like = "like".$row['reply_id'];
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          <input type="checkbox" id="'.$like.'">
+                          <label for="'.$like.'">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>　'.$row['fabulous'].'　　　';
+                          echo '</label>
+                          </button>
+                          </form>';
+                        }    
+                        echo '<form action="09_投稿返信画面.php" method="post">
+                        <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                        <img style="margin-left: 137px; margin-top:-75px;" src="icon/コメント.svg">
+                        </button>
+                        </form>
+                        <div style="position: relative;top:-70px;left:190px;">
+                        　' . $row['comments'].
+                        '</div>
+                        </div>
+                        </div>';
                       } else { //返信の場合
                         $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                         user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
@@ -377,33 +400,58 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
                           echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                         }
-                        echo '</div>' .
-                          '</button>' .
-                          '<div class="row">' .
-                          '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
-                          '<div class="col-md-1 col-lg-1 start_0_ys">';
-                        $like = "like" . $row['reply_id'];
-                        echo '<input type="checkbox" id="' . $like . '">' .
-                            '<label for="' . $like . '">' .
-                            '<!--<div class="lavel_like">-->' .
-                            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">' .
-                            '<path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />' .
-                            '</svg>　' . $row['fabulous'] . '　　　' .
-                            '</label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->' .
-                            '</div>' .
-                            '</form>' .
-                            '<div class="col-md-2 col-lg-2 start_0_ys">
-                            <form action="09_投稿返信画面.php" method="post">
-                            <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
-                            <img style="margin-left: 50px;" src="icon/コメント.svg">
-                            </button>
-                            </form>
-                            <div class="" style=" position: relative;bottom: 43px;left: 100px;">
-                             　' . $row['comments'] .
-                            '</div>
-                             </div>
-                             </div>
-                             </div>';
+                        echo  '</button>
+                        <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
+                        </form>';
+                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
+                        $ps3 = $pdo->prepare($sql3);
+                        $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+                        $ps3->bindValue(2,$row['reply_id'],PDO::PARAM_STR);
+                        $ps3->execute();
+                        $check_like = null;
+                        foreach($ps3 as $row3){
+                          $check_like = $row3['like_id'];
+                        } 
+                        echo '<div style="position: relative;top:-45px;left:640px;width: 150px;height:30px;">';
+
+                        if(isset($check_like)){//いいね判別
+                          echo '<form action="addlike.php" method="post">';
+                          $like = "like".$row['reply_id'];
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          <input type="checkbox" checked="checked" id="'.$like.'">
+                          <label for="'.$like.'">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>　'.$row['fabulous'].'　　　';
+echo                        '</label>
+                          </button>
+                          </form>';
+                        }else{
+                          echo '<form action="addlike.php" method="post">';
+                          $like = "like".$row['reply_id'];
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          <input type="checkbox" id="'.$like.'">
+                          <label for="'.$like.'">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                          </svg>　'.$row['fabulous'].'　　　';
+                          echo '</label>
+                          </button>
+                          </form>';
+                        }    
+                        echo '<form action="09_投稿返信画面.php" method="post">
+                        <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
+                        <img style="margin-left: 137px; margin-top:-75px;" src="icon/コメント.svg">
+                        </button>
+                        </form>
+                        <div style="position: relative;top:-70px;left:190px;">
+                        　' . $row['comments'].
+                        '</div>
+                        </div>
+                        </div>';
                       }
                     }
                     ?>
