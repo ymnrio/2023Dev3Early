@@ -135,18 +135,18 @@ echo        '<hr class="start_0_ys color_yamani"><br>
             <p>　ID:<?php echo $_SESSION['user']['id']; ?></p>
             <?php
             if (!empty($_SESSION['trash'])) {
-              echo      '<form action="drop.php" method="post">
-            <div style="width: 400px;height: 200px;border: 1px solid; background-color: rgba(251, 140, 184, 0.9);position: fixed;z-index:10; margin-top:180px;margin-left:50px;">
-              <img src="icon/ギター.svg">
-              <img style="margin-left: 326px;" src="icon/マイク(カラオケ).svg">
-              <h5 style="text-align: center;">本当に削除してもよろしいでしょうか
-                <img style="margin-top: -8px;margin-right: 8px;" src="icon/16音符.svg"></h5>
-              <button type="hidden" name="cancel" value="キャンセル"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left:50px;margin-top: 30px;">キャンセル</button>
-              <button type="hidden" name="drop" value="' . $_SESSION['trash'] . '"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left: 55px;margin-top: 30px;">削除</button><br>
-              <img style="margin-top: 30px;" src="icon/ヘッドフォン.svg">
-              <img style="margin-left: 326px;margin-top: 30px;" src="icon/ピアノ.svg">
-            </div>
-          </form>';
+              echo '<form action="drop.php" method="post">
+                <div style="width: 400px;height: 200px;border: 1px solid; background-color: rgba(251, 140, 184, 0.9);position: fixed;z-index:10; margin-top:180px;margin-left:50px;">
+                  <img src="icon/ギター.svg">
+                  <img style="margin-left: 326px;" src="icon/マイク(カラオケ).svg">
+                  <h5 style="text-align: center;">本当に削除してもよろしいでしょうか
+                    <img style="margin-top: -8px;margin-right: 8px;" src="icon/16音符.svg"></h5>
+                  <button type="hidden" name="cancel" value="キャンセル"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left:50px;margin-top: 30px;">キャンセル</button>
+                  <button type="hidden" name="drop" value="' . $_SESSION['trash'] . '"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left: 55px;margin-top: 30px;">削除</button><br>
+                  <img style="margin-top: 30px;" src="icon/ヘッドフォン.svg">
+                  <img style="margin-left: 326px;margin-top: 30px;" src="icon/ピアノ.svg">
+                </div>
+              </form>';
             }
             ?>
 
@@ -311,7 +311,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                           '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
                           '<div class="col-md-1 col-lg-1 start_0_ys">';
                         $like = "like" . $row['reply_id'];
-                        echo                      '<input type="checkbox" id="' . $like . '">' .
+                        echo '<input type="checkbox" id="' . $like . '">' .
 
                           '<label for="' . $like . '">' .
                           '<!--<div class="lavel_like">-->' .
