@@ -107,10 +107,11 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
           <div class="col-md-2 col-lg-2"><br>
             <?php 
+            //$_SESSION['move_id']=$_POST['user_id'];
             $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
-            $ps1->bindValue(1,$_POST['user_id'],PDO::PARAM_INT);
+            $ps1->bindValue(1,$_SESSION['move_user_id'],PDO::PARAM_INT);
             $ps1->execute();
 
             $user_id = null;

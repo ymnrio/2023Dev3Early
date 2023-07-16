@@ -38,21 +38,67 @@ unset($_SESSION['trash']);
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <form action="07_ジャンル別投稿一覧画面.php" method="post">
-            <input type="submit" id="1" name="example3" value="すべて"><label for="1">　♪ すべて</label>
-            <input type="submit" id="2" name="example3" value="JPOP"><label for="2">　♪ JPOP</label>
-            <input type="submit" id="3" name="example3" value="洋楽"><label for="3">　♪ 洋楽</label>
-            <input type="submit" id="4" name="example3" value="アニソン"><label for="4">　♪ アニソン</label>
-            <input type="submit" id="5" name="example3" value="クラシック"><label for="5">　♪ クラシック</label>
-            <input type="submit" id="6" name="example3" value="ロック"><label for="6">　♪ ロック</label>
-            <input type="submit" id="7" name="example3" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-            <input type="submit" id="8" name="example3" value="ギター"><label for="8">　♪ ギター</label>
-            <input type="submit" id="9" name="example3" value="楽器"><label for="9">　♪ 楽器</label>
-            <input type="submit" id="10" name="example3" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          <form action="genre_select.php" method="post">
+      <?php
+        if($_SESSION['genre'] != "すべて"){
+echo        '<input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>';
+        }else{
+echo        '<input type="submit" id="1" name="example3" value="すべて"><label style="background: #FBA8B8;color: #fff;" for="1">　♪ すべて</label>';
+        }
+        if($_SESSION['genre'] != "JPOP"){
+echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>';
+        }else{
+echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label style="background: #FBA8B8;color: #fff;" for="2">　♪ JPOP</label>';
+        }
+        if($_SESSION['genre'] != "洋楽"){
+echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>';
+        }else{
+echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label  style="background: #FBA8B8;color: #fff;" for="3">　♪ 洋楽</label>';
+        }
+        if($_SESSION['genre'] != "アニソン"){
+echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>';
+        }else{
+echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label style="background: #FBA8B8;color: #fff;" for="4">　♪ アニソン</label>';
+        }
+        if($_SESSION['genre'] != "クラシック"){
+echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>';
+        }else{
+echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label style="background: #FBA8B8;color: #fff;" for="5">　♪ クラシック</label>';
+        }
+        if($_SESSION['genre'] != "ロック"){
+echo        '<input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>';
+        }else{
+echo        '<input type="submit" id="6" name="example3"  value="ロック"><label style="background: #FBA8B8;color: #fff;" for="6">　♪ ロック</label>';
+        }
+        if($_SESSION['genre'] != "VOCALOID"){
+echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>';
+        }else{
+echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label style="background: #FBA8B8;color: #fff;" for="7">　♪ VOCALOID</label>';
+        }
+        if($_SESSION['genre'] != "ギター"){
+echo        '<input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>';
+        }else{
+echo        '<input type="submit" id="8" name="example3"  value="ギター"><label style="background: #FBA8B8;color: #fff;" for="8">　♪ ギター</label>';
+        }
+        if($_SESSION['genre'] != "楽器"){
+echo        '<input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>';
+        }else{
+echo        '<input type="submit" id="9" name="example3"  value="楽器"><label style="background: #FBA8B8;color: #fff;" for="9">　♪ 楽器</label>';
+        }
+        if($_SESSION['genre'] != "その他"){
+echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>';
+        }else{
+echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px; background: #FBA8B8;color: #fff;" for="10">　♪ その他</label><br>';
+        }
+        if($_SESSION['genre'] != "プロフィール"){
+echo        '<hr class="start_0_ys color_yamani"><br>
+            <input type="submit"  id="11" name="example3" value="プロフィール"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>';
+        }else{
+echo        '<hr class="start_0_ys color_yamani"><br>
+            <input type="submit"  id="11" name="example3"  value="プロフィール"><label class="nabi_ys" style="margin-bottom: 5px;background: #FBA8B8;color: #fff;"" for="11">　プロフィール</gita-></label>';
+        }
+      ?>
           </form>
-
-          <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="11" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio" id="12" name="example3" onclick="location.href='logout.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
@@ -103,7 +149,7 @@ unset($_SESSION['trash']);
                           }
                           echo   $row['user_name'] ;
                           //他人のプロフィールに遷移
-echo                      '<form action="13_他人プロフィール.php" method="post">'.
+echo                      '<form action="like_session.php" method="post">'.
                           '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                           <span class="material-symbols-outlined">face</span>
                           </button>
@@ -192,7 +238,7 @@ echo                        '</label>
 
                       echo   $row['user_name'] ;
                       //他人のプロフィールに遷移
-                      echo '<form action="13_他人プロフィール.php" method="post">'.
+                      echo '<form action="like_session.php" method="post">'.
                       '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                       <span class="material-symbols-outlined">face</span>
                       </button>
@@ -323,7 +369,7 @@ echo                        '</label>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="13_他人プロフィール.php" method="post">'.
+echo             '<form action="like_session.php" method="post">'.
                     '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                       <span class="material-symbols-outlined">face</span>
                     </button>
@@ -450,7 +496,7 @@ echo                          '<form action="09_投稿返信画面.php" method="
                       }
                       echo   $row['user_name'].' <span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
                       //他人のプロフィールに遷移
-                      echo'<form action="13_他人プロフィール.php" method="post">'.
+                      echo'<form action="like_session.php" method="post">'.
                         '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                           <span class="material-symbols-outlined">face</span>
                         </button>
