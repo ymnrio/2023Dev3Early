@@ -204,14 +204,18 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
                   $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
                   $ps2->execute();
                   $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+  header('Content-Type: video/mp4');
+  $media1 = $row2['media1'];
+  echo ("<video src=\"import_media.php?target=$media1\" width=\"426\" height=\"240\" controls></video>");
 
-                  if(!empty($row2['media1'])){
+
+                  /*if(!empty($row2['media1'])){
                     $image_data = $row2['media1'];
 
                     $base64_image = base64_encode($image_data);
 
                     echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
-                  }
+                  }*/
 echo                '</button>'.  
                   '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                   '</form>';
