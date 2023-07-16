@@ -36,21 +36,67 @@
         </div>
         <div class="example2" style="position: fixed; margin-top: 115px;">
           <hr class="color_yamani">
-          <form action="07_ジャンル別投稿一覧画面.php" method="post">
-            <input type="submit" id="1" name="example3" value="すべて"><label for="1">　♪ すべて</label>
-            <input type="submit" id="2" name="example3" value="JPOP"><label for="2">　♪ JPOP</label>
-            <input type="submit" id="3" name="example3" value="洋楽"><label for="3">　♪ 洋楽</label>
-            <input type="submit" id="4" name="example3" value="アニソン"><label for="4">　♪ アニソン</label>
-            <input type="submit" id="5" name="example3" value="クラシック"><label for="5">　♪ クラシック</label>
-            <input type="submit" id="6" name="example3" value="ロック"><label for="6">　♪ ロック</label>
-            <input type="submit" id="7" name="example3" value="VOCALOID"><label for="7">　♪ VOCALOID</label>
-            <input type="submit" id="8" name="example3" value="ギター"><label for="8">　♪ ギター</label>
-            <input type="submit" id="9" name="example3" value="楽器"><label for="9">　♪ 楽器</label>
-            <input type="submit" id="10" name="example3" value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>
+          <form action="genre_select.php" method="post">
+      <?php
+        if($_SESSION['genre'] != "すべて"){
+echo        '<input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>';
+        }else{
+echo        '<input type="submit" id="1" name="example3" value="すべて"><label style="background: #FBA8B8;color: #fff;" for="1">　♪ すべて</label>';
+        }
+        if($_SESSION['genre'] != "JPOP"){
+echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>';
+        }else{
+echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label style="background: #FBA8B8;color: #fff;" for="2">　♪ JPOP</label>';
+        }
+        if($_SESSION['genre'] != "洋楽"){
+echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>';
+        }else{
+echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label  style="background: #FBA8B8;color: #fff;" for="3">　♪ 洋楽</label>';
+        }
+        if($_SESSION['genre'] != "アニソン"){
+echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>';
+        }else{
+echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label style="background: #FBA8B8;color: #fff;" for="4">　♪ アニソン</label>';
+        }
+        if($_SESSION['genre'] != "クラシック"){
+echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>';
+        }else{
+echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label style="background: #FBA8B8;color: #fff;" for="5">　♪ クラシック</label>';
+        }
+        if($_SESSION['genre'] != "ロック"){
+echo        '<input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>';
+        }else{
+echo        '<input type="submit" id="6" name="example3"  value="ロック"><label style="background: #FBA8B8;color: #fff;" for="6">　♪ ロック</label>';
+        }
+        if($_SESSION['genre'] != "VOCALOID"){
+echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>';
+        }else{
+echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label style="background: #FBA8B8;color: #fff;" for="7">　♪ VOCALOID</label>';
+        }
+        if($_SESSION['genre'] != "ギター"){
+echo        '<input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>';
+        }else{
+echo        '<input type="submit" id="8" name="example3"  value="ギター"><label style="background: #FBA8B8;color: #fff;" for="8">　♪ ギター</label>';
+        }
+        if($_SESSION['genre'] != "楽器"){
+echo        '<input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>';
+        }else{
+echo        '<input type="submit" id="9" name="example3"  value="楽器"><label style="background: #FBA8B8;color: #fff;" for="9">　♪ 楽器</label>';
+        }
+        if($_SESSION['genre'] != "その他"){
+echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>';
+        }else{
+echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px; background: #FBA8B8;color: #fff;" for="10">　♪ その他</label><br>';
+        }
+        if($_SESSION['genre'] != "プロフィール"){
+echo        '<hr class="start_0_ys color_yamani"><br>
+            <input type="submit"  id="11" name="example3" value="プロフィール"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>';
+        }else{
+echo        '<hr class="start_0_ys color_yamani"><br>
+            <input type="submit"  id="11" name="example3"  value="プロフィール"><label class="nabi_ys" style="margin-bottom: 5px;background: #FBA8B8;color: #fff;"" for="11">　プロフィール</gita-></label>';
+        }
+      ?>
           </form>
-
-          <hr class="start_0_ys color_yamani"><br>
-          <input type="radio" id="11" name="example3" onclick="location.href='05_プロフィール画面.php'" value="遷移"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>
           <hr class="start_0_ys color_yamani"><br>
           <input type="radio" id="12" name="example3" onclick="location.href='logout.php'" value="遷移"><label class="nabi_ys" for="12">　ログアウト</gita-></label>
         </div>
@@ -89,18 +135,18 @@
             <p>　ID:<?php echo $_SESSION['user']['id']; ?></p>
             <?php
             if (!empty($_SESSION['trash'])) {
-              echo      '<form action="drop.php" method="post">
-            <div style="width: 400px;height: 200px;border: 1px solid; background-color: rgba(251, 140, 184, 0.9);position: fixed;z-index:10; margin-top:180px;margin-left:50px;">
-              <img src="icon/ギター.svg">
-              <img style="margin-left: 326px;" src="icon/マイク(カラオケ).svg">
-              <h5 style="text-align: center;">本当に削除してもよろしいでしょうか
-                <img style="margin-top: -8px;margin-right: 8px;" src="icon/16音符.svg"></h5>
-              <button type="hidden" name="cancel" value="キャンセル"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left:50px;margin-top: 30px;">キャンセル</button>
-              <button type="hidden" name="drop" value="' . $_SESSION['trash'] . '"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left: 55px;margin-top: 30px;">削除</button><br>
-              <img style="margin-top: 30px;" src="icon/ヘッドフォン.svg">
-              <img style="margin-left: 326px;margin-top: 30px;" src="icon/ピアノ.svg">
-            </div>
-          </form>';
+              echo '<form action="drop.php" method="post">
+                <div style="width: 400px;height: 200px;border: 1px solid; background-color: rgba(251, 140, 184, 0.9);position: fixed;z-index:10; margin-top:180px;margin-left:50px;">
+                  <img src="icon/ギター.svg">
+                  <img style="margin-left: 326px;" src="icon/マイク(カラオケ).svg">
+                  <h5 style="text-align: center;">本当に削除してもよろしいでしょうか
+                    <img style="margin-top: -8px;margin-right: 8px;" src="icon/16音符.svg"></h5>
+                  <button type="hidden" name="cancel" value="キャンセル"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left:50px;margin-top: 30px;">キャンセル</button>
+                  <button type="hidden" name="drop" value="' . $_SESSION['trash'] . '"class="btn container-fluid "style="background-color:#fff;width: 120px;margin-left: 55px;margin-top: 30px;">削除</button><br>
+                  <img style="margin-top: 30px;" src="icon/ヘッドフォン.svg">
+                  <img style="margin-left: 326px;margin-top: 30px;" src="icon/ピアノ.svg">
+                </div>
+              </form>';
             }
             ?>
 
@@ -242,7 +288,7 @@
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                              '<button name="detail" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
                              '<div style="font-size: 20px;">';
-                        echo $row['reply_contents'];
+                        echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
                         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
@@ -265,7 +311,7 @@
                           '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
                           '<div class="col-md-1 col-lg-1 start_0_ys">';
                         $like = "like" . $row['reply_id'];
-                        echo                      '<input type="checkbox" id="' . $like . '">' .
+                        echo '<input type="checkbox" id="' . $like . '">' .
 
                           '<label for="' . $like . '">' .
                           '<!--<div class="lavel_like">-->' .
@@ -311,7 +357,7 @@
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                              '<button name="detail" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
                              '<div style="font-size: 20px;">';
-                        echo $row['reply_contents'];
+                        echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
                         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
@@ -328,7 +374,7 @@
 
                           echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
                         }
-                        echo                  '</div>' .
+                        echo '</div>' .
                           '</button>' .
                           '<div class="row">' .
                           '<div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">' . $row['date_time'] . '</p></div>' .
@@ -444,7 +490,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="sprict/yamanishi.js"></script>
