@@ -98,5 +98,15 @@ if($like == 2){
                 $ps->execute();
 
 };
-header('Location:07_ジャンル別投稿一覧画面.php');
+        if($_SESSION['move'] == "05"){
+           header('Location:05_プロフィール画面.php');
+        }else if($_SESSION['move'] == "07"){
+           header('Location:07_ジャンル別投稿一覧画面.php');
+        }else if($_SESSION['move'] == "08"){
+           header('Location:08_投稿詳細画面.php');
+        }else if($_SESSION['move'] == "11"){
+           header('Location:11_検索結果表示画面.php');
+        }else if($_SESSION['move'] == "13"){
+           header('Location:13_他人プロフィール.php');
+        }
 ?>

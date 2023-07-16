@@ -1,4 +1,6 @@
-<?php session_start(); 
+<?php 
+session_start(); 
+$_SESSION['move']="07";
 unset($_SESSION['trash']);
 ?>
 <!DOCTYPE html>

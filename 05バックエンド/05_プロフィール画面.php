@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+$_SESSION['move'] = "05";
+?>
 <!DOCTYPE html>
 <html lang="ja">
 

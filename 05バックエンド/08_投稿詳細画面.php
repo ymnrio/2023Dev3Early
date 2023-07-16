@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['move']="08";
 unset($_SESSION['trash']);
 ?>
 <!DOCTYPE html>
