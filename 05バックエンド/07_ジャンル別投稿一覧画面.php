@@ -374,10 +374,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
               </div>';  
           }
         }
-?>
-                
-
-                
+?>           
                 <div class="box">
                   <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                     style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"

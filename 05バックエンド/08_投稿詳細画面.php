@@ -132,7 +132,7 @@ unset($_SESSION['trash']);
                             </button>
                             </form>
                             <div style="font-size: 20px;">'
-                            . $row6['reply_contents'];
+                            . nl2br($row6['reply_contents']);
                             //画像があるか検索
                             $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
                             $ps2 = $pdo->prepare($sql2);
@@ -235,7 +235,7 @@ unset($_SESSION['trash']);
                               </button>
                               </form>
                               <div style="font-size: 17px;">'
-                              . $row6['post_contents'];
+                              . nl2br($row6['post_contents']);
                               //画像があるか検索
                               $sql2 = "SELECT * FROM post WHERE post_id = ?";
                               $ps2 = $pdo->prepare($sql2);
@@ -348,7 +348,7 @@ unset($_SESSION['trash']);
                         </button>
                         </form>
                         <div style="font-size: 20px;">'
-                        . $row['reply_contents'];
+                        . nl2br($row['reply_contents']);
                         //画像があるか検索
                         $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
                         $ps2 = $pdo->prepare($sql2);
@@ -479,7 +479,7 @@ unset($_SESSION['trash']);
                     </button>
                     </form>
                     <div style="font-size: 20px;">'
-                    . $row['post_contents'];
+                    . nl2br($row['post_contents']);
                     //画像があるか検索
                     $sql2 = "SELECT * FROM post WHERE post_id = ?";
                     $ps2 = $pdo->prepare($sql2);
@@ -609,7 +609,7 @@ unset($_SESSION['trash']);
                       echo '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['reply_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                       '<div style="font-size: 18px;">';
-                      echo $row['reply_contents'];
+                      echo nl2br($row['reply_contents']);
 
                     //画像があるか検索
                     $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
