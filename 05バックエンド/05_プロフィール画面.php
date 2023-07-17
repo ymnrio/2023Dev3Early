@@ -361,7 +361,7 @@ echo                        '</label>
                         </div>
                         </div>';
                       } else { //返信の場合
-                        $c = substr($row['reply_id'],0,2);
+                        $c = substr($row['reply_subject'],0,2);
                         if($c == "00"){
                           $sql8 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                     user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
