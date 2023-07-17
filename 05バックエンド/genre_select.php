@@ -1,6 +1,6 @@
 <?php
 session_start();
-unset($_SESSION['genre']);
+//unset($_SESSION['genre']);
 $_SESSION['genre'] = $_POST['example3'];
 
   if($_SESSION['genre'] == "プロフィール"){

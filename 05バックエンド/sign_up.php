@@ -5,6 +5,11 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $name = $_POST['name'];
 
+$name_number = mb_strlen($name, 'UTF-8');
+if($name_number >10){
+    $_SESSION['error'] = "ユーザーネームは10文字未満までです。";
+    header('Location:03_新規登録画面.php');
+}
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8',
 'root','root');
 

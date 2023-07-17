@@ -11,6 +11,6 @@ foreach($ps as $row){
     $_SESSION['user'] = ['id' => $row['user_id'], 'name' => $row['user_name'], 'mail' => $row['email_address'], 'password' => $row['password'],
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
 }
-
+$_SESSION['genre'] = "すべて";
 header('Location:07_ジャンル別投稿一覧画面.php');
 ?>

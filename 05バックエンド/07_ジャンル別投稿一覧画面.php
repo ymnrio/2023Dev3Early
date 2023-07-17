@@ -37,57 +37,57 @@ unset($_SESSION['trash']);
           
           <form action="genre_select.php" method="post">
       <?php
-        if($_SESSION['genre'] != "すべて"){
+        if($_SESSION['genre'] != "すべて" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="1" name="example3"  value="すべて"><label for="1">　♪ すべて</label>';
         }else{
 echo        '<input type="submit" id="1" name="example3" value="すべて"><label style="background: #FBA8B8;color: #fff;" for="1">　♪ すべて</label>';
         }
-        if($_SESSION['genre'] != "JPOP"){
+        if($_SESSION['genre'] != "JPOP" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label for="2">　♪ JPOP</label>';
         }else{
 echo        '<input type="submit" id="2" name="example3"  value="JPOP"><label style="background: #FBA8B8;color: #fff;" for="2">　♪ JPOP</label>';
         }
-        if($_SESSION['genre'] != "洋楽"){
+        if($_SESSION['genre'] != "洋楽" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label for="3">　♪ 洋楽</label>';
         }else{
 echo        '<input type="submit" id="3" name="example3"  value="洋楽"><label  style="background: #FBA8B8;color: #fff;" for="3">　♪ 洋楽</label>';
         }
-        if($_SESSION['genre'] != "アニソン"){
+        if($_SESSION['genre'] != "アニソン" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label for="4">　♪ アニソン</label>';
         }else{
 echo        '<input type="submit" id="4" name="example3"  value="アニソン"><label style="background: #FBA8B8;color: #fff;" for="4">　♪ アニソン</label>';
         }
-        if($_SESSION['genre'] != "クラシック"){
+        if($_SESSION['genre'] != "クラシック" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label for="5">　♪ クラシック</label>';
         }else{
 echo        '<input type="submit" id="5" name="example3"  value="クラシック"><label style="background: #FBA8B8;color: #fff;" for="5">　♪ クラシック</label>';
         }
-        if($_SESSION['genre'] != "ロック"){
+        if($_SESSION['genre'] != "ロック" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="6" name="example3"  value="ロック"><label for="6">　♪ ロック</label>';
         }else{
 echo        '<input type="submit" id="6" name="example3"  value="ロック"><label style="background: #FBA8B8;color: #fff;" for="6">　♪ ロック</label>';
         }
-        if($_SESSION['genre'] != "VOCALOID"){
+        if($_SESSION['genre'] != "VOCALOID" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label for="7">　♪ VOCALOID</label>';
         }else{
 echo        '<input type="submit" id="7" name="example3"  value="VOCALOID"><label style="background: #FBA8B8;color: #fff;" for="7">　♪ VOCALOID</label>';
         }
-        if($_SESSION['genre'] != "ギター"){
+        if($_SESSION['genre'] != "ギター" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="8" name="example3"  value="ギター"><label for="8">　♪ ギター</label>';
         }else{
 echo        '<input type="submit" id="8" name="example3"  value="ギター"><label style="background: #FBA8B8;color: #fff;" for="8">　♪ ギター</label>';
         }
-        if($_SESSION['genre'] != "楽器"){
+        if($_SESSION['genre'] != "楽器" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="9" name="example3"  value="楽器"><label for="9">　♪ 楽器</label>';
         }else{
 echo        '<input type="submit" id="9" name="example3"  value="楽器"><label style="background: #FBA8B8;color: #fff;" for="9">　♪ 楽器</label>';
         }
-        if($_SESSION['genre'] != "その他"){
+        if($_SESSION['genre'] != "その他" && !empty($_SESSION['genre'])){
 echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px;" for="10">　♪ その他</label><br>';
         }else{
 echo        '<input type="submit" id="10" name="example3"  value="その他"><label style="margin-bottom: -10px; background: #FBA8B8;color: #fff;" for="10">　♪ その他</label><br>';
         }
-        if($_SESSION['genre'] != "プロフィール"){
+        if($_SESSION['genre'] != "プロフィール" && !empty($_SESSION['genre'])){
 echo        '<hr class="start_0_ys color_yamani"><br>
             <input type="submit"  id="11" name="example3" value="プロフィール"><label class="nabi_ys" style="margin-bottom: 5px;" for="11">　プロフィール</gita-></label>';
         }else{

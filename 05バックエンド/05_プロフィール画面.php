@@ -524,7 +524,7 @@ echo                        '</label>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">'. $genre_name . '</span>  ';
 
-  echo                    '<form action="08_投稿詳細画面.php" method="post">'.
+  echo                    '<form action="like_session.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$post_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
                         echo nl2br($post_contets).
