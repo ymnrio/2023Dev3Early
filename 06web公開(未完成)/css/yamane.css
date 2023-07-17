@@ -1,0 +1,181 @@
+#haikei_yr {
+  background: #FBA8B8;
+}
+
+.log_yr img {
+  width: 400px;
+  position: fixed;
+}
+
+.search-form-006 {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.search-form-006 input {
+  width: 850px; /*ここをいじると検索の大きさが変わる初期840px*/
+  height: 45px;
+  padding: 5px 15px;
+  border: none;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-form-006 input::placeholder {
+  color: #b4b8bb;
+}
+
+.search-form-006 button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 45px;
+  border: none;
+  background-color: #f57a8d;
+  cursor: pointer;
+}
+
+.search-form-006 button::after {
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23fff%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  content: '';
+}
+
+/* 山根さんが最初に書いてたやつ　一応コメント化してます
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  position: relative;
+  cursor: pointer;
+}
+label svg {
+  margin-left: 600px;
+  width: 40px;
+}
+
+label img {
+  width: 38px;
+}
+input[type="checkbox"] + label svg {
+  fill: #bebcbc;
+  transition: all .3s;
+}
+input[type="checkbox"]:checked + label svg {
+  fill: #ff7878;
+  animation: like .8s ease-out;
+  transition: all .3s;
+}
+@keyframes like {
+  0% {
+    transform: scale(1,1);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+input[type="checkbox"]:checked + svg::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 5px solid #FA9797;
+  border-radius: 50%;
+  animation: circle .8s ease-out;
+  opacity: 0;
+  top: -10px;
+  left: -4px;
+  z-index: -100;
+}
+@keyframes circle {
+  0% {
+    transform: scale(.2,.2);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  80% {
+    transform: scale(1,1);
+    opacity: .8;
+  }
+  100% {
+    transform: scale(1.3,1.3);
+    opacity: 0;
+  }
+}
+
+*/
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
+  position: relative;
+  cursor: pointer;
+}
+ label svg {
+  /*margin-left: 630px;*/
+  width: 40px;
+}
+
+label img {
+  width: 38px;
+}
+input[type="checkbox"] + label svg {
+  fill: #bebcbc;
+  transition: all .3s;
+}
+input[type="checkbox"]:checked + label svg {
+  fill: #ff7878;
+  animation: like .8s ease-out;
+  transition: all .3s;
+}
+@keyframes like {
+  0% {
+    transform: scale(1,1);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  100% {
+    transform: scale(1,1);
+  }
+}
+input[type="checkbox"]:checked + svg::after {
+  content: "";
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 5px solid #FA9797;
+  border-radius: 50%;
+  animation: circle .8s ease-out;
+  opacity: 0;
+  top: -10px;
+  left: -4px;
+  z-index: -100;
+}
+@keyframes circle {
+  0% {
+    transform: scale(.2,.2);
+  }
+  50% {
+    transform: scale(.5,.5);
+  }
+  80% {
+    transform: scale(1,1);
+    opacity: .8;
+  }
+  100% {
+    transform: scale(1.3,1.3);
+    opacity: 0;
+  }
+}
