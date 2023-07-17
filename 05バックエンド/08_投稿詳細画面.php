@@ -120,14 +120,14 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                   <div style="margin-bottom: 50px;">
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $a = substr($_POST['detail'], 0, 2);
+                    $a = substr($_SESSION['post_id'], 0, 2);
                     if ($a == "00") {
                       $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
                               user.user_name, user.email_address, user.password, user.media, user.self_introduction 
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_id = ?";
                       $ps = $pdo->prepare($sql);
-                      $ps->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                      $ps->bindValue(1, $_SESSION['post_id'], PDO::PARAM_STR);
                       $ps->execute();
                       foreach ($ps as $row) {
                       //返信元の投稿を表示
@@ -343,7 +343,7 @@ echo                        '</label>
                               FROM post INNER JOIN user ON post.user_id = user.user_id 
                               WHERE post_id = ?";
                       $ps = $pdo->prepare($sql);
-                      $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
+                      $ps->bindValue(1, $_SESSION['post_id'], PDO::PARAM_INT);
                       $ps->execute();
                       foreach ($ps as $row) {
                         echo '<div class="p_ys">';
@@ -456,7 +456,7 @@ echo                          '<form action="09_投稿返信画面.php" method="
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_subject = ? ORDER BY date_time DESC";
                   $ps = $pdo->prepare($sql);
-                  $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
+                  $ps->bindValue(1, $_SESSION['post_id'], PDO::PARAM_INT);
                   $ps->execute();
                   foreach ($ps as $row) {
                     echo '<div class="haikei_yp">
@@ -472,13 +472,13 @@ echo                          '<form action="09_投稿返信画面.php" method="
                       } else { //設定してない場合
                         echo '<img class="image_middle" src="img/pink.png">　';
                       }
-                      $a = substr($_POST['detail'],0,2);
+                      $a = substr($_SESSION['post_id'],0,2);
                       if($a == "00"){
                         $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                         $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                        $ps3->bindValue(1, $_SESSION['post_id'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
                           $subjectname = $row3['user_name'];
@@ -488,7 +488,7 @@ echo                          '<form action="09_投稿返信画面.php" method="
                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                  FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
                         $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                        $ps3->bindValue(1, $_SESSION['post_id'], PDO::PARAM_STR);
                         $ps3->execute();
                         foreach ($ps3 as $row3) {
                           $subjectname = $row3['user_name'];
@@ -502,7 +502,7 @@ echo                          '<form action="09_投稿返信画面.php" method="
                         </button>
                       </form>';
     
-                      echo '<form action="08_投稿詳細画面.php" method="post">'.
+                      echo '<form action="like_session.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['reply_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                       '<div style="font-size: 18px;">';
                       echo $row['reply_contents'];

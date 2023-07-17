@@ -171,7 +171,7 @@ echo             '<form action="like_session.php" method="post">'.
                     </button>
                   </form>';
 
-echo             '<form action="08_投稿詳細画面.php" method="post">'.
+echo             '<form action="like_session.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).
@@ -245,6 +245,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                 </div>';  
             }
               }else{//すべて以外を選択した時
+
                 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
                 $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
