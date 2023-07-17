@@ -1,6 +1,8 @@
 <?php 
 //13に遷移する前に該当するユーザーIDを保存
 session_start();
+unset($_SESSION['move_user_id']);
+unset($_SESSION['detail']);
 if(isset($_POST['user_id'])){
 $_SESSION['move_user_id'] = $_POST['user_id'];
 header('Location:13_他人プロフィール.php') ;

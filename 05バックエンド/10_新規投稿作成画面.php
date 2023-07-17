@@ -91,7 +91,7 @@ unset($_SESSION['trash']);
                         <textarea class="form-control alert-light toukou_bokku_ys" name="text" id="txt1" maxlength="300" required placeholder="｜投稿内容"></textarea><br>
 
                         <label>
-                            <input type="file" onchange="preview(this)" multiple accept="image/*,video/*" name="file" value="up">メディアを選択
+                            <input type="file" onchange="preview(this)" accept="image/*" name="file" value="up">メディアを選択
                             <div class="preview-area"></div>
 
                             <script>

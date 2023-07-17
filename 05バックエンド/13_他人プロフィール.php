@@ -330,10 +330,8 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         '</div>
                       </div>
                     </div>';  
-                }
-              
+                }      
       ?>
-
                   </div>
                 </div>
               </div>

@@ -79,7 +79,7 @@ session_start();
 
 
                         <label>
-                            <input type="file" onchange="preview(this)" multiple accept="image/*,video/*" name="file" value="up">メディアを選択
+                            <input type="file" onchange="preview(this)"  accept="image/*" name="file" value="up">メディアを選択
                             <div class="preview-area"></div>
 
                             <script>

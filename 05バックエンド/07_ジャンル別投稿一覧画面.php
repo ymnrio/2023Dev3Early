@@ -295,12 +295,12 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="13_他人プロフィール.php" method="post">'.
+echo             '<form action="like_session.php" method="post">'.
                 '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                     <span class="material-symbols-outlined">face</span></a>
                 </button>
                 </form>';
-echo              '<form action="08_投稿詳細画面.php" method="post">'.
+echo              '<form action="like_session.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).
