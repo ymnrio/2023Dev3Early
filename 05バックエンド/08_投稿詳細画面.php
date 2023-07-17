@@ -124,6 +124,7 @@ unset($_SESSION['trash']);
                                 $subjectname = $row8['user_name'];
                               }
                             }
+                            echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
                             //他人のプロフィールに遷移
   echo                      '<form action="13_他人プロフィール.php" method="post">'.
                             '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
