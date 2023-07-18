@@ -86,29 +86,31 @@ unset($_SESSION['trash']);
                         $b = substr($row['reply_subject'], 0, 2);
                         if ($b == "00") {
                           //返信元の返信投稿を表示
-                          $sql6 = "SELECT * FROM reply WHERE reply_id = ?";
+                          $sql6 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                                          user.user_name, user.email_address, user.password, user.media, user.self_introduction 
+                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply_id = ?";
                           $ps6 = $pdo->prepare($sql6);
                           $ps6->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                           $ps6->execute();
                           foreach ($ps6 as $row6) {
                             echo '<div class="p_ys">';
-                            if (!empty($row['media']) || isset($row['media'])) { //設定している場合
+                            if (!empty($row6['media']) || isset($row6['media'])) { //設定している場合
 
-                              $base64_image = base64_encode($row['media']);
+                              $base64_image = base64_encode($row6['media']);
         
                               echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
         
                             } else { //設定してない場合
                               echo '<img class="image_middle" src="img/pink.png">　';
                             }
-                            echo   $row['user_name'] ;
-                            $c = substr($_POST['detail'],0,2);
+                            echo   $row6['user_name'] ;
+                            $c = substr($row6['reply_subject'],0,2);
                             if($c == "00"){
                               $sql8 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
                                       user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                       FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                               $ps8 = $pdo->prepare($sql8);
-                              $ps8->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                              $ps8->bindValue(1, $row6['reply_subject'], PDO::PARAM_STR);
                               $ps8->execute();
                               foreach ($ps8 as $row8) {
                                 $subjectname = $row8['user_name'];
@@ -118,7 +120,7 @@ unset($_SESSION['trash']);
                                       user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
                                       FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
                               $ps8 = $pdo->prepare($sql8);
-                              $ps8->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                              $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                               $ps8->execute();
                               foreach ($ps8 as $row8) {
                                 $subjectname = $row8['user_name'];
@@ -136,7 +138,7 @@ unset($_SESSION['trash']);
                             //画像があるか検索
                             $sql2 = "SELECT * FROM reply WHERE reply_id = ?";
                             $ps2 = $pdo->prepare($sql2);
-                            $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
+                            $ps2->bindValue(1, $row6['reply_id'], PDO::PARAM_INT);
                             $ps2->execute();
                             $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
                             if (!empty($row2['media1'])) {
@@ -555,6 +557,9 @@ unset($_SESSION['trash']);
                   </div>
                 </div>
                 <!--⇩返信-->
+                <!--<hr style="border-top:15px double crimson;background-color:rgb(232,243,131);">-->
+                <h5 style="text-align: center; color:ivory; text-shadow:2px 2px 3px grey;">返信一覧</h5>
+                <div style="border-top:4px solid ivory;background:ivory"></div><br><br>
                 <div class="hensin_waku_ys">
                   <?php
                   $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
