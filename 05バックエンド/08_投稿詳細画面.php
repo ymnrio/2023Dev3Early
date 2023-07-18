@@ -210,7 +210,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                             $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                             $ps3 = $pdo->prepare($sql3);
                             $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-                            $ps3->bindValue(2,$row['reply_id'],PDO::PARAM_STR);
+                            $ps3->bindValue(2,$row6['reply_id'],PDO::PARAM_STR);
                             $ps3->execute();
                             $check_like = null;
                             foreach($ps3 as $row3){
@@ -220,8 +220,8 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
                             if(isset($check_like)){//いいね判別
                               echo '<form action="addlike.php" method="post">';
-                              $like = "like".$row['reply_id'];
-                              echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
+                              $like = "like".$row6['reply_id'];
+                              echo '<button type="hidden" name="like" value="1,'.$row6['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                               <input type="checkbox" checked="checked" id="'.$like.'">
                               <label for="'.$like.'">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -233,14 +233,14 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               </form>';
                             }else{
                               echo '<form action="addlike.php" method="post">';
-                              $like = "like".$row['reply_id'];
-                              echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
+                              $like = "like".$row6['reply_id'];
+                              echo '<button type="hidden" name="like" value="2,'.$row6['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                               <input type="checkbox" id="'.$like.'">
                               <label for="'.$like.'">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                               <path
                                 d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                              </svg>　'.$row['fabulous'].'　　　';
+                              </svg>　'.$row6['fabulous'].'　　　';
                               echo '</label>
                               </button>
                               </form>';
@@ -251,7 +251,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                             </button>
                             </form>
                             <div style="position: relative;top:-70px;left:190px;">
-                            　' . $row['comments'].
+                            　' . $row6['comments'].
                             '</div>
                             </div>
                             </div>
@@ -315,7 +315,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               $sql3 = "SELECT * FROM favorite_post WHERE user_id = ? AND like_subject = ?";
                               $ps3 = $pdo->prepare($sql3);
                               $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
-                              $ps3->bindValue(2,$row['reply_id'],PDO::PARAM_STR);
+                              $ps3->bindValue(2,$row6['post_id'],PDO::PARAM_STR);
                               $ps3->execute();
                               $check_like = null;
                               foreach($ps3 as $row3){
@@ -325,8 +325,8 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
                               if(isset($check_like)){//いいね判別
                                 echo '<form action="addlike.php" method="post">';
-                                $like = "like".$row['reply_id'];
-                                echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
+                                $like = "like".$row6['post_id'];
+                                echo '<button type="hidden" name="like" value="1,'.$row6['post_id'].',8" style="width:90px;background-color:white;border:none;">
                                 <input type="checkbox" checked="checked" id="'.$like.'">
                                 <label for="'.$like.'">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -338,14 +338,14 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                                 </form>';
                               }else{
                                 echo '<form action="addlike.php" method="post">';
-                                $like = "like".$row['reply_id'];
-                                echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
+                                $like = "like".$row6['post_id'];
+                                echo '<button type="hidden" name="like" value="2,'.$row6['post_id'].',8" style="width:90px;background-color:white;border:none;">
                                 <input type="checkbox" id="'.$like.'">
                                 <label for="'.$like.'">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path
                                   d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                </svg>　'.$row['fabulous'].'　　　';
+                                </svg>　'.$row6['fabulous'].'　　　';
                                 echo '</label>
                                 </button>
                                 </form>';
@@ -356,7 +356,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               </button>
                               </form>
                               <div style="position: relative;top:-70px;left:190px;">
-                              　' . $row['comments'].
+                              　' . $row6['comments'].
                               '</div>
                               </div>
                               </div>
