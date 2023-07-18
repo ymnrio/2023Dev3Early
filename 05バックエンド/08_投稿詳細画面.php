@@ -203,26 +203,28 @@ unset($_SESSION['trash']);
 
                             
                           }else{
-                            $sql6 = "SELECT * FROM post WHERE post_id = ?";
+                            $sql6 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
+                                            user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                     FROM post INNER JOIN user ON post.user_id = user.user_id  WHERE post_id = ?";
                             $ps6 = $pdo->prepare($sql6);
                             $ps6->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                             $ps6->execute();
                             foreach ($ps6 as $row6) {
                               echo '<div class="p_ys">';
-                              if (!empty($row['media']) || isset($row['media'])) { //設定している場合
+                              if (!empty($row6['media']) || isset($row6['media'])) { //設定している場合
 
-                                $base64_image = base64_encode($row['media']);
+                                $base64_image = base64_encode($row6['media']);
         
                                 echo '<br>' . '<img class="image_middle" width="250"src="data:image/jpeg;base64,' .  $base64_image . '" />　';
         
                               } else { //設定してない場合
                                 echo '<img class="image_middle" src="img/pink.png">　';
                               }
-                              echo   $row['user_name'] ;
+                              echo   $row6['user_name'] ;
                               $sql8 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
                                       genre.genre_id, genre.genre_name FROM post INNER JOIN genre ON post.genre_id = genre.genre_id WHERE post.post_id = ?";
                               $ps8 = $pdo->prepare($sql8);
-                              $ps8->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
+                              $ps8->bindValue(1, $row6['post_id'], PDO::PARAM_INT);
                               $ps8->execute();
                               foreach ($ps8 as $row8) {
                                 $genre_name = $row8['genre_name'];
@@ -318,23 +320,23 @@ unset($_SESSION['trash']);
                         }
 
                         echo   $row['user_name'] ;
-                        $c = substr($_POST['detail'],0,2);
+                        $c = substr($row['reply_subject'],0,2);
                         if($c == "00"){
                           $sql8 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
-                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
-                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
+                                    user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                    FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
                           $ps8 = $pdo->prepare($sql8);
-                          $ps8->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                          $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                           $ps8->execute();
                           foreach ($ps8 as $row8) {
                             $subjectname = $row8['user_name'];
                           }
                         }else{
                           $sql8 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
-                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
-                                  FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
+                                    user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                    FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
                           $ps8 = $pdo->prepare($sql8);
-                          $ps8->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                          $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                           $ps8->execute();
                           foreach ($ps8 as $row8) {
                             $subjectname = $row8['user_name'];
@@ -576,29 +578,29 @@ unset($_SESSION['trash']);
                       } else { //設定してない場合
                         echo '<img class="image_middle" src="img/pink.png">　';
                       }
-                      $a = substr($_POST['detail'],0,2);
-                      if($a == "00"){
-                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
-                                 user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
-                                 FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
-                        $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
-                        $ps3->execute();
-                        foreach ($ps3 as $row3) {
-                          $subjectname = $row3['user_name'];
+                      $c = substr($row['reply_subject'],0,2);
+                      if($c == "00"){
+                        $sql8 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                  FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
+                        $ps8 = $pdo->prepare($sql8);
+                        $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
+                        $ps8->execute();
+                        foreach ($ps8 as $row8) {
+                          $subjectname = $row8['user_name'];
                         }
                       }else{
-                        $sql3 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
-                                 user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
-                                 FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
-                        $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
-                        $ps3->execute();
-                        foreach ($ps3 as $row3) {
-                          $subjectname = $row3['user_name'];
+                        $sql8 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
+                                  user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                  FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
+                        $ps8 = $pdo->prepare($sql8);
+                        $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
+                        $ps8->execute();
+                        foreach ($ps8 as $row8) {
+                          $subjectname = $row8['user_name'];
                         }
                       }
-                      echo   $row['user_name'].' <span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                      echo   $row['user_name'].'<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
                       //他人のプロフィールに遷移
                       echo'<form action="13_他人プロフィール.php" method="post">'.
                         '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
