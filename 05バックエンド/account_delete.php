@@ -23,5 +23,9 @@ $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
 
-header('Location:02_ログイン画面.php');
+$_SESSION = array();
+session_destroy();
+unset($_SESSION['user']['id']);
+
+header('Location:01_トップ画面.php');
 ?>
