@@ -13,7 +13,7 @@ if (!empty($_FILES['file']['name'])) {
         $filetype = $file['type'];
         $filedata = file_get_contents($file['tmp_name']);
 
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
         $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments,media1)
                 value(?,?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);
@@ -26,7 +26,7 @@ $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamatterte
         $ps->bindValue(7,$filedata,PDO::PARAM_LOB);//メディア1
         $ps->execute();
         }else{ //ないばあい
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
         $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments)
                 value(?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
 
 $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
 $ps = $pdo->prepare($sql);
@@ -23,5 +23,9 @@ $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
 $ps->execute();
 
-header('Location:02_ログイン画面.php');
+$_SESSION = array();
+session_destroy();
+unset($_SESSION['user']['id']);
+
+header('Location:01_トップ画面.php');
 ?>

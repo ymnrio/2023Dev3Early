@@ -7,7 +7,7 @@ $zero=0;
 $reply_id = "001";
 
 //reply_idを設定
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
 $sql = "SELECT *, count(*) FROM reply WHERE date_time = (SELECT Max(date_time) FROM reply)";
 $ps = $pdo->prepare($sql);
 $ps->execute();
@@ -41,7 +41,7 @@ if (!empty($_FILES['file']['name'])) {
         $ps->bindValue(8,$filedata,PDO::PARAM_LOB);//メディア1
         $ps->execute();
         }else{ //ないばあい
-        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
         $sql ="INSERT into reply(reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments)
                 value(?,?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);

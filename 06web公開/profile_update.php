@@ -2,7 +2,7 @@
 
 session_start();
 
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
 
 if (!empty($_FILES['file']['name'])) {
     $file = $_FILES['file'];
@@ -11,7 +11,7 @@ if (!empty($_FILES['file']['name'])) {
     $filetype = $file['type'];
     $filedata = file_get_contents($file['tmp_name']);
 
-    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
     $sql ="UPDATE user SET user_name=?, media=?, self_introduction=? WHERE user_id=?";
     $ps=$pdo->prepare($sql);
     $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
@@ -20,7 +20,7 @@ if (!empty($_FILES['file']['name'])) {
     $ps->bindValue(4,$_SESSION['user']['id'],PDO::PARAM_INT);
     $ps->execute();
     }else{ //ないばあい
-        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
         $sql ="update user set user_name=? ,self_introduction=? where user_id = ?";
         $ps=$pdo->prepare($sql);
         $ps->bindValue(1,$_POST['username'],PDO::PARAM_STR);
@@ -72,6 +72,19 @@ if (!empty($_FILES['file']['name'])) {
                              'iconmedia' => $row['media'], 'introduction' => $row['self_introduction']];
     }
 
+/*    $sql = "SELECT genre_id FROM favorite_genre WHERE user_id";//好きなジャンルを光らせる
+    $ps = $pdo->prepare($sql);
+    $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
+    $ps->execute();
+    foreach($ps as $row){
+        $favoriteArr = $row['genre_id'];
+    }
 
+    for($i=1; $i<11; $i++){
+        if(in_array($row,$favoriteArr)){
+         //   echo ;
+        }
+    }
+*/
 header('Location:05_プロフィール画面.php');
 ?>
