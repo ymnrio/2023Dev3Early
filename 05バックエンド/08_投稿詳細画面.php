@@ -102,7 +102,7 @@ if(!empty($_POST['detail'])){
                           $ps6->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                           $ps6->execute();
                           foreach ($ps6 as $row6) {
-                            echo '<div class="p_ys" style="width: 200px">';
+                            echo '<div class="p_ys">';
                             if (!empty($row6['media']) || isset($row6['media'])) { //設定している場合
 
                               $base64_image = base64_encode($row6['media']);
