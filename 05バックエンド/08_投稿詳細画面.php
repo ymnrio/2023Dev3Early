@@ -1,6 +1,9 @@
 <?php
 session_start();
 unset($_SESSION['trash']);
+if(!empty($_POST['detail'])){
+  $_SESSION['detail'] = $_POST['detail'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -74,6 +77,7 @@ unset($_SESSION['trash']);
                     <?php
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $a = substr($_POST['detail'], 0, 2);
+                    //返信の場合
                     if ($a == "00") {
                       $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
                               user.user_name, user.email_address, user.password, user.media, user.self_introduction 

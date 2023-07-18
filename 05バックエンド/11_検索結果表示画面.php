@@ -233,7 +233,7 @@ echo                '</button>'.
                 if(isset($check_like)){//いいね判別
 echo               '<form action="addlike.php" method="post">';
                   $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',11" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" checked="checked" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -246,7 +246,7 @@ echo                '<button type="hidden" name="like" value="1,'.$row['post_id'
                 }else{
 echo                '<form action="addlike.php" method="post">';
                     $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',11" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
