@@ -181,7 +181,11 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                                 $subjectname = $row8['user_name'];
                               }
                             }
-                            echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                            if(isset($subjectname)){
+                              echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                            }else{
+                              echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">返信元は削除されました</span>';
+                            }
                             //他人のプロフィールに遷移
   echo                      '<form action="13_他人プロフィール.php" method="post">'.
                             '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
@@ -399,7 +403,11 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                             $subjectname = $row8['user_name'];
                           }
                         }
-                        echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                        if(isset($subjectname)){
+                          echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                        }else{
+                          echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">返信元は削除されました</span>';
+                        }
                         //他人のプロフィールに遷移
                         echo '<form action="13_他人プロフィール.php" method="post">'.
                         '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
@@ -658,7 +666,12 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                           $subjectname = $row8['user_name'];
                         }
                       }
-                      echo   $row['user_name'].'<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                      echo   $row['user_name'];
+                      if(isset($subjectname)){
+                        echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
+                      }else{
+                        echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">返信元は削除されました</span>';
+                      }
                       //他人のプロフィールに遷移
                       echo'<form action="13_他人プロフィール.php" method="post">'.
                         '<button name="user_id" type="hidden" value="'.$row['user_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
