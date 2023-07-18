@@ -93,7 +93,7 @@ unset($_SESSION['trash']);
                           $ps6->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
                           $ps6->execute();
                           foreach ($ps6 as $row6) {
-                            echo '<div class="p_ys">';
+                            echo '<div class="p_ys" style="width: 200px">';
                             if (!empty($row6['media']) || isset($row6['media'])) { //設定している場合
 
                               $base64_image = base64_encode($row6['media']);
@@ -557,9 +557,7 @@ unset($_SESSION['trash']);
                   </div>
                 </div>
                 <!--⇩返信-->
-                <!--<hr style="border-top:15px double crimson;background-color:rgb(232,243,131);">-->
-                <h5 style="text-align: center; color:ivory; text-shadow:2px 2px 3px grey;">返信一覧</h5>
-                <div style="border-top:4px solid ivory;background:ivory"></div><br><br>
+                <h6 style="border-bottom: 3px dotted ivory; border-top: 3px dotted ivory; text-align: center; color:ivory; text-shadow:2px 2px 3px grey;">返信一覧</h6><br>
                 <div class="hensin_waku_ys">
                   <?php
                   $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
