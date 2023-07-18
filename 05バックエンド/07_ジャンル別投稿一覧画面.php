@@ -171,7 +171,7 @@ echo             '<form action="like_session.php" method="post">'.
                     </button>
                   </form>';
 
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).
@@ -300,7 +300,7 @@ echo             '<form action="like_session.php" method="post">'.
                     <span class="material-symbols-outlined">face</span></a>
                 </button>
                 </form>';
-echo              '<form action="like_session.php" method="post">'.
+echo              '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).

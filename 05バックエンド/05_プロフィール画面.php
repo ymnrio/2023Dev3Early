@@ -580,7 +580,7 @@ echo                        '</label>
                       </div>
                     </div>';  
                 }
-              
+
                     ?>
                   </div>
                 </div>
