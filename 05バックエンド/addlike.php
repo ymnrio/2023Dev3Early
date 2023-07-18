@@ -5,7 +5,7 @@ $dataArray = explode(',', $data);
 
 $like = $dataArray[0];
 $favorite = $dataArray[1];
-
+$move = $dataArray[2];
 
 $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 $a = substr($favorite,0,2);
@@ -98,15 +98,22 @@ if($like == 2){
                 $ps->execute();
 
 };
-        if($_SESSION['move'] == "05"){
+if($move == 8){
+        $_SESSION['reply'] == $favorite;
+        echo 8;
+}else if($move == 13){
+        $_SESSION['others'] == $favorite;
+        echo 13;
+}
+        if($move == 5){
            header('Location:05_プロフィール画面.php');
-        }else if($_SESSION['move'] == "07"){
+        }else if($move == 7){
            header('Location:07_ジャンル別投稿一覧画面.php');
-        }else if($_SESSION['move'] == "08"){
+        }else if($move == 8){
            header('Location:08_投稿詳細画面.php');
-        }else if($_SESSION['move'] == "11"){
+        }else if($move== 11){
            header('Location:11_検索結果表示画面.php');
-        }else if($_SESSION['move'] == "13"){
+        }else if($move == 13){
            header('Location:13_他人プロフィール.php');
         }
 ?>

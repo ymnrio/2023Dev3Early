@@ -1,6 +1,10 @@
 <?php 
 session_start(); 
-$_SESSION['move']="13";
+if(!empty($_POST['user_id'])){
+  $_SESSION['user_id'] = $_POST['user_id'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -107,11 +111,11 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
           <div class="col-md-2 col-lg-2"><br>
             <?php 
-            //$_SESSION['move_id']=$_POST['user_id'];
+           
             $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
-            $ps1->bindValue(1,$_SESSION['move_user_id'],PDO::PARAM_INT);
+            $ps1->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
             $ps1->execute();
 
             $user_id = null;
@@ -258,7 +262,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">'. $genre_name . '</span>  ';
 
-  echo                    '<form action="08_投稿詳細画面.php" method="post">'.
+echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
                         echo nl2br($row['post_contents']).
@@ -296,7 +300,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       if(isset($check_like)){//いいね判別
       echo               '<form action="addlike.php" method="post">';
                         $like = "like".$row['post_id'];
-      echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+      echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',13" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                         '<input type="checkbox" checked="checked" id="'.$like.'">'.
                         '<label for="'.$like.'">'.
                           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -309,7 +313,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }else{
       echo                '<form action="addlike.php" method="post">';
                           $like = "like".$row['post_id'];
-      echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+      echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',13" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                         '<input type="checkbox" id="'.$like.'">'.
                         '<label for="'.$like.'">'.
                           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
