@@ -165,7 +165,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="13_他人プロフィール.php" method="post">'.
                     '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                       <span class="material-symbols-outlined">face</span>
                     </button>
@@ -295,7 +295,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="13_他人プロフィール.php" method="post">'.
                 '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                     <span class="material-symbols-outlined">face</span></a>
                 </button>
@@ -338,7 +338,7 @@ echo                '</button>'.
                 if(isset($check_like)){//いいね判別
 echo               '<form action="addlike.php" method="post">';
                   $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" checked="checked" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -351,7 +351,7 @@ echo                '<button type="hidden" name="like" value="1,'.$row['post_id'
                 }else{
 echo                '<form action="addlike.php" method="post">';
                     $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.

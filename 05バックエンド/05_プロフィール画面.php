@@ -326,7 +326,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         if(isset($check_like)){//いいね判別
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -339,7 +339,7 @@ echo                        '</label>
                         }else{
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -431,7 +431,7 @@ echo                        '</label>
                         if(isset($check_like)){//いいね判別
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -444,7 +444,7 @@ echo                        '</label>
                         }else{
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
