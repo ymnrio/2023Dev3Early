@@ -66,7 +66,7 @@ if(!empty($_POST['detail'])){
 
             <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="history.back();" value="遷移">戻る</button>
             <!--<form action="09_投稿返信画面.php" method="post">
-              <button type="hidden" name="reply" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" value="<?php echo $_POST['detail']; ?>">返信する</button>
+              <button type="hidden" name="reply" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" value="<?php echo $id; ?>">返信する</button>
             </form>-->
 
             <div class="waku_ys">
@@ -75,8 +75,13 @@ if(!empty($_POST['detail'])){
                 <div class="padding30_ys">
                   <div style="margin-bottom: 50px;">
                     <?php
+                    if(!empty($_POST['detail'])){
+                      $id = $_POST['detail'];
+                    }else{
+                      $id = $_SESSION['detail'];
+                    }
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                    $a = substr($_POST['detail'], 0, 2);
+                    $a = substr($id, 0, 2);
                     //返信の場合
                     if ($a == "00") {
                       $sql = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2, 
@@ -84,7 +89,7 @@ if(!empty($_POST['detail'])){
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_id = ?";
                       $ps = $pdo->prepare($sql);
-                      $ps->bindValue(1, $_POST['detail'], PDO::PARAM_STR);
+                      $ps->bindValue(1, $id, PDO::PARAM_STR);
                       $ps->execute();
                       foreach ($ps as $row) {
                         $b = substr($row['reply_subject'], 0, 2);
@@ -170,7 +175,7 @@ if(!empty($_POST['detail'])){
                             if(isset($check_like)){//いいね判別
                               echo '<form action="addlike.php" method="post">';
                               $like = "like".$row['reply_id'];
-                              echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                              echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                               <input type="checkbox" checked="checked" id="'.$like.'">
                               <label for="'.$like.'">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -183,7 +188,7 @@ if(!empty($_POST['detail'])){
                             }else{
                               echo '<form action="addlike.php" method="post">';
                               $like = "like".$row['reply_id'];
-                              echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                              echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                               <input type="checkbox" id="'.$like.'">
                               <label for="'.$like.'">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -275,7 +280,7 @@ if(!empty($_POST['detail'])){
                               if(isset($check_like)){//いいね判別
                                 echo '<form action="addlike.php" method="post">';
                                 $like = "like".$row['reply_id'];
-                                echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                                echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                                 <input type="checkbox" checked="checked" id="'.$like.'">
                                 <label for="'.$like.'">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -288,7 +293,7 @@ if(!empty($_POST['detail'])){
                               }else{
                                 echo '<form action="addlike.php" method="post">';
                                 $like = "like".$row['reply_id'];
-                                echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                                echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                                 <input type="checkbox" id="'.$like.'">
                                 <label for="'.$like.'">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -414,7 +419,7 @@ if(!empty($_POST['detail'])){
                         if(isset($check_like)){//いいね判別
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -427,7 +432,7 @@ if(!empty($_POST['detail'])){
                         }else{
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -455,7 +460,7 @@ if(!empty($_POST['detail'])){
                                 FROM post INNER JOIN user ON post.user_id = user.user_id 
                                 WHERE post_id = ?";
                         $ps = $pdo->prepare($sql);
-                        $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
+                        $ps->bindValue(1, $id, PDO::PARAM_INT);
                         $ps->execute();
                         foreach ($ps as $row) {
                           echo '<div class="p_ys">';
@@ -520,7 +525,7 @@ if(!empty($_POST['detail'])){
                     if(isset($check_like)){//いいね判別
                       echo '<form action="addlike.php" method="post">';
                       $like = "like".$row['post_id'];
-                      echo '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">
+                      echo '<button type="hidden" name="like" value="1,'.$row['post_id'].',8" style="width:90px;background-color:white;border:none;">
                       <input type="checkbox" checked="checked" id="'.$like.'">
                       <label for="'.$like.'">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -533,7 +538,7 @@ if(!empty($_POST['detail'])){
                     }else{
                       echo '<form action="addlike.php" method="post">';
                       $like = "like".$row['post_id'];
-                      echo '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">
+                      echo '<button type="hidden" name="like" value="2,'.$row['post_id'].',8" style="width:90px;background-color:white;border:none;">
                       <input type="checkbox" id="'.$like.'">
                       <label for="'.$like.'">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -569,7 +574,7 @@ if(!empty($_POST['detail'])){
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_subject = ? ORDER BY date_time DESC";
                   $ps = $pdo->prepare($sql);
-                  $ps->bindValue(1, $_POST['detail'], PDO::PARAM_INT);
+                  $ps->bindValue(1, $id, PDO::PARAM_INT);
                   $ps->execute();
                   foreach ($ps as $row) {
                     echo '<div class="haikei_yp">
@@ -653,7 +658,7 @@ echo                      '<div style="position: relative;top:-45px;left:640px;w
                       if(isset($check_like)){//いいね判別
 echo                      '<form action="addlike.php" method="post">';
                             $like = "like".$row['reply_id'];
-echo                    '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+echo                    '<button type="hidden" name="like" value="1,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -666,7 +671,7 @@ echo                        '</label>
                         }else{
 echo                     '<form action="addlike.php" method="post">';
                             $like = "like".$row['reply_id'];
-echo                       '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+echo                       '<button type="hidden" name="like" value="2,'.$row['reply_id'].',8" style="width:90px;background-color:white;border:none;">
                               <input type="checkbox" id="'.$like.'">
                                 <label for="'.$like.'">
                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
