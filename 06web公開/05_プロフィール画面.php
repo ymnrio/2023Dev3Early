@@ -111,7 +111,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
           <div class="col-md-2 col-lg-2"><br>
             <?php
-            $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+            $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
             $ps1->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -168,7 +168,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
               <h6><?php echo nl2br($_SESSION['user']['introduction']); ?></h6><br>
 
               <?php
-              $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+              $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
               $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
@@ -234,7 +234,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                     $sql = "SELECT * FROM (
                             SELECT reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments, media1, media2
                             FROM reply UNION ALL
@@ -294,7 +294,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql3 = "select * from post where post_id = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
@@ -311,7 +311,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                         </form>';
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -326,7 +326,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         if(isset($check_like)){//いいね判別
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -339,7 +339,7 @@ echo                        '</label>
                         }else{
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -361,14 +361,27 @@ echo                        '</label>
                         </div>
                         </div>';
                       } else { //返信の場合
-                        $sql3 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
-                                        user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
-                                 FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
-                        $ps3 = $pdo->prepare($sql3);
-                        $ps3->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
-                        $ps3->execute();
-                        foreach ($ps3 as $row3) {
-                          $subjectname = $row3['user_name'];
+                        $c = substr($row['reply_subject'],0,2);
+                        if($c == "00"){
+                          $sql8 = "SELECT reply.reply_id, reply.reply_subject, reply.user_id, reply.reply_contents, reply.date_time, reply.fabulous, reply.comments, reply.media1, reply.media2,
+                                    user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                    FROM reply INNER JOIN user ON reply.user_id = user.user_id WHERE reply.reply_id = ?";
+                          $ps8 = $pdo->prepare($sql8);
+                          $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
+                          $ps8->execute();
+                          foreach ($ps8 as $row8) {
+                            $subjectname = $row8['user_name'];
+                          }
+                        }else{
+                          $sql8 = "SELECT post.post_id, post.user_id, post.genre_id, post.post_contents, post.date_time, post.fabulous, post.comments, post.media1, post.media2,
+                                    user.user_id, user.user_name, user.email_address, user.password, user.media, user.self_introduction
+                                    FROM post INNER JOIN user ON post.user_id = user.user_id WHERE post.post_id = ?";
+                          $ps8 = $pdo->prepare($sql8);
+                          $ps8->bindValue(1, $row['reply_subject'], PDO::PARAM_STR);
+                          $ps8->execute();
+                          foreach ($ps8 as $row8) {
+                            $subjectname = $row8['user_name'];
+                          }
                         }
                         echo '<span style="margin-top:20px;color:#FBA8B8;padding-left:15px;">@'.$subjectname.'さんへ返信</span>';
 
@@ -386,7 +399,7 @@ echo                        '</label>
                         echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql2 = "select * from reply where reply_id = ?";
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
@@ -403,7 +416,7 @@ echo                        '</label>
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                         </form>';
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -418,7 +431,7 @@ echo                        '</label>
                         if(isset($check_like)){//いいね判別
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="1,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" checked="checked" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -431,7 +444,7 @@ echo                        '</label>
                         }else{
                           echo '<form action="addlike.php" method="post">';
                           $like = "like".$row['reply_id'];
-                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].'" style="width:90px;background-color:white;border:none;">
+                          echo '<button type="hidden" name="like" value="2,'.$row['reply_id'].',5" style="width:90px;background-color:white;border:none;">
                           <input type="checkbox" id="'.$like.'">
                           <label for="'.$like.'">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -468,7 +481,7 @@ echo                        '</label>
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                   <?php
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                     $sql = "select * from favorite_post where user_id = ? order by like_id desc";//いいねしてるツイ参照
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -524,13 +537,13 @@ echo                        '</label>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">'. $genre_name . '</span>  ';
 
-  echo                    '<form action="like_session.php" method="post">'.
+  echo                    '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$post_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
                         echo nl2br($post_contets).
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql4 = "select * from post where post_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1,$post_id,PDO::PARAM_INT);
@@ -567,7 +580,7 @@ echo                        '</label>
                       </div>
                     </div>';  
                 }
-              
+
                     ?>
                   </div>
                 </div>

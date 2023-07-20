@@ -2,7 +2,7 @@
 
 session_start();
 
-$pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
 $sql = "SELECT*,count(*) FROM user WHERE email_address=?";
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1, $_POST['email'], PDO::PARAM_STR);

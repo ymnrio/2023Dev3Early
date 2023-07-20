@@ -1,6 +1,10 @@
 <?php 
 session_start(); 
-$_SESSION['move']="13";
+if(!empty($_POST['user_id'])){
+  $_SESSION['user_id'] = $_POST['user_id'];
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -107,11 +111,11 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
           <div class="col-md-2 col-lg-2"><br>
             <?php 
-            //$_SESSION['move_id']=$_POST['user_id'];
-            $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+           
+            $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
-            $ps1->bindValue(1,$_SESSION['move_user_id'],PDO::PARAM_INT);
+            $ps1->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
             $ps1->execute();
 
             $user_id = null;
@@ -155,7 +159,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
               <h6><?php echo $introduction; ?></h6><br>
               
               <?php
-              $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+              $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
               $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $user_id, PDO::PARAM_STR);
@@ -221,7 +225,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                     $sql = "select * from post where user_id = ? order by post_id desc";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -258,13 +262,13 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">'. $genre_name . '</span>  ';
 
-  echo                    '<form action="08_投稿詳細画面.php" method="post">'.
+echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                       '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                         '<div style="font-size: 20px;">';
                         echo nl2br($row['post_contents']).
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql2 = "select * from post where post_id = ?";
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -281,7 +285,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
       echo                '</button>'.  
                         '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                         '</form>';
-                      $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                      $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                       $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                       $ps3 = $pdo->prepare($sql3);
                       $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -296,7 +300,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       if(isset($check_like)){//いいね判別
       echo               '<form action="addlike.php" method="post">';
                         $like = "like".$row['post_id'];
-      echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+      echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',13" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                         '<input type="checkbox" checked="checked" id="'.$like.'">'.
                         '<label for="'.$like.'">'.
                           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -309,7 +313,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }else{
       echo                '<form action="addlike.php" method="post">';
                           $like = "like".$row['post_id'];
-      echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+      echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',13" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                         '<input type="checkbox" id="'.$like.'">'.
                         '<label for="'.$like.'">'.
                           '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -344,7 +348,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                   <?php
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                     $sql = "select * from favorite_post where user_id = ? order by like_id desc";//いいねしてるツイ参照
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -406,7 +410,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         echo nl2br($post_contets).
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                        $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                         $sql4 = "select * from post where post_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1,$post_id,PDO::PARAM_INT);

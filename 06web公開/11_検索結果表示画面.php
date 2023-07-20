@@ -114,7 +114,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <?php echo '"'.$_POST['keyword'].'"の検索結果'.'</h4>'?>
 
                 <?php
-                $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                 $sql = "select * from user where user_name LIKE ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1, '%' . $_POST['keyword'] . '%', PDO::PARAM_STR);
@@ -149,7 +149,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 ?>
               <div style="margin-bottom:50px"></div>
 <?php //投稿
-                $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                 $sql = "select * from post where post_contents LIKE ? order by post_id desc";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1, '%' . $_POST['keyword']. '%', PDO::PARAM_STR);
@@ -190,7 +190,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px; ">'. $genre_name . '</span>  ';
 
                 //他人のプロフィールに遷移
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="13_他人プロフィール.php" method="post">'.
                   '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                     <span class="material-symbols-outlined">face</span></a>
                   </button>
@@ -201,28 +201,24 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
                   echo nl2br($row['post_contents']).
                   '</div>';
                   //画像があるか検索
-                  $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                  $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
                   $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
                   $ps2->execute();
                   $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-  header('Content-Type: video/mp4');
-  $media1 = $row2['media1'];
-  echo ("<video src=\"import_media.php?target=$media1\" width=\"426\" height=\"240\" controls></video>");
-
-
-                  /*if(!empty($row2['media1'])){
+  
+                  if(!empty($row2['media1'])){
                     $image_data = $row2['media1'];
 
                     $base64_image = base64_encode($image_data);
 
                     echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
-                  }*/
+                  }
 echo                '</button>'.  
                   '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                   '</form>';
-                $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                 $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                 $ps3 = $pdo->prepare($sql3);
                 $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -237,7 +233,7 @@ echo                '</button>'.
                 if(isset($check_like)){//いいね判別
 echo               '<form action="addlike.php" method="post">';
                   $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',11" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" checked="checked" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -250,7 +246,7 @@ echo                '<button type="hidden" name="like" value="1,'.$row['post_id'
                 }else{
 echo                '<form action="addlike.php" method="post">';
                     $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',11" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -270,7 +266,7 @@ echo              '<a href="09_投稿返信画面.php" style="text-decoration: n
                 </div>
               </div>';  
           }
-          
+        
 ?>
 
                   <div class="box">

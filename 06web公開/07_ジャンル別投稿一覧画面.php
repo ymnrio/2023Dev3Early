@@ -126,7 +126,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
               if($_SESSION['genre'] == "すべて"){
                 
-                $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                 $sql = "select * from post ORDER BY post_id DESC";
                 $ps = $pdo->prepare($sql);
                 $ps->execute();
@@ -165,19 +165,19 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="13_他人プロフィール.php" method="post">'.
                     '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                       <span class="material-symbols-outlined">face</span>
                     </button>
                   </form>';
 
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).
                     '</div>';
                     //画像があるか検索
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                    $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                     $sql2 = "select * from post where post_id = ?";
                     $ps2 = $pdo->prepare($sql2);
                     $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -191,10 +191,10 @@ echo             '<form action="like_session.php" method="post">'.
 
                       echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
                     }
-echo                '</button>'.
+echo                '</button>'.  
                     '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                     '</form>';
-                    $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                  $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                   $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                   $ps3 = $pdo->prepare($sql3);
                   $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -209,7 +209,7 @@ echo                '</button>'.
                   if(isset($check_like)){//いいね判別
 echo               '<form action="addlike.php" method="post">';
                     $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                     '<input type="checkbox" checked="checked" id="'.$like.'">'.
                     '<label for="'.$like.'">'.
                       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -222,7 +222,7 @@ echo                '<button type="hidden" name="like" value="1,'.$row['post_id'
                   }else{
 echo                '<form action="addlike.php" method="post">';
                       $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                     '<input type="checkbox" id="'.$like.'">'.
                     '<label for="'.$like.'">'.
                       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -246,7 +246,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
             }
               }else{//すべて以外を選択した時
 
-                $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');//←これ追加したら表示した
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');//←これ追加したら表示した
                 $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_STR);
@@ -295,18 +295,18 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
                       }
                       echo '<span class="border border-#FBA8B8 badge text-bg-white color_yamani"style="margin-left:10px;">' . $genre_name . '</span>  ';
                   //他人のプロフィールに遷移
-echo             '<form action="like_session.php" method="post">'.
+echo             '<form action="13_他人プロフィール.php" method="post">'.
                 '<button name="user_id" type="hidden" value="'.$user_id.'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; text-align:right;position: relative;top: -65px;left: 775px;">
                     <span class="material-symbols-outlined">face</span></a>
                 </button>
                 </form>';
-echo              '<form action="like_session.php" method="post">'.
+echo              '<form action="08_投稿詳細画面.php" method="post">'.
                   '<button name="detail" type="hidden" value="'.$row['post_id'].'" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">'.
                   '<div style="font-size: 20px;">';
                   echo nl2br($row['post_contents']).
                   '</div>';
                   //画像があるか検索
-                  $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                  $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
                   $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -323,7 +323,7 @@ echo              '<form action="like_session.php" method="post">'.
 echo                '</button>'.  
                   '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                   '</form>';
-                  $pdo = new PDO('mysql:host=mysql215.phy.lolipop.lan;dbname=LAA1417495-yamattertest;charset=utf8', 'LAA1417495', 'sotA1140');
+                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
                 $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                 $ps3 = $pdo->prepare($sql3);
                 $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -338,7 +338,7 @@ echo                '</button>'.
                 if(isset($check_like)){//いいね判別
 echo               '<form action="addlike.php" method="post">';
                   $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="1,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" checked="checked" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -351,7 +351,7 @@ echo                '<button type="hidden" name="like" value="1,'.$row['post_id'
                 }else{
 echo                '<form action="addlike.php" method="post">';
                     $like = "like".$row['post_id'];
-echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].'" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
+echo                '<button type="hidden" name="like" value="2,'.$row['post_id'].',7" style="width:90px;background-color:white;border:none;">'.//最初からいいねしてるかの判別
                   '<input type="checkbox" id="'.$like.'">'.
                   '<label for="'.$like.'">'.
                     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">'.
@@ -374,10 +374,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
               </div>';  
           }
         }
-?>
-                
-
-                
+?>           
                 <div class="box">
                   <button type="button" class="btn container-fluid color_white_yamani border border-dark"
                     style=" width: 65px;height: 65px;background: #FBA8B8;border-radius: 50%;"
