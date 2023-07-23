@@ -109,8 +109,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
         <div class="row">
           <div class="col-md-12 col-lg-12" style="height: 100vh;">
-
-            <button type="button" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="history.back();" value="遷移">戻る</button>
+            <button type="hidden" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="location.href='08_投稿詳細画面.php'">戻る</button>
             <!--<form action="09_投稿返信画面.php" method="post">
               <button type="hidden" name="reply" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" value="<?php echo $id; ?>">返信する</button>
             </form>-->
@@ -120,11 +119,13 @@ echo        '<hr class="start_0_ys color_yamani"><br>
               <div class="haikei_yp">
                 <div class="padding30_ys">
                   <div style="margin-bottom: 50px;">
-                    <?php
+                    <?php                    
                     if(!empty($_POST['detail'])){
                       $id = $_POST['detail'];
-                    }else{
+                    }else if(empty($_POST['detail'])){
                       $id = $_SESSION['detail'];
+                    }else{
+                      $id = $_GET['hogeA'];
                     }
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $a = substr($id, 0, 2);
@@ -628,7 +629,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               FROM reply INNER JOIN user ON reply.user_id = user.user_id 
                               WHERE reply_subject = ? ORDER BY date_time DESC";
                   $ps = $pdo->prepare($sql);
-                  $ps->bindValue(1, $id, PDO::PARAM_INT);
+                  $ps->bindValue(1, $id, PDO::PARAM_STR);
                   $ps->execute();
                   foreach ($ps as $row) {
                     echo '<div class="haikei_yp">

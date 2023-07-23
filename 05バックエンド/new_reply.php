@@ -88,10 +88,17 @@ if($a == "00"){
         $ps->execute();
 }
 
+$sql = "SELECT * FROM reply wHERE reply_id = ?";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1,$_POST['newreply'],PDO::PARAM_STR);
+$ps->execute();
+foreach($ps as $row){
+        $subjectid = $row['reply_subject'];
+}
 
 //動画ファイルと画像だけ選ぶことができるようにする
 //ファイル関係の処理を追加する
 //動画は時間指定があるか
 
-header('Location:07_ジャンル別投稿一覧画面.php');//遷移先？
+header('Location:08_投稿詳細画面.php?hogeA='.$subjectid);//遷移先？
 ?>
