@@ -386,6 +386,6 @@ ALTER TABLE `user`
 
 ALTER TABLE reply DROP COLUMN post_id;
 
-SET GLOBAL max_allowed_packet=16777216;
+--SET GLOBAL max_allowed_packet=16777216; 多分いらない--
 
 COMMIT;
