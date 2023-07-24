@@ -79,9 +79,17 @@ session_start();
 
 
                         <label>
-                            <input type="file" onchange="preview(this)"  accept="image/*" name="file" value="up">メディアを選択
-                            <div class="preview-area"></div>
+                            <input type="file" onchange="preview(this)" accept="image/*,video/mp4" name="file" value="up">メディアを選択(動画はmp4しか対応していません)
 
+                            <div class="preview-area"></div><br>
+
+                        <?php 
+                        
+                        if((isset($_SESSION['error']))){
+                         echo '<div style="color: red; text-align: center;">'.$_SESSION['error'].'</div>';
+                         unset($_SESSION['error']);
+                         }
+                        ?>
                             <script>
                                 function preview(elem, output = '') {
                                     Array.from(elem.files).map((file) => {

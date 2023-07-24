@@ -52,7 +52,7 @@ unset($_SESSION['trash']);
                         </div>
 <?php
                 //アイコン表示
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter_2;charset=utf8', 'root', 'root');
                 $sql = "select * from user where user_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);

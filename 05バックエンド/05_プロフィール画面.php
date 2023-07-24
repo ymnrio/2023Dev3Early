@@ -227,7 +227,7 @@ $_SESSION['move'] = "05";
             <hr class="start_0_ys">
 
             <div id="toukou" class="area">
-
+            <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
               <!--ここからtweetの枠線の設定-->
               <div class="waku_ys">
 
@@ -299,14 +299,26 @@ $_SESSION['move'] = "05";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                         $ps3->execute();
-                        $row3 = $ps3->fetch(PDO::FETCH_ASSOC);
+                        
+                        foreach($ps3 as $row3){
+                          $type = $row3['media2'];
+                          $media = $row3['media1'];
+                        }
 
-                        if (!empty($row3['media1'])) {
-                          $image_data = $row3['media1'];
+                        if($type == '1'){ //画像
+                          $image_data = $media;
 
                           $base64_image = base64_encode($image_data);
 
-                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                          echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+
+                        }else if($type == '2'){//動画
+
+                          $image_data = $media;
+
+                          $base64_image = base64_encode($image_data);
+                          echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video>';
+
                         }
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $row['date_time'] . '</p>
@@ -404,14 +416,26 @@ $_SESSION['move'] = "05";
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                         $ps2->execute();
-                        $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
+                        
+                        foreach($ps2 as $row2){
+                          $type = $row2['media2'];
+                          $media = $row2['media1'];
+                        }
 
-                        if (!empty($row2['media1'])) {
-                          $image_data = $row2['media1'];
+                        if($type == '1'){ //画像
+                          $image_data = $media;
 
                           $base64_image = base64_encode($image_data);
 
-                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                          echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+
+                        }else if($type == '2'){//動画
+
+                          $image_data = $media;
+
+                          $base64_image = base64_encode($image_data);
+                          echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video>';
+
                         }
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $row['date_time'] . '</p>
@@ -476,6 +500,7 @@ $_SESSION['move'] = "05";
             </div>
 
             <div id="iine" class="area">
+           <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
               <div class="waku_ys">
 
                 <div class="haikei_yp">
@@ -548,14 +573,26 @@ $_SESSION['move'] = "05";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1, $post_id, PDO::PARAM_INT);
                         $ps4->execute();
-                        $row4 = $ps4->fetch(PDO::FETCH_ASSOC);
+                        
+                        foreach($ps4 as $row4){
+                          $type = $row4['media2'];
+                          $media = $row4['media1'];
+                        }
 
-                        if (!empty($media1)) {
-                          $image_data = $media1;
+                        if($type == '1'){ //画像
+                          $image_data = $media;
 
                           $base64_image = base64_encode($image_data);
 
-                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                          echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+
+                        }else if($type == '2'){//動画
+
+                          $image_data = $media;
+
+                          $base64_image = base64_encode($image_data);
+                          echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video>';
+
                         }
                         echo '</button>' .
                         '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $date_time . '</p>' .
@@ -653,18 +690,30 @@ $_SESSION['move'] = "05";
                         '</div>';
                         //画像があるか検索
                         $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
-                        $sql4 = "SELECT * FROM post WHERE post_id = ?";
+                        $sql4 = "select * from reply where reply_id = ?";
                         $ps4 = $pdo->prepare($sql4);
-                        $ps4->bindValue(1, $reply_id, PDO::PARAM_STR);
+                        $ps4->bindValue(1, $reply_id, PDO::PARAM_INT);
                         $ps4->execute();
-                        $row4 = $ps4->fetch(PDO::FETCH_ASSOC);
+                        
+                        foreach($ps4 as $row4){
+                          $type = $row4['media2'];
+                          $media = $row4['media1'];
+                        }
 
-                        if (!empty($media1)) {
-                          $image_data = $media1;
+                        if($type == '1'){ //画像
+                          $image_data = $media;
 
                           $base64_image = base64_encode($image_data);
 
-                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                          echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+
+                        }else if($type == '2'){//動画
+
+                          $image_data = $media;
+
+                          $base64_image = base64_encode($image_data);
+                          echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video>';
+
                         }
                         echo '</button>' .
                         '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $date_time . '</p>' .

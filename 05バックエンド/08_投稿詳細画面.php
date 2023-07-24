@@ -200,13 +200,25 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                             $ps2 = $pdo->prepare($sql2);
                             $ps2->bindValue(1, $row6['reply_id'], PDO::PARAM_INT);
                             $ps2->execute();
-                            $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-                            if (!empty($row2['media1'])) {
-                              $image_data = $row2['media1'];
+                    
+                            foreach($ps2 as $row2){
+                              $type = $row2['media2'];
+                              $media = $row2['media1'];
+                            }
+
+                            if($type == '1'){ //画像
+                              $image_data = $media;
 
                               $base64_image = base64_encode($image_data);
 
-                              echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+                              echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                              
+                            }else if($type == '2'){//動画
+
+                              $image_data = $media;
+
+                              $base64_image = base64_encode($image_data);
+                              echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
                             }
                             echo '</button>
                             <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
@@ -305,13 +317,24 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               $ps2 = $pdo->prepare($sql2);
                               $ps2->bindValue(1, $row['reply_subject'], PDO::PARAM_INT);
                               $ps2->execute();
-                              $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-                              if (!empty($row2['media1'])) {
-                                $image_data = $row2['media1'];
-
+                              foreach($ps2 as $row2){
+                                $type = $row2['media2'];
+                                $media = $row2['media1'];
+                              }
+  
+                              if($type == '1'){ //画像
+                                $image_data = $media;
+  
                                 $base64_image = base64_encode($image_data);
-
-                                echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
+  
+                                echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                                
+                              }else if($type == '2'){//動画
+  
+                                $image_data = $media;
+  
+                                $base64_image = base64_encode($image_data);
+                                echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
                               }
                               echo '</button>
                               <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
@@ -422,40 +445,25 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                         $ps2->execute();
-                        $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-
-                        if (!empty($row2['media1'])) {
-                          $image_data = $row2['media1'];
-
-                          $base64_image = base64_encode($image_data);
-
-                          echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                        }
-                        /*　いいね実装した時にバグが心配なのでの残してます
-                        echo '</div>
-                            <div class="row">
-                              <div class="col-md-9 col-lg-9 start_0_ys"><p style="margin-top:20px;color:#FBA8B8;padding-left:15px;">'.$row['date_time'].'</p></div>
-                                <div class="col-md-1 col-lg-1 start_0_ys">
-                                  <input type="checkbox" id="' . $row['reply_id'] . '">
-
-                                  <label for="' . $row['reply_id'] . '">
-                                    <!--<div class="lavel_like">-->
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                    </svg>　' . $row['fabulous'] . '　　　
-                                  </label><!--終了ラベルタグ最初はコメントの場所も指定していたけどいいねのところだけ囲った-->
-                                </div>
-                                <div class="col-md-2 col-lg-2 start_0_ys">
-                                <form action="09_投稿返信画面.php" method="post">
-                                <button name="reply" type="hidden" value="' . $row['reply_id'] . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none;">
-                                  <img style="margin-left: 50px;" src="icon/コメント.svg">
-                                </button>
-                              </form>
-                              <div style=" position: relative;bottom: 43px;left: 100px;">
-                                  　' . $row['comments'] . '　
-                                </div>
-                              </div>
-                            </div>*/
+                              foreach($ps2 as $row2){
+                                $type = $row2['media2'];
+                                $media = $row2['media1'];
+                              }
+  
+                              if($type == '1'){ //画像
+                                $image_data = $media;
+  
+                                $base64_image = base64_encode($image_data);
+  
+                                echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                                
+                              }else if($type == '2'){//動画
+  
+                                $image_data = $media;
+  
+                                $base64_image = base64_encode($image_data);
+                                echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
+                              }
                         echo '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                         </form>';
@@ -553,15 +561,25 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                     $ps2 = $pdo->prepare($sql2);
                     $ps2->bindValue(1, $row['post_id'], PDO::PARAM_INT);
                     $ps2->execute();
-                    $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-
-                    if (!empty($row2['media1'])) {
-                      $image_data = $row2['media1'];
-
-                      $base64_image = base64_encode($image_data);
-
-                      echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                    }
+                      foreach($ps2 as $row2){
+                         $type = $row2['media2'];
+                          $media = $row2['media1'];
+                      }
+  
+                      if($type == '1'){ //画像
+                         $image_data = $media;
+  
+                        $base64_image = base64_encode($image_data);
+  
+                         echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                                
+                      }else if($type == '2'){//動画
+  
+                        $image_data = $media;
+  
+                        $base64_image = base64_encode($image_data);
+                        echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
+                      }
                     echo '</button>
                     <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                     </form>';
@@ -690,15 +708,25 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                     $ps2 = $pdo->prepare($sql2);
                     $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
                     $ps2->execute();
-                    $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-
-                    if (!empty($row2['media1'])) {
-                      $image_data = $row2['media1'];
-
-                      $base64_image = base64_encode($image_data);
-
-                      echo '<br>' . '<img width="250"src="data:image/jpeg;base64,' .  $base64_image . '" /><br>';
-                    }
+                      foreach($ps2 as $row2){
+                         $type = $row2['media2'];
+                          $media = $row2['media1'];
+                      }
+  
+                      if($type == '1'){ //画像
+                         $image_data = $media;
+  
+                        $base64_image = base64_encode($image_data);
+  
+                         echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                                
+                      }else if($type == '2'){//動画
+  
+                        $image_data = $media;
+  
+                        $base64_image = base64_encode($image_data);
+                        echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
+                      }
 
                     echo                   '</button>
                          <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
