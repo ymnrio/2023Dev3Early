@@ -52,7 +52,7 @@ unset($_SESSION['trash']);
                         </div>
 <?php
                 //アイコン表示
-                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter_2;charset=utf8', 'root', 'root');
                 $sql = "select * from user where user_id = ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -91,9 +91,17 @@ unset($_SESSION['trash']);
                         <textarea class="form-control alert-light toukou_bokku_ys" name="text" id="txt1" maxlength="300" required placeholder="｜投稿内容"></textarea><br>
 
                         <label>
-                            <input type="file" onchange="preview(this)" accept="image/*" name="file" value="up">メディアを選択
-                            <div class="preview-area"></div>
+                            <input type="file" onchange="preview(this)" accept="image/*,video/mp4" name="file" value="up">メディアを選択(動画はmp4しか対応していません)
 
+                            <div class="preview-area"></div><br>
+
+                        <?php 
+                        
+                        if((isset($_SESSION['error']))){
+                         echo '<div style="color: red; text-align: center;">'.$_SESSION['error'].'</div>';
+                         unset($_SESSION['error']);
+                         }
+                        ?>
                             <script>
                                 function preview(elem, output = '') {
                                     Array.from(elem.files).map((file) => {

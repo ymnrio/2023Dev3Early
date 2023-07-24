@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 
 $sql = "DELETE FROM favorite_genre WHERE user_id = ?";
 $ps = $pdo->prepare($sql);

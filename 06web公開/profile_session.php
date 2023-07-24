@@ -1,6 +1,6 @@
 <?php
 session_start();
-$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 $sql="select * from user where user_id = ?";
 $ps=$pdo->prepare($sql);
 $ps->bindValue(1,$_SESSION['user_id'],PDO::PARAM_STR);

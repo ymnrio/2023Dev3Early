@@ -114,7 +114,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <?php echo '"'.$_POST['keyword'].'"の検索結果'.'</h4>'?>
 
                 <?php
-                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                 $sql = "select * from user where user_name LIKE ?";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1, '%' . $_POST['keyword'] . '%', PDO::PARAM_STR);
@@ -149,7 +149,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 ?>
               <div style="margin-bottom:50px"></div>
 <?php //投稿
-                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                 $sql = "select * from post where post_contents LIKE ? order by post_id desc";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1, '%' . $_POST['keyword']. '%', PDO::PARAM_STR);
@@ -201,24 +201,35 @@ echo                '<form action="08_投稿詳細画面.php" method="post">'.
                   echo nl2br($row['post_contents']).
                   '</div>';
                   //画像があるか検索
-                  $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
                   $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
                   $ps2->execute();
-                  $row2 = $ps2->fetch(PDO::FETCH_ASSOC);
-  
-                  if(!empty($row2['media1'])){
-                    $image_data = $row2['media1'];
+                    
+                  foreach($ps2 as $row2){
+                    $type = $row2['media2'];
+                    $media = $row2['media1'];
+                  }
+
+                  if($type == '1'){ //画像
+                    $image_data = $media;
 
                     $base64_image = base64_encode($image_data);
 
-                    echo '<br>'.'<img width="250"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                    echo '<br>'.'<img width="200"src="data:image/jpeg;base64,'.  $base64_image.'" /><br>';
+                    
+                  }else if($type == '2'){//動画
+
+                    $image_data = $media;
+
+                    $base64_image = base64_encode($image_data);
+                    echo '<br>'.'<video style="  max-height:300px;  max-width:600px;"  src="data:video/mp4;base64,'.$base64_image.'"controls></video><br>';
                   }
 echo                '</button>'.  
                   '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                   '</form>';
-                $pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                 $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                 $ps3 = $pdo->prepare($sql3);
                 $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);

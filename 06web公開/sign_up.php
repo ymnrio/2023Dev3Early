@@ -10,7 +10,7 @@ if($name_number >10){
     $_SESSION['error'] = "ユーザーネームは10文字未満までです。";
     header('Location:03_新規登録画面.php');
 }
-$pdo = new PDO('mysql:host=mysql214.phy.lolipop.lan;dbname=LAA1417495-yamatterdb;charset=utf8', 'LAA1417495', 'SOTA1140');
+$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
 
 //メールアドレス重複確認
 $sql="select count(*) from user group by email_address having email_address = ?";
