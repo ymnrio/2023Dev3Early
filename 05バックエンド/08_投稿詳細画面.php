@@ -109,7 +109,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
         <div class="row">
           <div class="col-md-12 col-lg-12" style="height: 100vh;">
-            <button type="hidden" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="location.href='08_投稿詳細画面.php'">戻る</button>
+            <button type="hidden" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="margin-left: 3%;width: 150px;" onclick="location.href='07_ジャンル別投稿一覧画面.php'">戻る</button>
             <!--<form action="09_投稿返信画面.php" method="post">
               <button type="hidden" name="reply" class="btn container-fluid  magin30_yamanisi color_white_yamani border border-light syousai_do_ys" style="width: 150px;margin-left: 62%;" value="<?php echo $id; ?>">返信する</button>
             </form>-->
