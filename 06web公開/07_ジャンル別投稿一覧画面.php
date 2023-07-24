@@ -126,7 +126,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
 
               if($_SESSION['genre'] == "すべて"){
                 
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                 $sql = "select * from post ORDER BY post_id DESC";
                 $ps = $pdo->prepare($sql);
                 $ps->execute();
@@ -178,7 +178,7 @@ echo             '<form action="08_投稿詳細画面.php" method="post">'.
                     '</div>'//.'</button>'
                     ;
                     //画像があるか検索
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql2 = "select * from post where post_id = ?";
                     $ps2 = $pdo->prepare($sql2);
                     $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -207,7 +207,7 @@ echo             '<form action="08_投稿詳細画面.php" method="post">'.
 echo                '</button>'.  
                     '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                     '</form>';
-                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                  $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                   $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                   $ps3 = $pdo->prepare($sql3);
                   $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -259,7 +259,7 @@ echo                '<button type="hidden" name="like" value="2,'.$row['post_id'
             }
               }else{//すべて以外を選択した時
 
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');//←これ追加したら表示した
+                $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');//←これ追加したら表示した
                 $sql = "select * from genre where genre_name = ? ";
                 $ps = $pdo->prepare($sql);
                 $ps->bindValue(1,$_SESSION['genre'],PDO::PARAM_STR);
@@ -319,7 +319,7 @@ echo              '<form action="08_投稿詳細画面.php" method="post">'.
                   echo nl2br($row['post_contents']).
                   '</div>';
                   //画像があるか検索
-                  $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                  $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                   $sql2 = "select * from post where post_id = ?";
                   $ps2 = $pdo->prepare($sql2);
                   $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -349,7 +349,7 @@ echo              '<form action="08_投稿詳細画面.php" method="post">'.
 echo                
                   '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                   '</form>';
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                 $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                 $ps3 = $pdo->prepare($sql3);
                 $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);

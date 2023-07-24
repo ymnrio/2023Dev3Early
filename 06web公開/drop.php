@@ -5,7 +5,7 @@ if(!empty($_POST['drop'])){
     $id = $_POST['drop'];
     echo $id;
 
-    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
     $a = substr($id,0,2);
     if($a != "00"){
         $sql = "DELETE FROM post WHERE post_id = ?";

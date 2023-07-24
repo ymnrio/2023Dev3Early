@@ -26,7 +26,7 @@ unset($_SESSION['trash']);
 </head>
 
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+$pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
 $sql = "SELECT self_introduction FROM user WHERE user_id = ?";
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -36,7 +36,7 @@ foreach ($ps as $row) {
 }
 ?>
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+$pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
 $sql = "SELECT genre_id FROM favorite_genre WHERE user_id = ?";
 $ps = $pdo->prepare($sql);
 $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -54,7 +54,7 @@ $ps->execute();
             <div class="col-md-1">
               <!--<img class="image_middle" src="img/pink.png" style="margin-top:25px; ">-->
               <?php
-              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+              $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
               $sql = "SELECT media FROM user WHERE user_id = ?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);

@@ -112,7 +112,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
           <div class="col-md-2 col-lg-2"><br>
             <?php 
            
-            $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+            $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
             $ps1->bindValue(1,$_SESSION['user_id'],PDO::PARAM_INT);
@@ -159,7 +159,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
               <h6><?php echo $introduction; ?></h6><br>
               
               <?php
-              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+              $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
               $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $user_id, PDO::PARAM_STR);
@@ -224,7 +224,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql = "select * from post where user_id = ? order by post_id desc";
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -267,7 +267,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                         echo nl2br($row['post_contents']).
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql2 = "select * from post where post_id = ?";
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1,$row['post_id'],PDO::PARAM_INT);
@@ -295,7 +295,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
       echo                '</button>'.  
                         '<p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>'.
                         '</form>';
-                      $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                      $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                       $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                       $ps3 = $pdo->prepare($sql3);
                       $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -359,7 +359,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql = "SELECT * FROM favorite_post WHERE user_id = ? ORDER BY like_id DESC"; //いいねしてるツイ参照
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -421,7 +421,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                         echo nl2br($post_contets) .
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql4 = "SELECT * FROM post WHERE post_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1, $post_id, PDO::PARAM_INT);
@@ -542,7 +542,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
                         echo nl2br($reply_contets) .
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql4 = "select * from reply where reply_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1, $reply_id, PDO::PARAM_INT);

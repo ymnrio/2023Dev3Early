@@ -20,7 +20,7 @@ if (!empty($_FILES['file']['name'])) {//画像または動画がある場合
 
                 if($extension == "MP4" || $extension == "mp4"){ //拡張子がmp4、MP4
                         //mp4
-                       $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                       $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments,media1,media2)
                                 value(?,?,?,?,?,?,?,?)";
                         $ps = $pdo->prepare($sql);
@@ -36,7 +36,7 @@ if (!empty($_FILES['file']['name'])) {//画像または動画がある場合
                         
                 }else{
                         //画像
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments,media1,media2)
                                 value(?,?,?,?,?,?,?,?)";
                         $ps = $pdo->prepare($sql);
@@ -52,7 +52,7 @@ if (!empty($_FILES['file']['name'])) {//画像または動画がある場合
                 }
         
         }else{ //何もないばあい
-                $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+                $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                 $sql ="INSERT into post(user_id,genre_id,post_contents,date_time,fabulous,comments)
                         value(?,?,?,?,?,?)";
                 $ps = $pdo->prepare($sql);

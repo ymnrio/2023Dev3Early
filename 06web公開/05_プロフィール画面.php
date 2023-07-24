@@ -111,7 +111,7 @@ $_SESSION['move'] = "05";
 
           <div class="col-md-2 col-lg-2"><br>
             <?php
-            $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+            $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
             $sql1 = "select * from user where user_id = ?";
             $ps1 = $pdo->prepare($sql1);
             $ps1->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -168,7 +168,7 @@ $_SESSION['move'] = "05";
               <h6><?php echo nl2br($_SESSION['user']['introduction']); ?></h6><br>
 
               <?php
-              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+              $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
               $sql = "SELECT *  FROM favorite_genre WHERE user_id=?";
               $ps = $pdo->prepare($sql);
               $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_STR);
@@ -234,7 +234,7 @@ $_SESSION['move'] = "05";
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql = "SELECT * FROM (
                             SELECT reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments, media1, media2
                             FROM reply UNION ALL
@@ -294,7 +294,7 @@ $_SESSION['move'] = "05";
                         echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql3 = "select * from post where post_id = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
@@ -323,7 +323,7 @@ $_SESSION['move'] = "05";
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $row['date_time'] . '</p>
                         </form>';
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -411,7 +411,7 @@ $_SESSION['move'] = "05";
                         echo nl2br($row['reply_contents']);
 
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql2 = "select * from reply where reply_id = ?";
                         $ps2 = $pdo->prepare($sql2);
                         $ps2->bindValue(1, $row['reply_id'], PDO::PARAM_INT);
@@ -440,7 +440,7 @@ $_SESSION['move'] = "05";
                         echo  '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">' . $row['date_time'] . '</p>
                         </form>';
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
@@ -506,7 +506,7 @@ $_SESSION['move'] = "05";
                 <div class="haikei_yp">
                   <div class="padding30_ys">
                     <?php
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql = "SELECT * FROM favorite_post WHERE user_id = ? ORDER BY like_id DESC"; //いいねしてるツイ参照
                     $ps = $pdo->prepare($sql);
                     $ps->bindValue(1, $user_id, PDO::PARAM_INT);
@@ -568,7 +568,7 @@ $_SESSION['move'] = "05";
                         echo nl2br($post_contets) .
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql4 = "SELECT * FROM post WHERE post_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1, $post_id, PDO::PARAM_INT);
@@ -689,7 +689,7 @@ $_SESSION['move'] = "05";
                         echo nl2br($reply_contets) .
                         '</div>';
                         //画像があるか検索
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql4 = "select * from reply where reply_id = ?";
                         $ps4 = $pdo->prepare($sql4);
                         $ps4->bindValue(1, $reply_id, PDO::PARAM_INT);

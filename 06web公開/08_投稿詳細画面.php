@@ -127,7 +127,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                     }else{
                       $id = $_GET['hogeA'];
                     }
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $a = substr($id, 0, 2);
                     //返信の場合
                     if ($a == "00") {
@@ -223,7 +223,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                             echo '</button>
                             <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                             </form>';
-                            $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                            $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                             $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                             $ps3 = $pdo->prepare($sql3);
                             $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -339,7 +339,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                               echo '</button>
                               <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                               </form>';
-                              $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                              $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                               $sql3 = "SELECT * FROM favorite_post WHERE user_id = ? AND like_subject = ?";
                               $ps3 = $pdo->prepare($sql3);
                               $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -467,7 +467,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                         echo '</button>
                         <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                         </form>';
-                        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                         $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                         $ps3 = $pdo->prepare($sql3);
                         $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -583,7 +583,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                     echo '</button>
                     <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                     </form>';
-                    $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                    $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                     $ps3 = $pdo->prepare($sql3);
                     $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);
@@ -731,7 +731,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
                     echo                   '</button>
                          <p style="margin-top:20px;color:#FBA8B8;padding-left:15px;width: 300px;">'.$row['date_time'].'</p>
                     </form>';
-                          $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
+                          $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                           $sql3 = "select * from favorite_post where user_id = ? and like_subject = ?";
                           $ps3 = $pdo->prepare($sql3);
                           $ps3->bindValue(1,$_SESSION['user']['id'],PDO::PARAM_INT);

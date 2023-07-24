@@ -13,7 +13,7 @@ if($_FILES['file']['size'] >= 10485760){ //10M以上だったらエラーを表�
 }
 
 //reply_idを設定
-$pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+$pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
 $sql = "SELECT *, count(*) FROM reply WHERE date_time = (SELECT Max(date_time) FROM reply)";
 $ps = $pdo->prepare($sql);
 $ps->execute();
@@ -67,7 +67,7 @@ if (!empty($_FILES['file']['name'])) { //画像または動画がある場合
 
         }else{ //ないばあい
 
-        $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8','root','root');
+        $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
         $sql ="INSERT into reply(reply_id, reply_subject, user_id, reply_contents, date_time, fabulous, comments)
                 value(?,?,?,?,?,?,?)";
         $ps = $pdo->prepare($sql);
