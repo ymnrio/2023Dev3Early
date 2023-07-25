@@ -564,7 +564,7 @@ $_SESSION['move'] = "05";
 
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                         '<button name="detail" type="hidden" value="' . $post_id . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
-                        '<div style="font-size: 20px;">';
+                        '<div style="font-size: 20px;"><p></p><br>';
                         echo nl2br($post_contets) .
                         '</div>';
                         //画像があるか検索
@@ -685,7 +685,7 @@ $_SESSION['move'] = "05";
 
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                         '<button name="detail" type="hidden" value="' . $reply_id . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
-                        '<div style="font-size: 20px;">';
+                        '<div style="font-size: 20px;"><p></p><br>';
                         echo nl2br($reply_contets) .
                         '</div>';
                         //画像があるか検索
