@@ -120,7 +120,7 @@ $ps = $pdo->prepare($sql);
 $ps->bindValue(1,$_POST['newreply'],PDO::PARAM_STR);
 $ps->execute();
 foreach($ps as $row){
-        $subjectid = $row['reply_subject'];
+        $subjectid = $row['reply_id'];
 }
 
 //動画ファイルと画像だけ選ぶことができるようにする
