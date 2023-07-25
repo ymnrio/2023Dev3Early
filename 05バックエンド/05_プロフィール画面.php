@@ -223,11 +223,12 @@ $_SESSION['move'] = "05";
         <div class="row yoko_ys">
 
           <div class="col-md-12 start_0_ys back_pink_ys" style="height: 100vh;">
-
+          
             <hr class="start_0_ys">
-
+            <!--<div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: relative; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>-->
             <div id="toukou" class="area">
-            <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
+            <!--<div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>-->
+            
               <!--ここからtweetの枠線の設定-->
               <div class="waku_ys">
 
@@ -500,7 +501,7 @@ $_SESSION['move'] = "05";
             </div>
 
             <div id="iine" class="area">
-           <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
+           <!--<div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>-->
               <div class="waku_ys">
 
                 <div class="haikei_yp">

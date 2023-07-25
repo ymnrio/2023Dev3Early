@@ -227,7 +227,6 @@ $_SESSION['move'] = "05";
             <hr class="start_0_ys">
 
             <div id="toukou" class="area">
-            <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
               <!--ここからtweetの枠線の設定-->
               <div class="waku_ys">
 
@@ -500,7 +499,6 @@ $_SESSION['move'] = "05";
             </div>
 
             <div id="iine" class="area">
-           <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute;top:283px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
               <div class="waku_ys">
 
                 <div class="haikei_yp">
@@ -509,7 +507,7 @@ $_SESSION['move'] = "05";
                     $pdo = new PDO('mysql:host=mysql217.phy.lolipop.lan;dbname=LAA1417495-yamatter;charset=utf8', 'LAA1417495', 'sotA1140');
                     $sql = "SELECT * FROM favorite_post WHERE user_id = ? ORDER BY like_id DESC"; //いいねしてるツイ参照
                     $ps = $pdo->prepare($sql);
-                    $ps->bindValue(1, $user_id, PDO::PARAM_INT);
+                    $ps->bindValue(1, $_SESSION['user']['id'], PDO::PARAM_INT);
                     $ps->execute();
                     foreach ($ps as $row) {
                       $c = substr($row['like_subject'],0,2);
@@ -564,7 +562,7 @@ $_SESSION['move'] = "05";
 
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                         '<button name="detail" type="hidden" value="' . $post_id . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
-                        '<div style="font-size: 20px;">';
+                        '<div style="font-size: 20px;"><p></p><br>';
                         echo nl2br($post_contets) .
                         '</div>';
                         //画像があるか検索
@@ -685,7 +683,7 @@ $_SESSION['move'] = "05";
 
                         echo '<form action="08_投稿詳細画面.php" method="post">' .
                         '<button name="detail" type="hidden" value="' . $reply_id . '" style="text-decoration: none; background-color: transparent; border: none; outline: none; box-shadow: none; width: 870px; text-align:left;">' .
-                        '<div style="font-size: 20px;">';
+                        '<div style="font-size: 20px;"><p></p><br>';
                         echo nl2br($reply_contets) .
                         '</div>';
                         //画像があるか検索

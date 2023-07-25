@@ -23,6 +23,7 @@ unset($_SESSION['user']['id']);
 
 <body id="topanime" background="img/pink.png">
 <div>
+<p style="position: fixed;z-index: 10;text-align:center;">--このサイトは画面が1280*800じゃないと綺麗に映りません。デベロッパーツールや開発者ツールを駆使して楽しんでね！--</p>
     <a href="session_check.php">
       <div>
         <img src="img/やまったーlog.png" style="width: 1000px; margin-left: 130px; margin-top: 40px;">

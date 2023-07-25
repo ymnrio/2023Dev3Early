@@ -217,7 +217,7 @@ echo        '<hr class="start_0_ys color_yamani"><br>
             <hr class="start_0_ys">
 
             <div id="toukou" class="area">
-            <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute; top:269px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
+            <!--<div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute; top:269px;left:455px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>-->
               <!--ここからtweetの枠線の設定-->
               <div class="waku_ys">
 
@@ -353,7 +353,7 @@ echo                  '<form action="08_投稿詳細画面.php" method="post">'.
             </div>
 
             <div id="iine" class="area">
-            <div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute; top:269px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>
+            <!--<div style="height:40px;width:200px;background-color: #FBA8B8; opacity:0.4; position: absolute; top:269px;right:95px; z-index: -10; border-radius: 10px 10px 10px 10px;"></div>-->
               <div class="waku_ys">
 
                 <div class="haikei_yp">
