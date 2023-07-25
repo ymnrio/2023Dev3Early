@@ -68,7 +68,7 @@ session_start();
 
                   } else { //設定してない場合
 
-                    echo '<img class="image_middle" src="img/pink.png">　';
+                    echo '<br><img class="image_middle" src="img/pink.png">　';
                   }
 ?>
                         <h5 style="position: relative;top:-50px;left:100px;"><?php echo $_SESSION['user']['name']; ?></h5>
