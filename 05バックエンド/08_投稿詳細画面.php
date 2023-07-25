@@ -119,14 +119,13 @@ echo        '<hr class="start_0_ys color_yamani"><br>
               <div class="haikei_yp">
                 <div class="padding30_ys">
                   <div style="margin-bottom: 50px;">
-                    <?php                    
-                    if(!empty($_POST['detail'])){
+                    <?php                
+                    if(isset($_POST['detail']) == true){
                       $id = $_POST['detail'];
-                    }else if(empty($_POST['detail'])){
-                      $id = $_SESSION['detail'];
                     }else{
                       $id = $_GET['hogeA'];
                     }
+                    
                     $pdo = new PDO('mysql:host=localhost;dbname=yamatter;charset=utf8', 'root', 'root');
                     $a = substr($id, 0, 2);
                     //返信の場合

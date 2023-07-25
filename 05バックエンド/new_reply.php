@@ -115,13 +115,8 @@ if($a == "00"){
         $ps->execute();
 }
 
-$sql = "SELECT * FROM reply wHERE reply_id = ?";
-$ps = $pdo->prepare($sql);
-$ps->bindValue(1,$_POST['newreply'],PDO::PARAM_STR);
-$ps->execute();
-foreach($ps as $row){
-        $subjectid = $row['reply_id'];
-}
+$subjectid = $_POST['newreply'];
+
 
 //動画ファイルと画像だけ選ぶことができるようにする
 //ファイル関係の処理を追加する
